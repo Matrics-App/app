@@ -15,3 +15,103 @@ body {
 
     outline:none !important;
 }
+
+/* Margins: */
+.custom-margin-auto {
+  margin: auto;
+}
+
+.custom-margin-1em {
+  margin: 1em;
+}
+
+.custom-margin-2em {
+  margin: 2em;
+}
+
+.custom-margin-top-1em {
+  margin-top: 1em;
+}
+
+.custom-margin-top-2em {
+  margin-top: 2em;
+}
+
+/* Paddings: */
+.custom-padding-1em {
+  padding: 1em !important;
+}
+
+.custom-padding-2em {
+  padding: 2em !important;
+}
+
+/* Borders: */
+.custom-border-none {
+  border: none !important;
+}
+
+.custom-border-1px {
+  border: 1px solid #ddd !important;
+  box-shadow: 0 2px 2px 0 rgba(58, 105, 206, 0.2), 0 3px 1px -2px rgba(58, 105, 206, 0.2), 0 1px 5px 0 rgba(58, 105, 206, 0.2) !important;
+}
+
+.custom-border-radius {
+  border-radius: 20px;
+}
+
+.custom-border-radius-bottom {
+  border-radius: 0px 0px 20px 20px;
+}
+
+/* Color: */
+.blue-gradient {
+  background: linear-gradient(45deg, rgba(33,184,243,1) 0%, rgba(33,150,243,1) 50%, rgba(4,72,184,1) 100%);
+}
+
+.blue-text-gradient {
+  background: linear-gradient(45deg, rgba(33,184,243,1) 0%, rgba(33,150,243,1) 50%, rgba(4,72,184,1) 100%);
+  background-clip: content-box;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Width: */
+.custom-width-100 {
+  width: 100%;
+}
+
+.custom-width-75 {
+  width: 75%;
+}
+
+.custom-width-50 {
+  width: 50%;
+}
+
+.custom-width-75px {
+  width: 75px;
+}
+
+/* Height */
+.custom-height-100 {
+  height: 100%;
+}
+
+.custom-height-75 {
+  height: 75%;
+}
+
+.custom-height-50 {
+  height: 50%;
+}
+
+.custom-height-75px {
+  height: 75px;
+}
+
+/* Effects: */
+.custom-blur {
+  filter: blur(8px);
+  -webkit-filter: blur(8px);
+}

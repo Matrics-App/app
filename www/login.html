@@ -19,18 +19,61 @@
 </head>
 
 <body id="body">
-	<nav class="grey darken-4" role="navigation">
-		<div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo center">Login</a>
-			<ul class="right hide-on-med-and-down">
+	<nav class="blue-gradient custom-border-radius-bottom custom-width-100 custom-margin-auto" role="navigation">
+		<div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo center">MatriculaT</a>
+			<!-- <ul class="right hide-on-med-and-down">
 				<li><a>Opcions (WIP)</a></li>
 			</ul>
 
 			<ul id="nav-mobile" class="sidenav">
 				<li><a>Opcions (WIP)</a></li>
-			</ul>
-			<a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+			</ul> 
+			<a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a> -->
 		</div>
 	</nav>
+
+	<div class="container">
+		<div class="row custom-margin-top-2em">
+			<form class="col s12 custom-border-1px custom-border-radius custom-padding-1em white valign-center">
+				<div class="input-field col s12">
+					<input id="emailField" type="email" class="validate">
+					<label for="emailField">Email</label>
+					<span class="helper-text" data-error="El camp email no &eacute;s v&agrave;lid"></span>
+				</div>
+				<div class="input-field col s12">
+					<input id="passwordField" type="password" class="validate">
+					<label for="passwordField">Contrasenya</label>
+					<span class="helper-text"></span>
+				</div>
+				<a class="waves-effect waves-light custom-width-100 custom-margin-auto blue-gradient btn-large custom-border-radius center-align">Entra</a>
+				<div class="divider custom-margin-2em"></div>
+				<div class="center-align">
+					<p>
+						Has oblidat la contrasenya? <br/> <a href="" class="blue-text"><u>Recupera-la</u></a>
+					</p>
+				</div>
+			</form>
+		</div>
+		
+		<div class="divider custom-margin-2em"></div>
+
+		<div class="center-align">
+			<p>
+				O b&eacute; pots iniciar sessi&oacute; mitjançant
+			</p>
+		</div>
+		
+		<div class="row section">
+			<div class="col s6 center-align">
+				<a id="googleSL" class="waves-effect waves-light custom-width-75px custom-height-75px custom-margin-auto custom-margin-1em white btn-large custom-border-radius center-align custom-padding-1em"><img src="img/googleSocialLogin.png" alt="Google" class="responsive-img"></a>
+				<br/><label for="googleSL">Google</label>
+			</div>
+			<div class="col s6 center-align">
+				<a id="microsoftSL" class="waves-effect waves-light custom-width-75px custom-height-75px custom-margin-auto custom-margin-1em white btn-large custom-border-radius center-align custom-padding-1em"><img src="img/microsoftSocialLogin.png" alt="Microsoft" class="circle responsive-img"></a>
+				<br/><label for="microsoftSL">Microsoft</label>
+			</div>
+		</div>
+	</div>
 	
 
 	<!--  Scripts-->
