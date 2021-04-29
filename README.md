@@ -161,7 +161,14 @@
 <th>Description
 </th></tr>
 <tr>
-<td>careerCode
+<td>token
+</td>
+<td>text
+</td>
+<td>Token del usuario
+</td></tr>
+<tr>
+<td>carreerCode
 </td>
 <td>text
 </td>
@@ -608,6 +615,423 @@
 </th></tr>
 <tr>
 <th colspan="3">POST 
+</th></tr>
+<tr>
+<th>Param
+</th>
+<th>Values
+</th>
+<th>Description
+</th></tr>
+<tr>
+<td>error
+</td>
+<td>text
+</td>
+<td>Motivo del error
+</td></tbody></table>
+
+
+
+
+<h2>Get document requirements</h2>
+<h4> REQUEST </h4>
+<table class="wikitable">
+<tbody><tr>
+<th colspan="3">Request
+</th></tr>
+<tr>
+<th colspan="3">GET
+</th></tr>
+<tr>
+<th>Param
+</th>
+<th>Values
+</th>
+<th>Description
+</th></tr>
+<tr>
+<td>token
+</td>
+<td>text
+</td>
+<td>Token de usuario
+</td></tr>
+</tbody></table>
+<h4>RESPONSE STATUS 200</h4>
+<table class="wikitable">
+<tbody><tr>
+<th colspan="3">Response : JSON(Array)
+</th></tr>
+<tr>
+<th colspan="3">GET 
+</th></tr>
+<tr>
+<th>Param
+</th>
+<th>Values
+</th>
+<th>Description
+</th></tr>
+<tr>
+<td>documentRequirements
+</td>
+<td>JSON Object
+</td>
+<td>Objeto JSON de los requisitos de documentos
+</td></tr>
+</td></tr></tbody></table>
+<h4> RESPONSE STATUS 400</h4>
+<table class="wikitable">
+<tbody><tr>
+<th colspan="3">Response : text
+</th></tr>
+<tr>
+<th colspan="3">GET
+</th></tr>
+<tr>
+<th>Param
+</th>
+<th>Values
+</th>
+<th>Description
+</th></tr>
+<tr>
+<td>error
+</td>
+<td>text
+</td>
+<td>Motivo del error
+</td></tbody></table>
+
+
+
+
+<h2>Get user UFs</h2>
+<h4> REQUEST </h4>
+<table class="wikitable">
+<tbody><tr>
+<th colspan="3">Request
+</th></tr>
+<tr>
+<th colspan="3">GET
+</th></tr>
+<tr>
+<th>Param
+</th>
+<th>Values
+</th>
+<th>Description
+</th></tr>
+<tr>
+<td>token
+</td>
+<td>text
+</td>
+<td>Token de usuario
+</td></tr>
+</tbody></table>
+<h4>RESPONSE STATUS 200</h4>
+<table class="wikitable">
+<tbody><tr>
+<th colspan="3">Response : JSON(Array)
+</th></tr>
+<tr>
+<th colspan="3">GET 
+</th></tr>
+<tr>
+<th>Param
+</th>
+<th>Values
+</th>
+<th>Description
+</th></tr>
+<tr>
+<td>ufList
+</td>
+<td>JSON
+</td>
+<td>Array de las UFs seleccionadas por el usuario a la hora de matricularse(Almacenado en el user)
+</td></tr>
+</td></tr></tbody></table>
+<h4> RESPONSE STATUS 400</h4>
+<table class="wikitable">
+<tbody><tr>
+<th colspan="3">Response : text
+</th></tr>
+<tr>
+<th colspan="3">GET
+</th></tr>
+<tr>
+<th>Param
+</th>
+<th>Values
+</th>
+<th>Description
+</th></tr>
+<tr>
+<td>error
+</td>
+<td>text
+</td>
+<td>Motivo del error
+</td></tbody></table>
+
+
+
+
+<h2>Insert user UFs</h2>
+<h4> REQUEST </h4>
+<table class="wikitable">
+<tbody><tr>
+<th colspan="3">Request : JSON(Array)
+</th></tr>
+<tr>
+<th colspan="3">POST
+</th></tr>
+<tr>
+<th>Param
+</th>
+<th>Values
+</th>
+<th>Description</th>
+<tr>
+<td>ufList</td>
+<td>JSON</td>
+<td>Array de las UFs seleccionadas por el usuario a la hora de matricularse(Almacenado en el user)</td></tr>
+</tbody></table>
+<h4> RESPONSE STATUS 200</h4>
+<table class="wikitable">
+<tbody><tr>
+<th colspan="3">Response 
+</th></tr>
+<tr>
+<th colspan="3">POST 
+</th></tr>
+<tr>
+<th>Param
+</th>
+<th>Values
+</th>
+<th>Description
+</th></tr>
+</tbody></table>
+<h4> RESPONSE STATUS 400</h4>
+<table class="wikitable">
+<tbody><tr>
+<th colspan="3">Response : JSON
+</th></tr>
+<tr>
+<th colspan="3">POST 
+</th></tr>
+<tr>
+<th>Param
+</th>
+<th>Values
+</th>
+<th>Description
+</th></tr>
+<tr>
+<td>error
+</td>
+<td>text
+</td>
+<td>Motivo del error
+</td></tbody></table>
+
+
+
+
+<h2>Upload Documents File</h2>
+  <h4> REQUEST </h4>
+  <table class="wikitable">
+<tbody><tr>
+<th colspan="3">Request : FORM DATA
+</th></tr>
+<tr>
+<th colspan="3">POST 
+</th></tr>
+<tr>
+<th>Param
+</th>
+<th>Values
+</th>
+<th>Description
+</th><tr><td>email</td><td>Text</td><td>Email del alumno</td></tr>
+  <tr><td>profileName</td><td>text</td><td>Nombre del perfil</td></tr>
+  <tr><td>documentName</td><td>text</td><td>Nombre del documento</td></tr>
+  <tr><td>file</td><td>archivo</td><td>Fichero que se sube</td></tr></tr>
+</tbody></table>
+<h4> RESPONSE STATUS 200</h4>
+<table class="wikitable">
+<tbody><tr>
+<th colspan="3">Response : JSON
+</th></tr>
+<tr>
+<th colspan="3">POST 
+</th></tr>
+<tr>
+<th>Param
+</th>
+<th>Values
+</th>
+<th>Description
+</th></tr>
+<tr>
+<td>ok
+</td>
+<td>text
+</td>
+<td>contiene "Fichero subido correctamente"
+</td></tbody></table>
+<h4> RESPONSE STATUS 400</h4>
+<table class="wikitable">
+<tbody><tr>
+<th colspan="3">Response : JSON
+</th></tr>
+<tr>
+<th colspan="3">POST 
+</th></tr>
+<tr>
+<th>Param
+</th>
+<th>Values
+</th>
+<th>Description
+</th></tr>
+<tr>
+<td>error
+</td>
+<td>text
+</td>
+<td>Motivo del error
+</td></tbody></table>
+
+
+
+<h2>Get Document</h2>
+  <h4> REQUEST </h4>
+  <table class="wikitable">
+<tbody><tr>
+<th colspan="3">Request : GET
+</th></tr>
+<tr>
+<th colspan="3">GET
+</th></tr>
+<tr>
+<th>Param
+</th>
+<th>Values
+</th>
+<th>Description
+</th><tr><td>email</td><td>Text</td><td>Email del alumno</td></tr>
+  <tr><td>profileName</td><td>text</td><td>Nombre del perfil</td></tr>
+  <tr><td>documentName</td><td>text</td><td>Nombre del documento</td></tr>
+  </tr>
+</tbody></table>
+<h4> RESPONSE STATUS 200</h4>
+<table class="wikitable">
+<tbody><tr>
+<th colspan="3">Response : JSON
+</th></tr>
+<tr>
+<th colspan="3">GET 
+</th></tr>
+<tr>
+<th>Param
+</th>
+<th>Values
+</th>
+<th>Description
+</th></tr>
+<tr>
+<td>filePath
+</td>
+<td>text
+</td>
+<td>contiene la ruta del fichero (incluye el nombre y extension)
+  </td></tr>
+  <tr>
+<td>data
+</td>
+<td>text
+</td>
+<td>Fichero en string base64
+  </td></tr></tbody></table>
+<h4> RESPONSE STATUS 400</h4>
+<table class="wikitable">
+<tbody><tr>
+<th colspan="3">Response : JSON
+</th></tr>
+<tr>
+<th colspan="3">GET
+</th></tr>
+<tr>
+<th>Param
+</th>
+<th>Values
+</th>
+<th>Description
+</th></tr>
+<tr>
+<td>error
+</td>
+<td>text
+</td>
+<td>Motivo del error
+</td></tbody></table>
+
+
+<h2>Update, validate file</h2>
+  <h4> REQUEST </h4>
+  <table class="wikitable">
+<tbody><tr>
+<th colspan="3">Request : POST
+</th></tr>
+<tr>
+<th colspan="3">POST /update/validateFile
+</th></tr>
+<tr>
+<th>Param
+</th>
+<th>Values
+</th>
+<th>Description
+</th><tr><td>email</td><td>Text</td><td>Email del alumno</td></tr>
+  <tr><td>profileName</td><td>text</td><td>Nombre del perfil</td></tr>
+  <tr><td>documentName</td><td>text</td><td>Nombre del documento</td></tr>
+  </tr>
+</tbody></table>
+<h4> RESPONSE STATUS 200</h4>
+<table class="wikitable">
+<tbody><tr>
+<th colspan="3">Response : JSON
+</th></tr>
+<tr>
+<th colspan="3">POST /update/validateFile
+</th></tr>
+<tr>
+<th>Param
+</th>
+<th>Values
+</th>
+<th>Description
+</th></tr>
+<tr>
+<td>ok
+</td>
+<td>text
+</td>
+<td>contiene "fichero validado correctamente"
+  </td></tr>
+  </tbody></table>
+<h4> RESPONSE STATUS 400</h4>
+<table class="wikitable">
+<tbody><tr>
+<th colspan="3">Response : JSON
+</th></tr>
+<tr>
+<th colspan="3">POST /update/validateFile
 </th></tr>
 <tr>
 <th>Param
