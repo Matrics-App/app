@@ -1,19 +1,50 @@
 html,
 body {
-    width: 100%;
-    height: 100%;
-    overflow-x: hidden;
-    overflow-y: hidden;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: hidden;
 
-    -webkit-touch-callout: none; /* iOS Safari */
-      -webkit-user-select: none; /* Safari */
-       -khtml-user-select: none; /* Konqueror HTML */
-         -moz-user-select: none; /* Old versions of Firefox */
-          -ms-user-select: none; /* Internet Explorer/Edge */
-              user-select: none; /* Non-prefixed version, currently
-                                    supported by Chrome, Edge, Opera and Firefox */
+  font-family: 'esteve-terrades-raleway-regular';
 
-    outline:none !important;
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+      -khtml-user-select: none; /* Konqueror HTML */
+        -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+
+  outline:none !important;
+}
+
+/* Detectar los insets del mobil (notch o phonegap)*/
+:root {
+  --notch-inset-top: 0px;
+  --notch-inset-right: 0px;
+  --notch-inset-bottom: 0px;
+  --notch-inset-left: 0px;
+}
+
+/* Fonts: */
+@font-face {
+	font-family: "esteve-terrades-roboto-light";
+	src: url("../fonts/Roboto/Roboto-Light.ttf");
+}
+
+@font-face {
+	font-family: "esteve-terrades-raleway-regular";
+	src: url("../fonts/Raleway/Raleway-Regular.ttf");
+}
+
+@font-face {
+	font-family: "esteve-terrades-raleway-medium";
+	src: url("../fonts/Raleway/Raleway-Medium.ttf");
+}
+
+/* Displays: */
+.custom-display-block {
+	display: block;
 }
 
 /* Margins: */
@@ -70,7 +101,7 @@ body {
 }
 
 .blue-text-gradient {
-  background: linear-gradient(45deg, rgba(33,184,243,1) 0%, rgba(33,150,243,1) 50%, rgba(4,72,184,1) 100%);
+  background: linear-gradient(0deg, rgba(33,150,243,1) 0%, rgba(255,255,255,1) 65%);
   background-clip: content-box;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -79,6 +110,10 @@ body {
 /* Width: */
 .custom-width-100 {
   width: 100%;
+}
+
+.custom-width-80 {
+  width: 80%;
 }
 
 .custom-width-75 {
@@ -108,6 +143,33 @@ body {
 
 .custom-height-75px {
   height: 75px;
+}
+
+/* Custom tags: */
+/* Modificar el color de la label y el borde inferior de los inputs (la primera vez que se seleccionan) */
+input[type="email"]:not(.browser-default):focus:not([readonly]) + label, input[type="password"]:not(.browser-default):focus:not([readonly]) + label {
+  color: #2196F3;
+}
+
+input[type="email"]:not(.browser-default):focus:not([readonly]), input[type="password"]:not(.browser-default):focus:not([readonly]) {
+  border-bottom: 1px solid #2196F3 !important;
+  box-shadow: 0 1px 0 0 #2196F3 !important;
+}
+
+/* Modificar el color de la label y el borde inferior de los inputs (Una vez son validados) */
+input.valid[type="email"]:not(.browser-default), input.valid[type="password"]:not(.browser-default) {
+  border-bottom: 1px solid #2196F3 !important;
+  box-shadow: 0 1px 0 0 #2196F3 !important;
+}
+
+input[type="email"]:not(.browser-default):focus.valid ~ label, input[type="password"]:not(.browser-default):focus.valid ~ label {
+  color: #2196F3;
+}
+
+/* Font Navbar */
+#navbar {
+  font-family: "esteve-terrades-raleway-medium";
+  overflow: hidden;
 }
 
 /* Effects: */

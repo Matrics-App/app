@@ -1,10 +1,9 @@
 (function($) {
     $(function() {
-
-        $('.sidenav').sidenav();
+        // Stuff
 
         $(document).ready(function() {
-            // Stuff here
+            // Even more stuff
         });
 
     }); //end of document ready
@@ -13,5 +12,15 @@
 document.addEventListener('deviceready', onDeviceReady, false);
 
 function onDeviceReady() {
-    //pass
+    // Personalizar los insets y la navigationBar del movil
+    if (cordova.platformId == 'android') {
+        StatusBar.overlaysWebView(false);
+        StatusBar.backgroundColorByHexString('#2196F3');
+        NavigationBar.backgroundColorByHexString('#FFFFFF', true);
+    }
 }
+
+
+
+
+

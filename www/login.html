@@ -3,7 +3,7 @@
 
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, viewport-fit=cover"/>
 	<title>MatriculaT Login</title>
 
 	<!-- cordova-headers -->
@@ -19,8 +19,8 @@
 </head>
 
 <body id="body">
-	<nav class="blue-gradient custom-border-radius-bottom custom-width-100 custom-margin-auto" role="navigation">
-		<div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo center">MatriculaT</a>
+	<nav id="navbar" class="blue custom-border-radius-bottom custom-width-100 custom-margin-auto" role="navigation">
+		<div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo center blue-text-gradient">Matrics IETI</a>
 			<!-- <ul class="right hide-on-med-and-down">
 				<li><a>Opcions (WIP)</a></li>
 			</ul>
@@ -32,20 +32,19 @@
 		</div>
 	</nav>
 
-	<div class="container">
+	<div class="container custom-width-80">
 		<div class="row custom-margin-top-2em">
-			<form class="col s12 custom-border-1px custom-border-radius custom-padding-1em white valign-center">
+			<form class="col s12 custom-border-1px custom-border-radius custom-padding-1em white">
 				<div class="input-field col s12">
 					<input id="emailField" type="email" class="validate">
 					<label for="emailField">Email</label>
-					<span class="helper-text" data-error="El camp email no &eacute;s v&agrave;lid"></span>
 				</div>
 				<div class="input-field col s12">
 					<input id="passwordField" type="password" class="validate">
 					<label for="passwordField">Contrasenya</label>
-					<span class="helper-text"></span>
+					<span id="helperLogin" class="helper-text"></span>
 				</div>
-				<a class="waves-effect waves-light custom-width-100 custom-margin-auto blue-gradient btn-large custom-border-radius center-align">Entra</a>
+				<a id="loginButton" class="waves-effect waves-light custom-display-block custom-width-75 custom-margin-auto blue-gradient btn-large custom-border-radius center-align">Iniciar Sessi&oacute;</a>
 				<div class="divider custom-margin-2em"></div>
 				<div class="center-align">
 					<p>
