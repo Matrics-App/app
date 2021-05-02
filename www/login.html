@@ -8,28 +8,24 @@
 
 	<!-- cordova-headers -->
 	<meta http-equiv="Content-Security-Policy"
-		content="default-src https://code.jquery.com https://fonts.gstatic.com 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src https://fonts.googleapis.com 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
+		content="default-src https://accounts.google.com https://apis.google.com/js/platform.js https://apis.google.com https://code.jquery.com https://fonts.gstatic.com 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src https://fonts.googleapis.com 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
 	<meta name="format-detection" content="telephone=no">
 	<meta name="msapplication-tap-highlight" content="no">
 
+	<!-- Social Login -->
+	<meta name="google-signin-client_id" content="297033223289-t8rta8aqptejctds19uslbq1d2vv1e78.apps.googleusercontent.com"/>
+
 	<!-- CSS  -->
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
 	<link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
 	<link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
+	<script src="https://apis.google.com/js/platform.js" async defer></script>
+
 </head>
 
 <body id="body">
-	<nav id="navbar" class="blue custom-border-radius-bottom custom-width-100 custom-margin-auto" role="navigation">
-		<div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo center blue-text-gradient">Matrics IETI</a>
-			<!-- <ul class="right hide-on-med-and-down">
-				<li><a>Opcions (WIP)</a></li>
-			</ul>
-
-			<ul id="nav-mobile" class="sidenav">
-				<li><a>Opcions (WIP)</a></li>
-			</ul> 
-			<a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a> -->
-		</div>
+	<nav id="navbar" class="blue custom-border-radius-bottom custom-width-100 custom-margin-auto blue-gradient-180" role="navigation">
+		<div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo center blue-text-gradient">Matrics IETI</a></div>
 	</nav>
 
 	<div class="container custom-width-80">
@@ -64,16 +60,16 @@
 		
 		<div class="row section">
 			<div class="col s6 center-align">
-				<a id="googleSL" class="waves-effect waves-light custom-width-75px custom-height-75px custom-margin-auto custom-margin-1em white btn-large custom-border-radius center-align custom-padding-1em"><img src="img/googleSocialLogin.png" alt="Google" class="responsive-img"></a>
+				<div id="chapuzaSL" class="g-signin2" style="display: none" data-onsuccess="onSignIn"></div>
+				<a id="googleSL" class="waves-effect waves-light custom-width-75px custom-height-75px custom-margin-auto custom-margin-1em white btn-large custom-border-radius center-align custom-padding-1em" data-onsuccess="onSignIn"><img src="img/SocialLogin/googleSocialLogin.png" alt="Google" class="responsive-img"></a>
 				<br/><label for="googleSL">Google</label>
 			</div>
 			<div class="col s6 center-align">
-				<a id="microsoftSL" class="waves-effect waves-light custom-width-75px custom-height-75px custom-margin-auto custom-margin-1em white btn-large custom-border-radius center-align custom-padding-1em"><img src="img/microsoftSocialLogin.png" alt="Microsoft" class="circle responsive-img"></a>
+				<a id="microsoftSL" class="waves-effect waves-light custom-width-75px custom-height-75px custom-margin-auto custom-margin-1em white btn-large custom-border-radius center-align custom-padding-1em" data-onsuccess="onSignIn"><img src="img/SocialLogin/microsoftSocialLogin.png" alt="Microsoft" class="circle responsive-img"></a>
 				<br/><label for="microsoftSL">Microsoft</label>
 			</div>
 		</div>
 	</div>
-	
 
 	<!--  Scripts-->
 	<script src="cordova.js"></script>

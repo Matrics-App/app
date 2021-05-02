@@ -3,7 +3,7 @@ body {
   width: 100%;
   height: 100%;
   overflow-x: hidden;
-  overflow-y: hidden;
+  overflow-y: scroll;
 
   font-family: 'esteve-terrades-raleway-regular';
 
@@ -16,14 +16,6 @@ body {
                                   supported by Chrome, Edge, Opera and Firefox */
 
   outline:none !important;
-}
-
-/* Detectar los insets del mobil (notch o phonegap)*/
-:root {
-  --notch-inset-top: 0px;
-  --notch-inset-right: 0px;
-  --notch-inset-bottom: 0px;
-  --notch-inset-left: 0px;
 }
 
 /* Fonts: */
@@ -40,6 +32,12 @@ body {
 @font-face {
 	font-family: "esteve-terrades-raleway-medium";
 	src: url("../fonts/Raleway/Raleway-Medium.ttf");
+}
+
+/* Font options: */
+.custom-wrap {
+  word-wrap: break-word;
+  white-space: initial;
 }
 
 /* Displays: */
@@ -77,6 +75,10 @@ body {
   padding: 2em !important;
 }
 
+.custom-padding-top-1em {
+  padding-top: 1em !important;
+}
+
 /* Borders: */
 .custom-border-none {
   border: none !important;
@@ -95,13 +97,31 @@ body {
   border-radius: 0px 0px 20px 20px;
 }
 
-/* Color: */
+/* Color gradients: */
 .blue-gradient {
   background: linear-gradient(45deg, rgba(33,184,243,1) 0%, rgba(33,150,243,1) 50%, rgba(4,72,184,1) 100%);
 }
 
+.blue-gradient-180 {
+  background: linear-gradient(180deg, rgba(33,150,243,1) 50%, rgba(4,72,184,1) 150%);
+}
+
 .blue-text-gradient {
   background: linear-gradient(0deg, rgba(33,150,243,1) 0%, rgba(255,255,255,1) 65%);
+  background-clip: content-box;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.blue-text-gradient-modal {
+  background: linear-gradient(45deg, rgba(33,184,243,1) 0%, rgba(33,150,243,1) 50%, rgba(4,72,184,1) 100%);
+  background-clip: content-box;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.blue-text-gradient2 {
+  background: linear-gradient(0deg, rgba(33,150,243,1) 0%, rgba(255,255,255,1) 55%);
   background-clip: content-box;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -131,6 +151,10 @@ body {
 /* Height */
 .custom-height-100 {
   height: 100%;
+}
+
+.custom-height-90 {
+  height: 90%;
 }
 
 .custom-height-75 {
@@ -172,8 +196,13 @@ input[type="email"]:not(.browser-default):focus.valid ~ label, input[type="passw
   overflow: hidden;
 }
 
+.tabs .indicator {
+  background-color: #FFF !important;
+}
+
 /* Effects: */
 .custom-blur {
-  filter: blur(8px);
-  -webkit-filter: blur(8px);
+  -webkit-filter: blur(5px);
+  filter: blur(5px);
+  
 }

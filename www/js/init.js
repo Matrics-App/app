@@ -1,9 +1,20 @@
 (function($) {
     $(function() {
-        // Stuff
+        // Wizard modal options:
+        var modalItems = document.querySelectorAll('.modal');
+        M.Modal.init(modalItems, {opacity: 0.5, dismissible: false, startingTop: '7%', endingTop: '10%'});
+
+        // Wizard modal css:
+        $(".modal-content").css("padding", "0px");
+        $("#wizard").css("max-height", "80%");
+        $("#wizard").css("overflow", "hidden");
+        $("#wizard").addClass("custom-height-90");
+        $("#wizard").addClass("custom-border-radius");
+
 
         $(document).ready(function() {
-            // Even more stuff
+            $('.tabs').tabs();
+            $('.fixed-action-btn').floatingActionButton();
         });
 
     }); //end of document ready
