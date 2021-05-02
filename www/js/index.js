@@ -37,32 +37,36 @@ function onDeviceReady() {
     if (!skipWizard) {
         $("#wizard").modal('open');
 
+        // Paginamiento del wizard:
         modalBtn.on( "click", function() {
-            removePulseEffect();
-            if (modalPage === 0) {
-                $("#modal-content-container").empty().append('<h4><span class="blue-text-gradient-modal">Requisits</span></h4>');
-                modalPage = 1;
-            } else if (modalPage === 1) {
-                $("#modal-content-container").empty().append('<h4><span class="blue-text-gradient-modal">Drets d\'imatge</span></h4>');
-                modalPage = 2;
-            } else if (modalPage === 2) {
-                $("#modal-content-container").empty().append('<h4><span class="blue-text-gradient-modal">Sortides</span></h4>');
-                modalPage = 3;
-            } else if (modalPage === 3) {
-                $("#wizard").modal('close'); 
-            }
-            
+            wizardPageControl();
         });
     }
 
 }
 
-
-// Funciones generales:
-function applyPulseEffect() {
-    $("#wizard-floating-btn").addClass("pulse");
+// Funciones wizard:
+function wizardPageControl() {
+    removePulseEffect("wizard-floating-btn");
+    if (modalPage === 0) {
+        $("#modal-content-container").empty().append('<h5><span class="blue-text-gradient-modal">Requisits</span></h5>');
+        modalPage = 1;
+    } else if (modalPage === 1) {
+        $("#modal-content-container").empty().append('<h5><span class="blue-text-gradient-modal">Drets d\'imatge</span></h5>');
+        modalPage = 2;
+    } else if (modalPage === 2) {
+        $("#modal-content-container").empty().append('<h5><span class="blue-text-gradient-modal">Sortides</span></h5>');
+        modalPage = 3;
+    } else if (modalPage === 3) {
+        $("#wizard").modal('close'); 
+    }
 }
 
-function removePulseEffect() {
-    $("#wizard-floating-btn").removeClass("pulse");
+// Funciones generales:
+function applyPulseEffect(id) {
+    $("#" + id).addClass("pulse");
+}
+
+function removePulseEffect(id) {
+    $("#" + id).removeClass("pulse");
 }
