@@ -1,96 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, viewport-fit=cover"/>
+		<title>MatriculaT Login</title>
 
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, viewport-fit=cover"/>
-	<title>MatriculaT Login</title>
+		<!-- cordova-headers -->
+		<meta http-equiv="Content-Security-Policy"
+			content="default-src https://sis-t.redsys.es:25443/sis/realizarPago https://accounts.google.com https://apis.google.com/js/platform.js https://apis.google.com https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js https://fonts.gstatic.com 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src https://fonts.googleapis.com 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
+		<meta name="format-detection" content="telephone=no">
+		<meta name="msapplication-tap-highlight" content="no">
 
-	<!-- cordova-headers -->
-	<meta http-equiv="Content-Security-Policy"
-		content="default-src https://sis-t.redsys.es:25443/sis/realizarPago https://accounts.google.com https://apis.google.com/js/platform.js https://apis.google.com https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js https://fonts.gstatic.com 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src https://fonts.googleapis.com 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
-	<meta name="format-detection" content="telephone=no">
-	<meta name="msapplication-tap-highlight" content="no">
+		<!-- CSS  -->
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+		<link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
+		<link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
+	</head>
 
-	<!-- CSS  -->
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
-	<link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
-	<link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
-</head>
+	<body id="body">
+		<nav id="navbar" class="nav-extended blue custom-border-radius-bottom custom-width-100 custom-margin-auto" role="navigation">
+			<div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo center blue-text-gradient">Matrics IETI</a></div>
+			<div class="nav-content">
+				<ul class="tabs blue tabs-fixed-width blue-gradient-180">
+				<li class="tab"><a class="waves-effect waves-light custom-border-radius blue-text-gradient2 custom-wrap" href="#dashboardTab">Inici</a></li>
+				<li class="tab"><a class="waves-effect waves-light custom-border-radius blue-text-gradient2 custom-wrap" href="#reqTab">Requisits</a></li>
+				<li class="tab"><a class="waves-effect waves-light custom-border-radius blue-text-gradient2 custom-wrap" href="#ufTab">UFs</a></li>
+				<li class="tab"><a class="waves-effect waves-light custom-border-radius blue-text-gradient2 custom-wrap" href="#dadesTab">Dades</a></li>
+				</ul>
+			</div>
+		</nav>
 
-<body id="body">
-	<nav id="navbar" class="nav-extended blue custom-border-radius-bottom custom-width-100 custom-margin-auto" role="navigation">
-		<div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo center blue-text-gradient">Matrics IETI</a></div>
-		<div class="nav-content">
-			<ul class="tabs blue tabs-fixed-width blue-gradient-180">
-			  <li class="tab"><a class="waves-effect waves-light custom-border-radius blue-text-gradient2 custom-wrap" href="#dashboardTab">Inici</a></li>
-			  <li class="tab"><a class="waves-effect waves-light custom-border-radius blue-text-gradient2 custom-wrap" href="#reqTab">Requisits</a></li>
-			  <li class="tab"><a class="waves-effect waves-light custom-border-radius blue-text-gradient2 custom-wrap" href="#ufTab">UFs</a></li>
-			  <li class="tab"><a class="waves-effect waves-light custom-border-radius blue-text-gradient2 custom-wrap" href="#dadesTab">Dades</a></li>
-			</ul>
-		  </div>
-	</nav>
+		<!-- Tab Inici -->
+		<div id="dashboardTab" class="container custom-padding-top-1em custom-width-80">
+			Inici
+		</div>
 
-	<!-- Tab Inici -->
-	<div id="dashboardTab" class="container custom-padding-top-1em custom-width-80">
-		Inici
-	</div>
+		<!-- Tab Requisits -->
+		<div id="reqTab" class="container custom-padding-top-1em custom-width-80">
+			Requisits
+		</div>
 
-	<!-- Tab Requisits -->
-	<div id="reqTab" class="container custom-padding-top-1em custom-width-80">
-		Requisits
-	</div>
+		<!-- Tab UFs -->
+		<div id="ufTab" class="container custom-padding-top-1em custom-width-80">
+			UFs
+			<form name="formPayment" id="formPayment" action="https://sis-t.redsys.es:25443/sis/realizarPago" method="POST">
+				<input type="hidden" name="Ds_SignatureVersion" value="HMAC_SHA256_V1"/>
+				<input type="hidden" name="Ds_MerchantParameters"/>
+				<input type="hidden" name="Ds_Signature"/>
+				<input type="text" id="tfAmount"><br>
+				<input type="submit"/>
+			</form>
+		</div>
 
-	<!-- Tab UFs -->
-	<div id="ufTab" class="container custom-padding-top-1em custom-width-80">
-		UFs
+		<!-- Tab Dades -->
+		<div id="dadesTab" class="container custom-padding-top-1em custom-width-80">
+			Dades Personals
+		</div>
 
+		<!-- Modal -->
+		<div id="wizard" class="modal">
+			<div class="modal-content">
+				<nav id="navbar" class="blue custom-width-100 custom-margin-auto blue-gradient-180" role="navigation">
+					<div class="nav-wrapper container"><span id="logo-container" href="#" class="brand-logo center blue-text-gradient">Inici</span></div>
+				</nav>
+				<!-- JUST FOR EDITING PURPOSES - DELETE ON PRO -->
 
-
-
-		<form name="formPayment" id="formPayment" action="https://sis-t.redsys.es:25443/sis/realizarPago" onsubmit="return validateForm()" method="POST">
-			<input type="hidden" name="Ds_SignatureVersion" value="HMAC_SHA256_V1"/>
-			<input type="hidden" name="Ds_MerchantParameters"/>
-			<input type="hidden" name="Ds_Signature"/>
-			<input type="text" id="tfAmount"><br>
-			<input type="submit"/>
-		</form>
-	</div>
-
-	<!-- Tab Dades -->
-	<div id="dadesTab" class="container custom-padding-top-1em custom-width-80">
-		Dades Personals
-	</div>
-
-	<!-- Modal -->
-	<div id="wizard" class="modal">
-		<div class="modal-content">
-			<nav id="navbar" class="blue custom-width-100 custom-margin-auto blue-gradient-180" role="navigation">
-				<div class="nav-wrapper container"><span id="logo-container" href="#" class="brand-logo center blue-text-gradient">Inici</span></div>
-			</nav>
-			<div id="modal-content-container" class="container custom-padding-1em">
-				<h4>Benvingut a <span class="blue-text-gradient-modal">Matrics IETI</span></h4>
-				<p>Aquesta aplicació et permetr&agrave; matricular-te al cicle formatiu que t'hagis preinscrit de forma r&agrave;pida i senzilla.</p>
-				<p>Per comen&ccedil;ar, et farem un parell de preguntes per determinar el teu perfil, prefer&egrave;ncies i requisits de la matricula.</p>
-				<p>Prem el bot&oacute; amb la fletxa a la part inferior dreta de la pantalla per continuar.</p>
+				<!--  Inici -->
+				<div id="modal-content-container" class="container custom-padding-1em">
+					<h4>Benvingut a <br/><span class="blue-text-gradient-modal">Matrics IETI</span></h4>
+					<p>Aquesta aplicació et permetr&agrave; matricular-te al cicle formatiu que t'hagis preinscrit de forma r&agrave;pida i senzilla.</p>
+					<p>Per comen&ccedil;ar, et farem un parell de preguntes per determinar el teu perfil, prefer&egrave;ncies i requisits de la matricula.</p>
+					<p>Prem el bot&oacute; amb la fletxa a la part inferior dreta de la pantalla per continuar.</p>
+				</div>
+			</div>
+			<div class="fixed-action-btn">
+				<a id="wizard-floating-btn" class="btn-floating btn-large blue pulse blue-gradient waves-effect waves-light">
+					<i class="large material-icons">arrow_forward</i>
+				</a>
 			</div>
 		</div>
-		<div class="fixed-action-btn">
-			<a id="wizard-floating-btn" class="btn-floating btn-large blue pulse blue-gradient waves-effect waves-light">
-				<i class="large material-icons">arrow_forward</i>
-			</a>
-		</div>
-	</div>
-          
 
-	<!--  Scripts-->
-	<script src="cordova.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	<script src="js/materialize.js"></script>
-	<script src="js/init.js"></script>
-	<script src="js/index.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
-	<script src="js/pagos.js"></script>
-</body>
+		<!--  Scripts-->
+		<script src="cordova.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script src="js/materialize.js"></script>
+		<script src="js/init.js"></script>
+		<script src="js/pagos.js"></script>
+		<script src="js/index.js"></script>
+		<script src="js/wizard.js"></script>
+	</body>
 
 </html>

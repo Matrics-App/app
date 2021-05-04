@@ -1,5 +1,3 @@
-'use strict'
-
 document.getElementById('formPayment').onsubmit = validateForm;
 
 function validateForm(){

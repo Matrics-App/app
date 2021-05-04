@@ -40,6 +40,19 @@ body {
   white-space: initial;
 }
 
+.custom-font-size-13px {
+  font-size: 13px;
+}
+
+/* Overflow options:*/
+.custom-scroll-y {
+  overflow-y: scroll;
+}
+
+.custom-overflow-hidden {
+  overflow: hidden;
+}
+
 /* Displays: */
 .custom-display-block {
 	display: block;
@@ -79,6 +92,15 @@ body {
   padding-top: 1em !important;
 }
 
+.custom-padding-top-bottom-1em {
+  padding-top: 1em !important;
+  padding-bottom: 1em !important;
+}
+
+.custom-padding-left-2em {
+  padding-left: 2em !important;
+}
+
 /* Borders: */
 .custom-border-none {
   border: none !important;
@@ -107,7 +129,7 @@ body {
 }
 
 .blue-text-gradient {
-  background: linear-gradient(0deg, rgba(33,150,243,1) 0%, rgba(255,255,255,1) 65%);
+  background: linear-gradient(0deg, rgba(33,150,243,1) 0%, rgba(255,255,255,1) 50%);
   background-clip: content-box;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -165,6 +187,10 @@ body {
   height: 50%;
 }
 
+.custom-height-25 {
+  height: 25%;
+}
+
 .custom-height-75px {
   height: 75px;
 }
@@ -188,6 +214,21 @@ input.valid[type="email"]:not(.browser-default), input.valid[type="password"]:no
 
 input[type="email"]:not(.browser-default):focus.valid ~ label, input[type="password"]:not(.browser-default):focus.valid ~ label {
   color: #2196F3;
+}
+
+h4 {
+  font-size: 2.28rem !important;
+  line-height: 110% !important;
+  margin: 1.52rem 0 0.912rem 0;
+}
+
+[type="checkbox"]:checked + span:not(.lever)::before {
+  border-right: 2px solid #2196F3;
+  border-bottom: 2px solid #2196F3;
+}
+
+[type="checkbox"]:active {
+  user-select: none;
 }
 
 /* Font Navbar */

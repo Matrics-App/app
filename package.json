@@ -15,6 +15,7 @@
   "devDependencies": {
     "cordova-android": "^9.0.0",
     "cordova-browser": "^6.0.0",
+    "cordova-ios": "^6.2.0",
     "cordova-plugin-googleplus": "git+https://github.com/EddyVerbruggen/cordova-plugin-googleplus.git",
     "cordova-plugin-navigationbar-color": "^0.1.0",
     "cordova-plugin-statusbar": "^2.4.3",
