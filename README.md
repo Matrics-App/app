@@ -119,7 +119,7 @@
 <th>Values
 </th>
 <th>Description
-</th><tr><td></td><td></td><td>Se devuelve un objeto JSON de grado entero, igual que el de base de datos. <a href="#jsonGrade">Ejemplo</a></td></tr></tbody></table>
+</th><tr><td></td><td></td><td>Se devuelve un array de JSON que contiene los perfiles de la base de datos y dentro otro array con sus respectivos requisitos.</td></tr></tbody></table>
 <h4> RESPONSE STATUS 400</h4>
 <table class="wikitable">
 <tbody><tr>
@@ -195,70 +195,6 @@
 <table class="wikitable">
 <tbody><tr>
 <th colspan="3">Response : JSON
-</th></tr>
-<tr>
-<th colspan="3">GET
-</th></tr>
-<tr>
-<th>Param
-</th>
-<th>Values
-</th>
-<th>Description
-</th></tr>
-<tr>
-<td>error
-</td>
-<td>text
-</td>
-<td>Motivo del error
-</td></tbody></table>
-
-
-<h2>Get wizard</h2>
-<h4> REQUEST </h4>
-<table class="wikitable">
-<tbody><tr>
-<th colspan="3">Request
-</th></tr>
-<tr>
-<th colspan="3">GET
-</th></tr>
-<tr>
-<th>Param
-</th>
-<th>Values
-</th>
-<th>Description
-</th></tr>
-</tbody></table>
-<h4>RESPONSE STATUS 200 (Array de JSON)</h4>
-<table class="wikitable">
-<tbody><tr>
-<th colspan="3">Response : JSON (Array)
-</th></tr>
-<tr>
-<th colspan="3">GET 
-</th></tr>
-<tr>
-<th>Param
-</th>
-<th>Values
-</th>
-<th>Description
-</th></tr>
-<tr>
-<td>name
-</td>
-<td>text
-</td>
-<td>Nombre del perfil
-</td></tr>
-</td></tr></tbody></table>
-<h4> RESPONSE STATUS 400</h4>
-<table class="wikitable">
-<tbody><tr>
-<th colspan="3">Response : text
 </th></tr>
 <tr>
 <th colspan="3">GET
