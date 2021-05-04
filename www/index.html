@@ -32,17 +32,22 @@
 
 		<!-- Tab Inici -->
 		<div id="dashboardTab" class="container custom-padding-top-1em custom-width-80">
-			Inici
+
 		</div>
 
 		<!-- Tab Requisits -->
 		<div id="reqTab" class="container custom-padding-top-1em custom-width-80">
-			Requisits
+			<div id="paneProfile" class="container"> <!-- Centrado!-->
+				<h4 id="userProfile">#PERFIL</h4>
+			</div>
+			<div id="paneRequisits" class="container right-align">
+
+			</div>
+
 		</div>
 
 		<!-- Tab UFs -->
 		<div id="ufTab" class="container custom-padding-top-1em custom-width-80">
-			UFs
 			<form name="formPayment" id="formPayment" action="https://sis-t.redsys.es:25443/sis/realizarPago" method="POST">
 				<input type="hidden" name="Ds_SignatureVersion" value="HMAC_SHA256_V1"/>
 				<input type="hidden" name="Ds_MerchantParameters"/>
@@ -89,6 +94,7 @@
 		<script src="js/pagos.js"></script>
 		<script src="js/index.js"></script>
 		<script src="js/wizard.js"></script>
+		<script src="js/fitxersController.js"></script>
 	</body>
 
 </html>
