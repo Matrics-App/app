@@ -30,7 +30,6 @@ let skipWizard = false;
 
 // Modal variables: 
 let modalBtn = $("#wizard-floating-btn");
-let modalPage = 0;
 
 // Funcion inicial
 function onDeviceReady() {
@@ -65,6 +64,6 @@ function applyDisabledClass(id) {
     $("#" + id).addClass("disabled");
 }
 
-function removeDisabledEffect(id) {
+function removeDisabledClass(id) {
     $("#" + id).removeClass("disabled");
 }
