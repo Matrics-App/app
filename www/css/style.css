@@ -44,6 +44,11 @@ body {
   font-size: 13px;
 }
 
+.custom-text-justify {
+  text-align: justify;
+  text-justify: auto;
+}
+
 /* Overflow options:*/
 .custom-scroll-y {
   overflow-y: scroll;
@@ -234,6 +239,11 @@ h4 {
 
 [type="checkbox"]:active {
   user-select: none;
+}
+
+[type="radio"]:checked + span::after {
+  background-color: #2196F3;
+  border: 2px solid #2196F3;
 }
 
 /* Font Navbar */

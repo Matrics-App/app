@@ -14,8 +14,7 @@ function getRequisits(){
             "class": "custom-padding-1em",
             "method": "GET",
             "id": "formRequisit" + i,
-            "html": '<div style="display:flex; flex-direction:row;"><h6>' + arrayRequisits[i] + '</h6><a id="btnRequisit' + i + '" class="custom-margin-left-1em custom-border-radius blue-gradient waves-effect waves-light btn">AFEGEIX!</a></input>',
-            "action": window.siteRoot + 'ComponentInvoice/GetInvoiceImage/'
+            "html": '<div style="display:flex; flex-direction:row;"><h6>' + arrayRequisits[i] + '</h6><a id="btnRequisit' + i + '" class="custom-margin-left-1em custom-border-radius blue-gradient waves-effect waves-light btn">AFEGEIX!</a></input>'
         }).appendTo(paneRequisits);
     }
 }
