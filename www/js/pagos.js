@@ -24,7 +24,7 @@ function paymentRedsys(amount){
     var myRedsys = {
         "DS_MERCHANT_AMOUNT": amount,                   // Cantidad a descontar (los 2 ultimos digitos son los centimos)
         "DS_MERCHANT_ORDER": orderCode,                 // Identificativo de la orden
-        "DS_MERCHANT_MERCHANTCODE": '335088258',        // Codigo FUK del BANCO
+        "DS_MERCHANT_MERCHANTCODE": '335088258',        // Codigo FUC del BANCO
         "DS_MERCHANT_CURRENCY": "978",                  // Moneda (978 = EUR)
         "DS_MERCHANT_TRANSACTIONTYPE": "0",             // Tipo de transacción, dejar en 0
         "DS_MERCHANT_TERMINAL" : "001",                 // Terminal BANCO

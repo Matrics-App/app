@@ -48,7 +48,22 @@ function onDeviceReady() {
 // Funciones Tab Requisits:
 
 // Funciones Tab UFs:
-
+function getUfs(url, query, dataType) {
+    $("#listaModulos").html("");
+    $.ajax({
+        method: "GET",
+        url: url + query,
+        dataType: dataType,
+    }).done(function(xhr) {
+        console.log(xhr.satus);
+        $("#listaModulos").append('<li> <div class="collapsible-header"> <p> <label> <input id="chk_modul-+i+" type="checkbox" /> <span>M01</span> </label> </p> </div> <div id="modul-i" class="collapsible-body"> </div>'); 
+        $("#chk_modul-+i+").append('<p> <label> <input id="chk_modul-+i+" type="checkbox" /> <span>M01</span> </label> </p>');
+    }).fail(function() {
+    
+    }).always(function() {
+        
+    });
+}
 // Funciones Tab Dades:
 
 // Funciones generales:
