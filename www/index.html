@@ -43,6 +43,38 @@
 		<!-- Tab UFs -->
 		<div id="ufTab" class="container custom-padding-top-1em custom-width-80">
 			UFs
+			<div id="divUfs" class="fullScreen col s12 white black-text checkboxer">
+
+				
+				  <div id="modulos">
+					
+<!--<li> <div class="collapsible-header"> <p> <label> <input id="chk_modul-'+i+'" type="checkbox" /> <span>M01</span> </label> </p> </div> <div id="modul-i" class="collapsible-body"> </div> -->
+<!--<p> <label> <input id="chk_modul-'+i+'" type="checkbox" /> <span>M01</span> </label> </p> -->
+
+					<ul id="listaModulos" class="collapsible custom-border-radius">
+						<li>
+						  <div class="collapsible-header">
+							  <p><label><input id="chk_modul-'+i+'" type="checkbox" /> <span>M01</span></label></p>
+							</div>
+						  <div id="modul-i" class="collapsible-body">
+							  <p><label><input id="chk_modul-1" type="checkbox" /> <span>UF1</span></label></p>
+							  <p><label><input id="chk_modul-2" type="checkbox" /> <span>UF2</span></label></p>
+							  <p><label><input id="chk_modul-3" type="checkbox" /> <span>UF3</span></label></p>
+						</div>
+						</li>
+						<li>
+						  <div class="collapsible-header"><p><label><input id="chk_modul-'+i+'" type="checkbox" /> <span>M02</span></label></p></div>
+						  <div class="collapsible-body"><p><label><input id="chk_modul-'+i+'" type="checkbox" /> <span>UF1</span></label></p></div>
+						</li>
+						<li>
+						  <div class="collapsible-header"><p><label><input id="chk_modul-'+i+'" type="checkbox" /> <span>M03</span></label></p></div>
+						  <div class="collapsible-body"><p><label><input id="chk_modul-'+i+'" type="checkbox" /> <span>UF1</span></label></p></div>
+						</li>
+					  </ul>
+				  </div>
+
+
+			  </div>
 			<form name="formPayment" id="formPayment" action="https://sis-t.redsys.es:25443/sis/realizarPago" method="POST">
 				<input type="hidden" name="Ds_SignatureVersion" value="HMAC_SHA256_V1"/>
 				<input type="hidden" name="Ds_MerchantParameters"/>
