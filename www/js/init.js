@@ -15,6 +15,7 @@
         $(document).ready(function() {
             $('.tabs').tabs();
             $('.fixed-action-btn').floatingActionButton();
+            $('.collapsible').collapsible();
         });
 
     }); //end of document ready

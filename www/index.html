@@ -33,7 +33,7 @@
 		<!-- Tab Inici -->
 		<div id="dashboardTab" class="container custom-padding-top-1em custom-width-80">
 			<h5>Estat de matriculaci&#243;:</h5>
-			<div class="col s6 custom-border-radius">
+			<div class="col s6">
 				<table class="striped">
 					<tbody>
 						<tr class="blue">
@@ -45,12 +45,26 @@
 							<td class="center"><i id="statusU" class="material-icons circle red-text custom-icon-padding">brightness_1</i></td>
 						</tr>
 						<tr class="blue">
-							<td class="custom-padding-1em white-text">Dades personals</td>
+							<td class="custom-padding-1em white-text">cs</td>
 							<td class="center"><i id="statusD" class="material-icons circle red-text custom-icon-padding">brightness_1</i></td>
 						</tr>
 					</tbody>
 				</table>
 			</div>
+			<ul class="collapsible custom-border-radius">
+				<li>
+				  <div class="collapsible-header">Requeriments><i id="statusR" class="material-icons circle red-text custom-icon-padding">brightness_1</i></div>
+				  <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+				</li>
+				<li>
+				  <div class="collapsible-header">UFs a matricular><i id="statusR" class="material-icons circle red-text custom-icon-padding">brightness_1</i></div>
+				  <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+				</li>
+				<li>
+				  <div class="collapsible-header">Dades personals><i id="statusR" class="material-icons circle red-text custom-icon-padding">brightness_1</i></div>
+				  <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+				</li>
+			</ul>
 		</div>
 
 		<!-- Tab Requisits -->
@@ -107,7 +121,6 @@
 		<!--  Scripts-->
 		<script src="cordova.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
 		<script src="js/materialize.min.js"></script>
 		<script src="js/init.js"></script>
 		<script src="js/pagos.js"></script>
