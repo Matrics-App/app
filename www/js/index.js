@@ -53,17 +53,51 @@ function getUfs(url, query, dataType) {
     $.ajax({
         method: "GET",
         url: url + query,
-        dataType: dataType,
+        
+        datatype: String,
+        data: ({
+          token: token
+        })
     }).done(function(xhr) {
         console.log(xhr.satus);
+        // insert de nuevo modulo
         $("#listaModulos").append('<li> <div class="collapsible-header"> <p> <label> <input id="chk_modul-+i+" type="checkbox" /> <span>M01</span> </label> </p> </div> <div id="modul-i" class="collapsible-body"> </div>'); 
+        
+        // insert de nueva UF a la id de un modulo anadido anteriormente
         $("#chk_modul-+i+").append('<p> <label> <input id="chk_modul-+i+" type="checkbox" /> <span>M01</span> </label> </p>');
+        
     }).fail(function() {
     
     }).always(function() {
         
     });
 }
+
+function setUfs(){
+
+    
+
+
+    $.ajax({
+        method: "GET",
+        url: url + query,
+        
+        datatype: String,
+        data: ({
+          token: token
+        })
+    }).done(function(xhr) {
+        console.log(xhr.satus);
+        // insert de nuevo modulo
+        
+        
+    }).fail(function() {
+    
+    }).always(function() {
+        
+    });
+}
+
 // Funciones Tab Dades:
 
 // Funciones generales:
