@@ -66,6 +66,14 @@
 
 		<!-- Tab UFs -->
 		<div id="ufTab" class="container custom-padding-top-1em custom-width-80">
+			<a id="saveButton" class="waves-effect waves-light custom-display-block custom-width-75 custom-margin-auto blue-gradient btn-large custom-border-radius center-align">Guardar</a>
+			<ul class="collapsible">
+			<li> <div class="collapsible-header"> <p> <label> <input id="chk_modul-+i+" type="checkbox" /> <span>M01</span> </label> </p> </div> <div id="modul-i" class="collapsible-body"> 
+
+				<p> <label> <input id="chk_modul-+i+" type="checkbox" /> <span>UF01</span> </label> </p>
+			</div>
+			</li>
+			</ul>
 			<form name="formPayment" id="formPayment" action="https://sis-t.redsys.es:25443/sis/realizarPago" method="POST">
 				<input type="hidden" name="Ds_SignatureVersion" value="HMAC_SHA256_V1"/>
 				<input type="hidden" name="Ds_MerchantParameters"/>

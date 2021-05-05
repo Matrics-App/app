@@ -53,7 +53,11 @@ function getUfs(url, query, dataType) {
     $.ajax({
         method: "GET",
         url: url + query,
-        dataType: dataType,
+        
+        datatype: String,
+        data: ({
+          token: token
+        })
     }).done(function(xhr) {
         console.log(xhr.satus);
         // insert de nuevo modulo
@@ -68,6 +72,32 @@ function getUfs(url, query, dataType) {
         
     });
 }
+
+function setUfs(){
+
+    
+
+
+    $.ajax({
+        method: "GET",
+        url: url + query,
+        
+        datatype: String,
+        data: ({
+          token: token
+        })
+    }).done(function(xhr) {
+        console.log(xhr.satus);
+        // insert de nuevo modulo
+        
+        
+    }).fail(function() {
+    
+    }).always(function() {
+        
+    });
+}
+
 // Funciones Tab Dades:
 
 // Funciones generales:
