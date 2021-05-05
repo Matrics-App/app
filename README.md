@@ -80,7 +80,7 @@
 </td></tr>   
 </tbody></table>
 
-<h2>Get profile and requirements</h2>
+<h2>Get profiles and requirements</h2>
 <h4>REQUEST (url query)</h4>
 <table class="wikitable">
 <tbody><tr>
