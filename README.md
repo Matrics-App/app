@@ -793,10 +793,8 @@
 <th>Values
 </th>
 <th>Description
-</th><tr><td>email</td><td>Text</td><td>Email del alumno</td></tr>
-  <tr><td>profileName</td><td>text</td><td>Nombre del perfil</td></tr>
-  <tr><td>documentName</td><td>text</td><td>Nombre del documento</td></tr>
-  <tr><td>file</td><td>archivo</td><td>Fichero que se sube</td></tr></tr>
+</th><tr><td>token</td><td>Text</td><td>Token del alumno</td></tr>
+<tr><td>file</td><td>archivo</td><td>Fichero que se sube en base 64</td></tr></tr>
 </tbody></table>
 <h4> RESPONSE STATUS 200</h4>
 <table class="wikitable">
