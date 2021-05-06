@@ -48,6 +48,8 @@ function onDeviceReady() {
 // Funciones Tab Requisits:
 
 // Funciones Tab UFs:
+
+// funcion para printar los modulos y UFs desde la API
 function getUfs(url, query, dataType) {
     $("#listaModulos").html("");
     $.ajax({
@@ -73,10 +75,10 @@ function getUfs(url, query, dataType) {
     });
 }
 
+// funcion a la que llamar cuando se pulse el boton de guardar y que mandara las UFs seleccionadas a la base
 function setUfs(){
 
-    
-
+    $("[name=UF]:checked");
 
     $.ajax({
         method: "GET",
@@ -97,6 +99,7 @@ function setUfs(){
         
     });
 }
+
 
 // Funciones Tab Dades:
 
