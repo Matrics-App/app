@@ -262,3 +262,9 @@ h4 {
   filter: blur(5px);
   
 }
+
+.div-semaforo-requisitos {
+  justify-content: center;
+  background-color: #878787;
+  border-radius: 20px;
+}
