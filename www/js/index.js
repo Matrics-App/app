@@ -22,6 +22,10 @@
 
 document.addEventListener('deviceready', onDeviceReady, false);
 
+let statusR = $("#statusR");   // Status Requeriments
+let statusU = $("#statusU");   // Status UFs
+let statusD = $("#statusD");   // Status Dades Personals
+
 // Variables generales:
 let body = document.getElementById("body");
 
@@ -44,6 +48,32 @@ function onDeviceReady() {
 }
 
 // Funciones Tab Inici (Dashboard):
+
+function setStatus(type, status, bool) {
+    if (status == 0) {
+        type.removeClass("orange-text");
+        type.removeClass("green-text");
+        type.addClass("red-text");
+        
+        generalStatus[bool] = false;
+    } else if (status == 1) {
+        type.removeClass("green-text");
+        type.removeClass("red-text");
+        type.addClass("orange-text");
+        generalStatus[bool] = false;
+    } else if (status == 2) {
+        type.removeClass("orange-text");
+        type.removeClass("red-text");
+        type.addClass("green-text");
+        generalStatus[bool] = true;
+    }
+
+    if (generalStatus[0] && generalStatus[1] &&generalStatus[2]) {
+        applyPulseEffect();
+    } else {
+        removePulseEffect();
+    }
+}
 
 // Funciones Tab Requisits:
 

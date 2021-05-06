@@ -33,36 +33,18 @@
 		<!-- Tab Inici -->
 		<div id="dashboardTab" class="container custom-padding-top-1em custom-width-80">
 			<h5>Estat de matriculaci&#243;:</h5>
-			<div class="col s6">
-				<table class="striped">
-					<tbody>
-						<tr class="blue">
-							<td class="custom-padding-1em white-text">Requeriments</td>
-							<td class="center"><i id="statusR" class="material-icons circle red-text custom-icon-padding">brightness_1</i></td>
-						</tr>
-						<tr class="blue lighten-2">
-							<td class="custom-padding-1em white-text">UFs a matricular</td>
-							<td class="center"><i id="statusU" class="material-icons circle red-text custom-icon-padding">brightness_1</i></td>
-						</tr>
-						<tr class="blue">
-							<td class="custom-padding-1em white-text">cs</td>
-							<td class="center"><i id="statusD" class="material-icons circle red-text custom-icon-padding">brightness_1</i></td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-			<ul class="collapsible custom-border-radius">
+			<ul class="collapsible custom-border-1px custom-border-radius">
 				<li>
-				  <div class="collapsible-header">Requeriments><i id="statusR" class="material-icons circle red-text custom-icon-padding">brightness_1</i></div>
-				  <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+				  <div class="collapsible-header ">Requeriments<i id="statusR" class="material-icons circle red-text">brightness_1</i></div>
+				  <div class="collapsible-body"><span>- Rojo si los archivos han sido revisados, son incorrectos y hay que volver a enviarlos.<br/><br/>- Amarillo si estan pendiente de validación en secretaria.<br/><br/>- Verde si han validado los documentos desde secretaria.</span></div>
 				</li>
 				<li>
-				  <div class="collapsible-header">UFs a matricular><i id="statusR" class="material-icons circle red-text custom-icon-padding">brightness_1</i></div>
-				  <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+				  <div class="collapsible-header ">UFs a matricular<i id="statusU" class="material-icons circle red-text">brightness_1</i></div>
+				  <div class="collapsible-body"><span>- Rojo si las UFs no han sido guardadas en tu perfil<br/><br/>- Amarillo si estan pendiente de pago.<br/><br/>- Verde si ya se han guardado y pagado.</span></div>
 				</li>
 				<li>
-				  <div class="collapsible-header">Dades personals><i id="statusR" class="material-icons circle red-text custom-icon-padding">brightness_1</i></div>
-				  <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+				  <div class="collapsible-header ">Dades personals<i id="statusDs" class="material-icons circle red-text">brightness_1</i></div>
+				  <div class="collapsible-body"><span>- Rojo si los datos que has visualizado contienen algún error.<br/><br/>- Amarillo si estan pendiente de tu validación.<br/><br/>- Verde si has verificado que los datos de tu usuario son correctos.</span></div>
 				</li>
 			</ul>
 		</div>

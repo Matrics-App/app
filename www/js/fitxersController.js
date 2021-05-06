@@ -23,6 +23,7 @@ function getRequisits(){
         }).appendTo(paneRequisits);
         $('btnRequisit' + i).on('click', function(){
             console.log($('nameRequisit0').val());
+            
         })
     }
 }
