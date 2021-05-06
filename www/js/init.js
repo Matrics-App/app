@@ -15,6 +15,7 @@
         $(document).ready(function() {
             $('.tabs').tabs();
             $('.fixed-action-btn').floatingActionButton();
+            $('.collapsible').collapsible();
         });
 
     }); //end of document ready
@@ -31,17 +32,6 @@ function onDeviceReady() {
     }
 }
 
-
-document.addEventListener('DOMContentLoaded', function() {
-    var elems = document.querySelectorAll('.collapsible');
-    var instances = M.Collapsible.init(elems, options);
-  });
-
-  // Or with jQuery
-
-  $(document).ready(function(){
-    $('.collapsible').collapsible();
-  });
 
 
 
