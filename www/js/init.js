@@ -16,6 +16,7 @@
             $('.tabs').tabs();
             $('.collapsible').collapsible();
             $('.fixed-action-btn').floatingActionButton();
+            $('.collapsible').collapsible();
         });
 
     }); //end of document ready
@@ -31,5 +32,3 @@ function onDeviceReady() {
         NavigationBar.backgroundColorByHexString('#FFFFFF', true);
     }
 }
-
-
