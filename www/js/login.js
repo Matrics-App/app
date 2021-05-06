@@ -11,13 +11,15 @@ let passwordField = document.getElementById("passwordField");
 // User Token
 let userToken = "";
 
-// TEMPORAL
+// Testing
 let skipLogin = true;
 
 function onDeviceReady() {
     loginButton.onclick = function() {
+        $("#loading").modal('open');
         if (skipLogin) {
             // Just for testing purposes
+            window.location.href = "index.html";
         } else { 
             ajaxGetLogin("https://", "/api?email=" +emailField.value + "&password=" + CryptoJS.SHA256(passwordField.value).toString(), "text");
         }
@@ -34,8 +36,9 @@ function ajaxGetLogin(url, query, dataType) {
         window.location.href = "index.html";
     }).fail(function() {
         sendToast("Usuari o contrasenya err" + "\u00F2" + "nia...");
+        $("#loading").modal('close');
     }).always(function() {
-        
+        $("#loading").modal('close');
     });
 }
 
