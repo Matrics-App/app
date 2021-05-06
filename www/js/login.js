@@ -17,27 +17,23 @@ let skipLogin = true;
 function onDeviceReady() {
     loginButton.onclick = function() {
         if (skipLogin) {
-            // Change page to index.html
-            window.location.href = "index.html";
-        } else {
-            // ajax login and more stuff
+            // Just for testing purposes
+        } else { 
+            ajaxGetLogin("https://", "/api?email=" +emailField.value + "&password=" + CryptoJS.SHA256(passwordField.value).toString(), "text");
         }
-    }
-    
-    googleSL.onclick = function() { // Chapuza but it works <-------------------------------------------------------- !!!!!
-        $(".abcRioButtonContentWrapper").click();
     }
 } 
 
-function ajaxGet(url, query, dataType) {
+function ajaxGetLogin(url, query, dataType) {
     $.ajax({
         method: "GET",
         url: url + query,
         dataType: dataType,
     }).done(function(xhr) {
-        console.log(xhr.satus);
+        console.log(xhr.status);
+        window.location.href = "index.html";
     }).fail(function() {
-    
+        sendToast("Usuari o contrasenya err" + "\u00F2" + "nia...");
     }).always(function() {
         
     });

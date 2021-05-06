@@ -5,6 +5,9 @@ let modalPage = 0;
 let isFloatingBtnEnabled = false;
 let isAtLeastOneChecked = true;
 
+// Variables de texto
+let textPageImatges;
+
 // Variables Perfils WIP
 let checkboxPerfil;
 
