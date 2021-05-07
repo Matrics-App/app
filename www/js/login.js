@@ -11,35 +11,34 @@ let passwordField = document.getElementById("passwordField");
 // User Token
 let userToken = "";
 
-// TEMPORAL
+// Testing
 let skipLogin = true;
 
 function onDeviceReady() {
     loginButton.onclick = function() {
+        $("#loading").modal('open');
         if (skipLogin) {
-            // Change page to index.html
+            // Just for testing purposes
             window.location.href = "index.html";
-        } else {
-            // ajax login and more stuff
+        } else { 
+            ajaxGetLogin("https://", "/api?email=" +emailField.value + "&password=" + CryptoJS.SHA256(passwordField.value).toString(), "text");
         }
-    }
-    
-    googleSL.onclick = function() { // Chapuza but it works <-------------------------------------------------------- !!!!!
-        $(".abcRioButtonContentWrapper").click();
     }
 } 
 
-function ajaxGet(url, query, dataType) {
+function ajaxGetLogin(url, query, dataType) {
     $.ajax({
         method: "GET",
         url: url + query,
         dataType: dataType,
     }).done(function(xhr) {
-        console.log(xhr.satus);
+        console.log(xhr.status);
+        window.location.href = "index.html";
     }).fail(function() {
-    
+        sendToast("Usuari o contrasenya err" + "\u00F2" + "nia...");
+        $("#loading").modal('close');
     }).always(function() {
-        
+        $("#loading").modal('close');
     });
 }
 

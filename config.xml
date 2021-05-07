@@ -24,6 +24,9 @@
     <platform name="android">
         <allow-intent href="market:*" />
         <preference name="orientation" value="portrait"/>
+        <edit-config file="AndroidManifest.xml" target="/manifest/application" mode="merge">
+            <application android:allowBackup="false"/>
+        </edit-config>
     </platform>
     <platform name="ios">
         <allow-intent href="itms:*" />

@@ -1,24 +1,4 @@
-/*
- * Licensed to the Apache Software Foundation (ASF) under one
- * or more contributor license agreements.  See the NOTICE file
- * distributed with this work for additional information
- * regarding copyright ownership.  The ASF licenses this file
- * to you under the Apache License, Version 2.0 (the
- * "License"); you may not use this file except in compliance
- * with the License.  You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing,
- * software distributed under the License is distributed on an
- * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
- * KIND, either express or implied.  See the License for the
- * specific language governing permissions and limitations
- * under the License.
- */
 
-// Wait for the deviceready event before using any of Cordova's device APIs.
-// See https://cordova.apache.org/docs/en/latest/cordova/events/events.html#deviceready
 
 document.addEventListener('deviceready', onDeviceReady, false);
 
@@ -78,6 +58,8 @@ function setStatus(type, status, bool) {
 // Funciones Tab Requisits:
 
 // Funciones Tab UFs:
+
+// funcion para printar los modulos y UFs desde la API
 function getUfs(url, query, dataType) {
     $("#listaModulos").html("");
     $.ajax({
@@ -90,11 +72,20 @@ function getUfs(url, query, dataType) {
         })
     }).done(function(xhr) {
         console.log(xhr.satus);
-        // insert de nuevo modulo
-        $("#listaModulos").append('<li> <div class="collapsible-header"> <p> <label> <input id="chk_modul-+i+" type="checkbox" /> <span>M01</span> </label> </p> </div> <div id="modul-i" class="collapsible-body"> </div>'); 
-        
+        // for insert de nuevo modulo
+        for (let i = 0; i < array.length; index++) {
+            
+            $("#listaModulos").append('<li> <div class="collapsible-header"> <p> <label> <input id="chk_modul-+i+" type="checkbox" /> <span>M01</span> </label> </p> </div> <div id="modul-i" class="collapsible-body"> </div>'); 
+            
+        }
+       
         // insert de nueva UF a la id de un modulo anadido anteriormente
-        $("#chk_modul-+i+").append('<p> <label> <input id="chk_modul-+i+" type="checkbox" /> <span>M01</span> </label> </p>');
+        for (let i = 0; i < array.length; index++) {
+            
+            $("#chk_modul-+i+").append('<p> <label> <input id="chk_modul-+i+" type="checkbox" /> <span>M01</span> </label> </p>');
+            
+        }
+        
         
     }).fail(function() {
     
@@ -103,10 +94,11 @@ function getUfs(url, query, dataType) {
     });
 }
 
+
+// funcion a la que llamar cuando se pulse el boton de guardar y que mandara las UFs seleccionadas a la base
 function setUfs(){
 
-    
-
+    $("[name=UF]:checked");
 
     $.ajax({
         method: "GET",
@@ -127,6 +119,7 @@ function setUfs(){
         
     });
 }
+
 
 // Funciones Tab Dades:
 

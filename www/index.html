@@ -85,9 +85,11 @@
 		<div id="ufTab" class="container custom-padding-top-1em custom-width-80">
 			<a id="saveButton" class="waves-effect waves-light custom-display-block custom-width-75 custom-margin-auto blue-gradient btn-large custom-border-radius center-align">Guardar</a>
 			<ul class="collapsible">
-			<li> <div class="collapsible-header"> <p> <label> <input id="chk_modul-+i+" type="checkbox" /> <span>M01</span> </label> </p> </div> <div id="modul-i" class="collapsible-body"> 
+			<li> <div class="collapsible-header"> <p> <label> <input id="chk_modul-+i+" type="checkbox" /> <span>M01</span> </label> </p> </div> 
+				<div id="modul-i" class="collapsible-body"> 
 
-				<p> <label> <input id="chk_modul-+i+" type="checkbox" /> <span>UF01</span> </label> </p>
+				<p> <label> <input id="chk_modul-+i+" type="checkbox" name="UF" /> <span>UF01</span> </label> </p>
+				<p> <label> <input id="chk_modul-+i+" type="checkbox" name="UF" /> <span>UF02</span> </label> </p>
 			</div>
 			</li>
 			</ul>
@@ -99,13 +101,13 @@
 				<input type="submit"/>
 			</form>
 		</div>
-
+		
 		<!-- Tab Dades -->
 		<div id="dadesTab" class="container custom-padding-top-1em custom-width-80">
 			Dades Personals
 		</div>
 
-		<!-- Modal -->
+		<!-- Wizard Modal -->
 		<div id="wizard" class="modal">
 			<div class="modal-content">
 				<nav id="navbar" class="blue custom-width-100 custom-margin-auto blue-gradient-180" role="navigation">
@@ -131,6 +133,7 @@
 
 		<!--  Scripts-->
 		<script src="cordova.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 		<script src="js/materialize.min.js"></script>
 		<script src="js/init.js"></script>
