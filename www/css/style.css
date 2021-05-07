@@ -88,7 +88,6 @@ body {
   margin-left: 1em;
 }
 
-
 /* Paddings: */
 .custom-padding-1em {
   padding: 1em !important;
@@ -104,6 +103,10 @@ body {
 
 .custom-padding-top-bottom-1em {
   padding-top: 1em !important;
+  padding-bottom: 1em !important;
+}
+
+.custom-padding-bottom-1em {
   padding-bottom: 1em !important;
 }
 

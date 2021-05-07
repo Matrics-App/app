@@ -7,18 +7,14 @@
 
 		<!-- cordova-headers -->
 		<meta http-equiv="Content-Security-Policy"
-			content="default-src https://accounts.google.com https://apis.google.com/js/platform.js https://apis.google.com https://code.jquery.com https://fonts.gstatic.com 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src https://fonts.googleapis.com 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
+			content="default-src https://code.jquery.com https://fonts.gstatic.com 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src https://fonts.googleapis.com 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
 		<meta name="format-detection" content="telephone=no">
 		<meta name="msapplication-tap-highlight" content="no">
-
-		<!-- Social Login -->
-		<meta name="google-signin-client_id" content="297033223289-t8rta8aqptejctds19uslbq1d2vv1e78.apps.googleusercontent.com"/>
 
 		<!-- CSS  -->
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
 		<link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
 		<link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
-		<script src="https://apis.google.com/js/platform.js" async defer></script>
 	</head>
 
 	<body id="body">
@@ -42,7 +38,7 @@
 					<div class="divider custom-margin-2em"></div>
 					<div class="center-align">
 						<p>
-							Has oblidat la contrasenya? <br/> <a href="" class="blue-text"><u>Recupera-la</u></a>
+							No pots entrar? <br/> Truca a 93&MediumSpace;377&MediumSpace;11&MediumSpace;00
 						</p>
 					</div>
 				</form>
@@ -58,7 +54,6 @@
 			
 			<div class="row section">
 				<div class="col s6 center-align">
-					<div id="chapuzaSL" class="g-signin2" style="display: none" data-onsuccess="onSignIn"></div>
 					<a id="googleSL" class="waves-effect waves-light custom-width-75px custom-height-75px custom-margin-auto custom-margin-1em white btn-large custom-border-radius center-align custom-padding-1em" data-onsuccess="onSignIn"><img src="img/SocialLogin/googleSocialLogin.png" alt="Google" class="responsive-img"></a>
 					<br/><label for="googleSL">Google</label>
 				</div>
@@ -69,6 +64,25 @@
 			</div>
 		</div>
 
+		<div id="loading" class="modal" style="transform: translate(0%, -50%);">
+			<div class="modal-content">
+				<h5 class="center-align custom-padding-bottom-1em">
+					Carregant
+				</h5>
+				<div class="preloader-wrapper active">
+					<div class="spinner-layer spinner-blue-only">
+					  <div class="circle-clipper left">
+						<div class="circle"></div>
+					  </div><div class="gap-patch">
+						<div class="circle"></div>
+					  </div><div class="circle-clipper right">
+						<div class="circle"></div>
+					  </div>
+					</div>
+				  </div>		
+			</div>
+		</div>
+		
 		<!--  Scripts-->
 		<script src="cordova.js"></script>
 		<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>

@@ -5,6 +5,9 @@ let modalPage = 0;
 let isFloatingBtnEnabled = false;
 let isAtLeastOneChecked = true;
 
+// Variables de texto
+let textPageImatges;
+
 // Variables Perfils WIP
 let checkboxPerfil;
 
@@ -20,7 +23,7 @@ let radioSortidesNo;
 
 // Funcion inicial
 function onDeviceReady() {
-
+    getImageRightsText();
 }
 
 // Funciones Wizard
@@ -84,6 +87,22 @@ function controlFloatingButton(page) {
             break;
     }
    
+}
+
+// Funciones Ajax
+function getImageRightsText() {
+    $.ajax({
+        method: "GET",
+        url: url + query,
+        dataType: dataType,
+    }).done(function(xhr) {
+        console.log(xhr.status);
+        textPageImageRights = xhr.data;
+    }).fail(function() {
+        sendToast("No s'ha pogut connectar amb el servidor. Si us plau torna a intentar-ho m\u00E9s endavant.");
+    }).always(function() {
+        
+    });
 }
 
 // Funciones generales
