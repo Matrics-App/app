@@ -68,7 +68,7 @@ function setStatus(type, status, bool) {
         generalStatus[bool] = true;
     }
 
-    if (generalStatus[0] && generalStatus[1] &&generalStatus[2]) {
+    if (generalStatus[0] && generalStatus[1] && generalStatus[2]) {
         applyPulseEffect();
     } else {
         removePulseEffect();
