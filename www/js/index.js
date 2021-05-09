@@ -10,7 +10,7 @@ let statusD = $("#statusD");   // Status Dades Personals
 let body = document.getElementById("body");
 
 // Booleanos generales:
-let skipWizard = true;
+let skipWizard = false;
 
 // Modal variables: 
 let modalBtn = $("#wizard-floating-btn");
