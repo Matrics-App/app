@@ -22,6 +22,7 @@ function getRequisits(){
             var reqModal = document.getElementById("reqModal");
             var instance = M.Modal.getInstance(reqModal);
             instance.open();
+            setStatus(statusR, 2, 0);
         }
     }
 }
