@@ -1,19 +1,39 @@
-
+(function($) {
+    $(function() {
+        if (!skipWizard) {
+            // Inicio del wizard:
+            $("#wizard").modal('open');
+    
+            // Paginamiento del wizard:
+            modalBtn.on( "click", function() {
+                wizardPageControl();
+            });
+        }
+    });
+})(jQuery); 
 
 document.addEventListener('deviceready', onDeviceReady, false);
 
+// Variables generales:
+let body = document.getElementById("body");
+
+// Variables Tab Inici (Dashboard):
 let statusR = $("#statusR");   // Status Requeriments
 let statusU = $("#statusU");   // Status UFs
 let statusD = $("#statusD");   // Status Dades Personals
 
-// Variables generales:
-let body = document.getElementById("body");
+// Variables Tab Requisits:
+
+// Variables Tab UFs:
+
+// Variables Tab Dades:
 
 // Booleanos generales:
 let skipWizard = false;
 
 // Modal variables: 
 let modalBtn = $("#wizard-floating-btn");
+
 
 // Funcion inicial
 function onDeviceReady() {
@@ -48,15 +68,6 @@ function onDeviceReady() {
 
     // Control the expand icons on each Module in UFs Tab
     checkExpandables();
-
-    if (!skipWizard) {
-        $("#wizard").modal('open');
-
-        // Paginamiento del wizard:
-        modalBtn.on( "click", function() {
-            wizardPageControl();
-        });
-    }
 }
 
 // Funciones Tab Inici (Dashboard):
@@ -103,8 +114,9 @@ function checkExpandables() {
     });
 }
 
-// Cada vez que se agregue un Modulo, esta funcion reiniciara los onclick para tener dicho modulo nuevo en cuenta.
-// Si la checkbox de un modulo se marca, todas sus checkbox de UF se marcaran.
+/** Cada vez que se agregue un Modulo, esta funcion reiniciara los onclick para tener dicho modulo nuevo en cuenta.
+ *  Si la checkbox de un modulo se marca, todas sus checkbox de UF se marcaran.
+ */
 function checkSelectionListenersMPs() {
     $("[name=MP]").each(function() {
         $(this).prop("onclick", null).off("click");
@@ -118,8 +130,10 @@ function checkSelectionListenersMPs() {
     });
 }
 
-// Cada vez que se agregue una UF, esta funcion reiniciara los onclick para tener dicha UF nueva en cuenta.
-// Si la checkbox de una UF se marca o desmarca, se controlara si todas las UF hermanas del mismo modulo estan marcadas o no, para marcar la checkbox del Modulo padre o desmarcarla (VALGA LA REDUNDANCIA).
+/** Cada vez que se agregue una UF, esta funcion reiniciara los onclick para tener dicha UF nueva en cuenta.
+ *  Si la checkbox de una UF se marca o desmarca, se controlara si todas las UF hermanas del mismo modulo 
+ *  estan marcadas o no, para marcar la checkbox del Modulo padre o desmarcarla (VALGA LA REDUNDANCIA).
+ */
 function checkSelectionListenersUFs() {
     let areAllchecked = false;
     $("[name=UF]").each(function() {
@@ -163,7 +177,6 @@ function getUfs(url, query, dataType) {
         
     });
 }
-
 
 // funcion a la que llamar cuando se pulse el boton de guardar y que mandara las UFs seleccionadas a la base
 function setUfs(){
