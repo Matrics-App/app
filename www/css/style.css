@@ -54,6 +54,10 @@ body {
   overflow-y: scroll;
 }
 
+.custom-scroll-x-hidden {
+  overflow-x: hidden;
+}
+
 .custom-overflow-hidden {
   overflow: hidden;
 }
@@ -84,11 +88,39 @@ body {
   margin-top: 2em;
 }
 
+.custom-margin-bottom-1em {
+  margin-top: 1em;
+}
+
+.custom-margin-top-bottom-1em {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.custom-margin-top-bottom-1-5em {
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
+
+.custom-margin-top-bottom-2em {
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
+
 .custom-margin-left-1em {
   margin-left: 1em;
 }
 
+.custom-margin-right-left-1em {
+  margin-right: 1em;
+  margin-left: 1em;
+}
+
 /* Paddings: */
+.custom-padding-0 {
+  padding: 0 !important;
+}
+
 .custom-padding-1em {
   padding: 1em !important;
 }
@@ -101,6 +133,11 @@ body {
   padding-top: 1em !important;
 }
 
+.custom-padding-right-left-1em {
+  padding-right: 1em;
+  padding-left: 1em;
+}
+
 .custom-padding-top-bottom-1em {
   padding-top: 1em !important;
   padding-bottom: 1em !important;
@@ -110,8 +147,16 @@ body {
   padding-bottom: 1em !important;
 }
 
+.custom-padding-left-1em {
+  padding-left: 1em;
+}
+
 .custom-padding-left-2em {
   padding-left: 2em !important;
+}
+
+.custom-padding-right-1em {
+  padding-right: 1em;
 }
 
 /* Borders: */
@@ -119,7 +164,7 @@ body {
   border: none !important;
 }
 
-.custom-border-1px {
+.custom-border {
   border: 1px solid #ddd !important;
   box-shadow: 0 2px 2px 0 rgba(58, 105, 206, 0.2), 0 3px 1px -2px rgba(58, 105, 206, 0.2), 0 1px 5px 0 rgba(58, 105, 206, 0.2) !important;
 }
@@ -208,6 +253,14 @@ body {
   height: 75px;
 }
 
+.custom-max-height-15vh {
+  max-height: 15vh;
+}
+
+.custom-height-35vh {
+  height: 35vh;
+}
+
 /* Custom tags: */
 /* Modificar el color de la label y el borde inferior de los inputs (la primera vez que se seleccionan) */
 input[type="email"]:not(.browser-default):focus:not([readonly]) + label, input[type="password"]:not(.browser-default):focus:not([readonly]) + label {
@@ -233,6 +286,17 @@ h4 {
   font-size: 2.28rem !important;
   line-height: 110% !important;
   margin: 1.52rem 0 0.912rem 0;
+}
+
+.collapsible-header i {
+  font-size: 1.6rem;
+  text-align: right;
+  margin-left: auto;
+  margin-right: 0;
+}
+
+.collapsible-header {
+  white-space: nowrap;
 }
 
 [type="checkbox"]:checked + span:not(.lever)::before {
@@ -264,10 +328,4 @@ h4 {
   -webkit-filter: blur(5px);
   filter: blur(5px);
   
-}
-
-.div-semaforo-requisitos {
-  justify-content: center;
-  background-color: #878787;
-  border-radius: 20px;
 }

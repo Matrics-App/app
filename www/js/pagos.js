@@ -1,8 +1,8 @@
 document.getElementById('formPayment').onsubmit = validateForm;
 
 function validateForm(){
-    var rawAmount = document.getElementById("tfAmount").value;
-    
+    var rawAmount = "200";
+
     if(rawAmount.charAt(rawAmount.length - 3) == "," ){
         var replacePos = rawAmount.length - 3;
         rawAmount = rawAmount.substring(0,replacePos) + "." + rawAmount.substring(replacePos+1);
@@ -30,8 +30,8 @@ function paymentRedsys(amount){
         "DS_MERCHANT_TERMINAL" : "001",                 // Terminal BANCO
         "DS_MERCHANT_CONSUMERLANGUAGE": "003",          // 000/001 = ESP || 002 = ENG || 003 = CAT
         "DS_MERCHANT_PRODUCTDESCRIPTION": descRedsys,    // Información de la ventana de pago.
-        "DS_MERCHANT_URLOK": 'window.location.href = "index.html"',
-        "DS_MERCHANT_URLKO": 'window.location.href = "index.html"'
+        "DS_MERCHANT_URLOK": 'localhost:8000/index.html',
+        "DS_MERCHANT_URLKO": 'localhost:8000/index.html'
     }
 
     var params = createMerchantParameters(myRedsys);
@@ -42,7 +42,6 @@ function paymentRedsys(amount){
 
     document.forms["formPayment"]["Ds_Signature"].value = signature;
     document.forms["formPayment"]["Ds_MerchantParameters"].value = params;
-
 }
 
 /**

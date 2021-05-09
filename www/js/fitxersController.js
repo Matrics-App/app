@@ -1,17 +1,14 @@
-'use strict'
-
 getRequisits();
 
 function getRequisits(){
 
-    var arrayStatus = ['<div class="div-semaforo-requisitos"><td class="center"><i class="material-icons circle red-text custom-icon-padding">brightness_1</i><i style="opacity:0.3" class="material-icons circle amber-text custom-icon-padding">brightness_1</i><i style="opacity:0.3" class="material-icons circle light-green-text custom-icon-padding">brightness_1</i></td></div>',
-        '<div class="div-semaforo-requisitos"><td class="center"><i style="opacity:0.3" class="material-icons circle red-text custom-icon-padding">brightness_1</i><i class="material-icons circle amber-text custom-icon-padding">brightness_1</i><i style="opacity:0.3" class="material-icons circle light-green-text custom-icon-padding">brightness_1</i></td></div>',
-        '<div class="div-semaforo-requisitos"><td class="center"><i style="opacity:0.3" class="material-icons circle red-text custom-icon-padding">brightness_1</i><i style="opacity:0.3" class="material-icons circle amber-text custom-icon-padding">brightness_1</i><i class="material-icons circle light-green-text custom-icon-padding">brightness_1</i></td></div>',
-        '<div class="div-semaforo-requisitos"><td class="center"><i style="opacity:0.3" class="material-icons circle red-text custom-icon-padding">brightness_1</i><i style="opacity:0.3" class="material-icons circle amber-text custom-icon-padding">brightness_1</i><i style="opacity:0.3" class="material-icons circle light-green-text custom-icon-padding">brightness_1</i></td></div>']
+    var arrayStatus = ['<div class="valign-wrapper"><td class="center"><i class="material-icons circle red-text custom-icon-padding">brightness_1</i><i style="opacity:0.3" class="material-icons circle amber-text custom-icon-padding">brightness_1</i><i style="opacity:0.3" class="material-icons circle light-green-text custom-icon-padding">brightness_1</i></td></div>',
+        '<div class="valign-wrapper"><td class="center"><i style="opacity:0.3" class="material-icons circle red-text custom-icon-padding">brightness_1</i><i class="material-icons circle amber-text custom-icon-padding">brightness_1</i><i style="opacity:0.3" class="material-icons circle light-green-text custom-icon-padding">brightness_1</i></td></div>',
+        '<div class="valign-wrapper"><td class="center"><i style="opacity:0.3" class="material-icons circle red-text custom-icon-padding">brightness_1</i><i style="opacity:0.3" class="material-icons circle amber-text custom-icon-padding">brightness_1</i><i class="material-icons circle light-green-text custom-icon-padding">brightness_1</i></td></div>',
+        '<div class="valign-wrapper"><td class="center"><i style="opacity:0.3" class="material-icons circle red-text custom-icon-padding">brightness_1</i><i style="opacity:0.3" class="material-icons circle amber-text custom-icon-padding">brightness_1</i><i style="opacity:0.3" class="material-icons circle light-green-text custom-icon-padding">brightness_1</i></td></div>']
 
     var paneRequisits = $('#paneRequisits');
-    var tempArray = '["DNI","TOMATE","PATATA"]';
-    var arrayRequisits = JSON.parse(tempArray);
+    var arrayRequisits = ["DNI ANVERS","DNI REVERS","SANITARIA"];
 
     for (let i = 0; i < arrayRequisits.length; i++) {
         $('<form>', {

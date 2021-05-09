@@ -23,13 +23,15 @@
         $(".preloader-wrapper").css("display", "block");
         $(".preloader-wrapper").css("margin", "auto");
         $(".preloader-wrapper").css("margin-bottom", "2em");
+
+        // Para cambiar el click de cancelar en el pago. Hara que vuelva a la aplicacion (WIP)
+        $("#divImgCancelar").on("click", function() {window.location.href = "javascript:history.back()"});
     
 
         $(document).ready(function() {
             $('.tabs').tabs();
             $('.collapsible').collapsible();
             $('.fixed-action-btn').floatingActionButton();
-            $('.collapsible').collapsible();
         });
 
     }); // end of document ready
