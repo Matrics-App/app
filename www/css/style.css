@@ -1,17 +1,331 @@
 html,
 body {
-    width: 100%;
-    height: 100%;
-    overflow-x: hidden;
-    overflow-y: hidden;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: scroll;
 
-    -webkit-touch-callout: none; /* iOS Safari */
-      -webkit-user-select: none; /* Safari */
-       -khtml-user-select: none; /* Konqueror HTML */
-         -moz-user-select: none; /* Old versions of Firefox */
-          -ms-user-select: none; /* Internet Explorer/Edge */
-              user-select: none; /* Non-prefixed version, currently
-                                    supported by Chrome, Edge, Opera and Firefox */
+  font-family: 'esteve-terrades-raleway-regular';
 
-    outline:none !important;
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+      -khtml-user-select: none; /* Konqueror HTML */
+        -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+
+  outline:none !important;
+}
+
+/* Fonts: */
+@font-face {
+	font-family: "esteve-terrades-roboto-light";
+	src: url("../fonts/Roboto/Roboto-Light.ttf");
+}
+
+@font-face {
+	font-family: "esteve-terrades-raleway-regular";
+	src: url("../fonts/Raleway/Raleway-Regular.ttf");
+}
+
+@font-face {
+	font-family: "esteve-terrades-raleway-medium";
+	src: url("../fonts/Raleway/Raleway-Medium.ttf");
+}
+
+/* Font options: */
+.custom-wrap {
+  word-wrap: break-word;
+  white-space: initial;
+}
+
+.custom-font-size-13px {
+  font-size: 13px;
+}
+
+.custom-text-justify {
+  text-align: justify;
+  text-justify: auto;
+}
+
+/* Overflow options:*/
+.custom-scroll-y {
+  overflow-y: scroll;
+}
+
+.custom-scroll-x-hidden {
+  overflow-x: hidden;
+}
+
+.custom-overflow-hidden {
+  overflow: hidden;
+}
+
+/* Displays: */
+.custom-display-block {
+	display: block;
+}
+
+/* Margins: */
+.custom-margin-auto {
+  margin: auto;
+}
+
+.custom-margin-1em {
+  margin: 1em;
+}
+
+.custom-margin-2em {
+  margin: 2em;
+}
+
+.custom-margin-top-1em {
+  margin-top: 1em;
+}
+
+.custom-margin-top-2em {
+  margin-top: 2em;
+}
+
+.custom-margin-bottom-1em {
+  margin-top: 1em;
+}
+
+.custom-margin-top-bottom-1em {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.custom-margin-top-bottom-1-5em {
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
+
+.custom-margin-top-bottom-2em {
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
+
+.custom-margin-left-1em {
+  margin-left: 1em;
+}
+
+.custom-margin-right-left-1em {
+  margin-right: 1em;
+  margin-left: 1em;
+}
+
+/* Paddings: */
+.custom-padding-0 {
+  padding: 0 !important;
+}
+
+.custom-padding-1em {
+  padding: 1em !important;
+}
+
+.custom-padding-2em {
+  padding: 2em !important;
+}
+
+.custom-padding-top-1em {
+  padding-top: 1em !important;
+}
+
+.custom-padding-right-left-1em {
+  padding-right: 1em;
+  padding-left: 1em;
+}
+
+.custom-padding-top-bottom-1em {
+  padding-top: 1em !important;
+  padding-bottom: 1em !important;
+}
+
+.custom-padding-bottom-1em {
+  padding-bottom: 1em !important;
+}
+
+.custom-padding-left-1em {
+  padding-left: 1em;
+}
+
+.custom-padding-left-2em {
+  padding-left: 2em !important;
+}
+
+.custom-padding-right-1em {
+  padding-right: 1em;
+}
+
+/* Borders: */
+.custom-border-none {
+  border: none !important;
+}
+
+.custom-border {
+  border: 1px solid #ddd !important;
+  box-shadow: 0 2px 2px 0 rgba(58, 105, 206, 0.2), 0 3px 1px -2px rgba(58, 105, 206, 0.2), 0 1px 5px 0 rgba(58, 105, 206, 0.2) !important;
+}
+
+.custom-border-radius {
+  border-radius: 20px;
+}
+
+.custom-border-radius-bottom {
+  border-radius: 0px 0px 20px 20px;
+}
+
+/* Color gradients: */
+.blue-gradient {
+  background: linear-gradient(45deg, rgba(33,184,243,1) 0%, rgba(33,150,243,1) 50%, rgba(4,72,184,1) 100%);
+}
+
+.blue-gradient-180 {
+  background: linear-gradient(180deg, rgba(33,150,243,1) 50%, rgba(4,72,184,1) 150%);
+}
+
+.blue-text-gradient {
+  background: linear-gradient(0deg, rgba(33,150,243,1) 0%, rgba(255,255,255,1) 50%);
+  background-clip: content-box;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.blue-text-gradient-modal {
+  background: linear-gradient(45deg, rgba(33,184,243,1) 0%, rgba(33,150,243,1) 50%, rgba(4,72,184,1) 100%);
+  background-clip: content-box;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.blue-text-gradient2 {
+  background: linear-gradient(0deg, rgba(33,150,243,1) 0%, rgba(255,255,255,1) 55%);
+  background-clip: content-box;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Width: */
+.custom-width-100 {
+  width: 100%;
+}
+
+.custom-width-80 {
+  width: 80%;
+}
+
+.custom-width-75 {
+  width: 75%;
+}
+
+.custom-width-50 {
+  width: 50%;
+}
+
+.custom-width-75px {
+  width: 75px;
+}
+
+/* Height */
+.custom-height-100 {
+  height: 100%;
+}
+
+.custom-height-90 {
+  height: 90%;
+}
+
+.custom-height-75 {
+  height: 75%;
+}
+
+.custom-height-50 {
+  height: 50%;
+}
+
+.custom-height-25 {
+  height: 25%;
+}
+
+.custom-height-75px {
+  height: 75px;
+}
+
+.custom-max-height-15vh {
+  max-height: 15vh;
+}
+
+.custom-height-35vh {
+  height: 35vh;
+}
+
+/* Custom tags: */
+/* Modificar el color de la label y el borde inferior de los inputs (la primera vez que se seleccionan) */
+input[type="email"]:not(.browser-default):focus:not([readonly]) + label, input[type="password"]:not(.browser-default):focus:not([readonly]) + label {
+  color: #2196F3;
+}
+
+input[type="email"]:not(.browser-default):focus:not([readonly]), input[type="password"]:not(.browser-default):focus:not([readonly]) {
+  border-bottom: 1px solid #2196F3 !important;
+  box-shadow: 0 1px 0 0 #2196F3 !important;
+}
+
+/* Modificar el color de la label y el borde inferior de los inputs (Una vez son validados) */
+input.valid[type="email"]:not(.browser-default), input.valid[type="password"]:not(.browser-default) {
+  border-bottom: 1px solid #2196F3 !important;
+  box-shadow: 0 1px 0 0 #2196F3 !important;
+}
+
+input[type="email"]:not(.browser-default):focus.valid ~ label, input[type="password"]:not(.browser-default):focus.valid ~ label {
+  color: #2196F3;
+}
+
+h4 {
+  font-size: 2.28rem !important;
+  line-height: 110% !important;
+  margin: 1.52rem 0 0.912rem 0;
+}
+
+.collapsible-header i {
+  font-size: 1.6rem;
+  text-align: right;
+  margin-left: auto;
+  margin-right: 0;
+}
+
+.collapsible-header {
+  white-space: nowrap;
+}
+
+[type="checkbox"]:checked + span:not(.lever)::before {
+  border-right: 2px solid #2196F3;
+  border-bottom: 2px solid #2196F3;
+}
+
+[type="checkbox"]:active {
+  user-select: none;
+}
+
+[type="radio"]:checked + span::after {
+  background-color: #2196F3;
+  border: 2px solid #2196F3;
+}
+
+/* Font Navbar */
+#navbar {
+  font-family: "esteve-terrades-raleway-medium";
+  overflow: hidden;
+}
+
+.tabs .indicator {
+  background-color: #FFF !important;
+}
+
+/* Effects: */
+.custom-blur {
+  -webkit-filter: blur(5px);
+  filter: blur(5px);
+  
 }

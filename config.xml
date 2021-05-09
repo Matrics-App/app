@@ -1,13 +1,13 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="io.cordova.matriculat" version="1.0.0" xmlns:android="http://schemas.android.com/apk/res/android" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>MatriculaT</name>
+<widget id="com.esteveterrades.matrics" version="1.0.0" xmlns:android="http://schemas.android.com/apk/res/android" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>Matrics IETI</name>
     <description>
-        MatriculaT allows you to enroll any cycle in a few easy steps.
+        Matrics IETI allows you to enroll any cycle in a few easy steps.
     </description>
     <author email="dev@cordova.apache.org" href="http://cordova.io">
-        MatriculaT-Ieti
+        IETI Software Inc.
     </author>
-    <icon src="www/img/logo.png" width="57" height="57" density="mdpi" />
+    <icon src="www/img/Icons/icon.png" width="57" height="57" density="mdpi"/>
     <!-- <content src="index.html" /> -->
     <content src="login.html" />
     <plugin name="cordova-plugin-whitelist" version="1" />
@@ -24,6 +24,9 @@
     <platform name="android">
         <allow-intent href="market:*" />
         <preference name="orientation" value="portrait"/>
+        <edit-config file="AndroidManifest.xml" target="/manifest/application" mode="merge">
+            <application android:allowBackup="false"/>
+        </edit-config>
     </platform>
     <platform name="ios">
         <allow-intent href="itms:*" />

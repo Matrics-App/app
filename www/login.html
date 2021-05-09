@@ -1,45 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, viewport-fit=cover"/>
+		<title>MatriculaT Login</title>
 
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
-	<title>MatriculaT Login</title>
+		<!-- cordova-headers -->
+		<meta http-equiv="Content-Security-Policy"
+			content="default-src https://code.jquery.com https://fonts.gstatic.com 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src https://fonts.googleapis.com 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
+		<meta name="format-detection" content="telephone=no">
+		<meta name="msapplication-tap-highlight" content="no">
 
-	<!-- cordova-headers -->
-	<meta http-equiv="Content-Security-Policy"
-		content="default-src https://code.jquery.com https://fonts.gstatic.com 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src https://fonts.googleapis.com 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
-	<meta name="format-detection" content="telephone=no">
-	<meta name="msapplication-tap-highlight" content="no">
+		<!-- CSS  -->
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+		<link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
+		<link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
+	</head>
 
-	<!-- CSS  -->
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	<link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
-	<link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
-</head>
+	<body id="body">
+		<nav id="navbar" class="blue custom-border-radius-bottom custom-width-100 custom-margin-auto blue-gradient-180" role="navigation">
+			<div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo center blue-text-gradient">Matrics IETI</a></div>
+		</nav>
 
-<body id="body">
-	<nav class="grey darken-4" role="navigation">
-		<div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo center">Login</a>
-			<ul class="right hide-on-med-and-down">
-				<li><a>Opcions (WIP)</a></li>
-			</ul>
+		<div class="container custom-width-80">
+			<div class="row custom-margin-top-2em">
+				<form class="col s12 custom-border custom-border-radius custom-padding-1em white">
+					<div class="input-field col s12">
+						<input id="emailField" type="email" class="validate">
+						<label for="emailField">Email</label>
+					</div>
+					<div class="input-field col s12">
+						<input id="passwordField" type="password" class="validate">
+						<label for="passwordField">Contrasenya</label>
+						<span id="helperLogin" class="helper-text"></span>
+					</div>
+					<a id="loginButton" class="waves-effect waves-light custom-display-block custom-width-75 custom-margin-auto blue-gradient btn-large custom-border-radius center-align">Iniciar Sessi&oacute;</a>
+					<div class="divider custom-margin-2em"></div>
+					<div class="center-align">
+						<p>
+							No pots entrar? <br/> Truca a 93&MediumSpace;377&MediumSpace;11&MediumSpace;00
+						</p>
+					</div>
+				</form>
+			</div>
+			
+			<div class="divider custom-margin-2em"></div>
 
-			<ul id="nav-mobile" class="sidenav">
-				<li><a>Opcions (WIP)</a></li>
-			</ul>
-			<a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+			<div class="center-align">
+				<p>
+					O b&eacute; pots iniciar sessi&oacute; mitjançant
+				</p>
+			</div>
+			
+			<div class="row section">
+				<div class="col s6 center-align">
+					<a id="googleSL" class="waves-effect waves-light custom-width-75px custom-height-75px custom-margin-auto custom-margin-1em white btn-large custom-border-radius center-align custom-padding-1em" data-onsuccess="onSignIn"><img src="img/SocialLogin/googleSocialLogin.png" alt="Google" class="responsive-img"></a>
+					<br/><label for="googleSL">Google</label>
+				</div>
+				<div class="col s6 center-align">
+					<a id="microsoftSL" class="waves-effect waves-light custom-width-75px custom-height-75px custom-margin-auto custom-margin-1em white btn-large custom-border-radius center-align custom-padding-1em" data-onsuccess="onSignIn"><img src="img/SocialLogin/microsoftSocialLogin.png" alt="Microsoft" class="circle responsive-img"></a>
+					<br/><label for="microsoftSL">Microsoft</label>
+				</div>
+			</div>
 		</div>
-	</nav>
-	
 
-	<!--  Scripts-->
-	<script src="cordova.js"></script>
-	<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-	<script src="js/materialize.js"></script>
-	<script src="js/init.js"></script>
-	<script src="js/login.js"></script>
-	<script src="js/crypto-js.js"></script>
-</body>
-
+		<div id="loading" class="modal" style="transform: translate(0%, -50%);">
+			<div class="modal-content">
+				<h5 class="center-align custom-padding-bottom-1em">
+					Carregant
+				</h5>
+				<div class="preloader-wrapper active">
+					<div class="spinner-layer spinner-blue-only">
+					  <div class="circle-clipper left">
+						<div class="circle"></div>
+					  </div><div class="gap-patch">
+						<div class="circle"></div>
+					  </div><div class="circle-clipper right">
+						<div class="circle"></div>
+					  </div>
+					</div>
+				  </div>		
+			</div>
+		</div>
+		
+		<!--  Scripts-->
+		<script src="cordova.js"></script>
+		<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+		<script src="js/materialize.min.js"></script>
+		<script src="js/init.js"></script>
+		<script src="js/crypto-js.js"></script>
+		<script src="js/login.js"></script>
+	</body>
 </html>
