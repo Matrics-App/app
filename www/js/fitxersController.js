@@ -19,11 +19,10 @@ function getRequisits(){
         }).appendTo(paneRequisits);
 
         document.getElementById("btnRequisit" + i).onclick = function (ev, nomReq = arrayRequisits[i]) {
+            
             var reqModal = document.getElementById("reqModal");
-            console.log(reqModal);
-            var instance = M.Modal.getInstance(reqModal);
+            var instance = M.Modal.init(reqModal);
             instance.open();
-            setStatus(statusR, 2, 0);
         }
     }
 }
