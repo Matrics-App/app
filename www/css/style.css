@@ -186,6 +186,10 @@ body {
   background: linear-gradient(180deg, rgba(33,150,243,1) 50%, rgba(4,72,184,1) 150%);
 }
 
+.blue-text {
+  color: #2196F3;
+}
+
 .blue-text-gradient {
   background: linear-gradient(0deg, rgba(33,150,243,1) 0%, rgba(255,255,255,1) 50%);
   background-clip: content-box;
@@ -286,6 +290,15 @@ h4 {
   font-size: 2.28rem !important;
   line-height: 110% !important;
   margin: 1.52rem 0 0.912rem 0;
+}
+
+blockquote {
+  margin: 2em 0;
+  padding-left: 1.5rem;
+  background-clip: padding-box;
+  border-left-width: 5px;
+  border-left-style: solid;
+  border-image: linear-gradient(to bottom, rgba(33,184,243,1), rgba(255, 255, 255, 0)) 1 100%;
 }
 
 .collapsible-header i {

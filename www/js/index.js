@@ -29,7 +29,7 @@ let statusD = $("#statusD");   // Status Dades Personals
 // Variables Tab Dades:
 
 // Booleanos generales:
-let skipWizard = false;
+let skipWizard = true;
 
 // Modal variables: 
 let modalBtn = $("#wizard-floating-btn");
@@ -99,20 +99,8 @@ function setStatus(type, status, bool) {
 
 // Funciones Tab Requisits:
 
+
 // Funciones Tab UFs:
-function checkExpandables() {
-    $("i.blue-text-gradient-modal").each(function() {
-        $(this).parent().prop("onclick", null).off("click");
-        $(this).parent().on("click", function() {
-            if ($(this).children("i.blue-text-gradient-modal")[0].innerHTML === "expand_more") {
-                $("i.blue-text-gradient-modal").each(function() {$(this)[0].innerHTML = "expand_more";});
-                $(this).children("i.blue-text-gradient-modal")[0].innerHTML = "expand_less";
-            } else {
-                $(this).children("i.blue-text-gradient-modal")[0].innerHTML = "expand_more";
-            }
-        });
-    });
-}
 
 /** Cada vez que se agregue un Modulo, esta funcion reiniciara los onclick para tener dicho modulo nuevo en cuenta.
  *  Si la checkbox de un modulo se marca, todas sus checkbox de UF se marcaran.
@@ -201,7 +189,7 @@ function setUfs(){
 }
 
 function addModule(idModule, moduleName) {                                                                            
-    $("#ufList").append('<li><div id="' + idModule + '-header" class="collapsible-header valign-wrapper"><label style="margin-left: 0.5em; max-width: 95%; white-space: break-spaces;"><input id="' + idModule + '" type="checkbox" name="MP"/><span></span></label><label style="margin-left: 0.5em; max-width: 95%; white-space: break-spaces; font-size: 1em">' + moduleName + '</span></label><i id="expandable" class="material-icons circle blue-text-gradient-modal">expand_more</i></div><div id="' + idModule + '-body" class="collapsible-body custom-padding-0"></div></li>');
+    $("#ufList").append('<li><div id="' + idModule + '-header" class="collapsible-header valign-wrapper"><label style="margin-left: 0.5em; max-width: 95%; white-space: break-spaces;"><input id="' + idModule + '" type="checkbox" name="MP"/><span></span></label><label style="margin-left: 0.5em; max-width: 95%; white-space: break-spaces; font-size: 1em">' + moduleName + '</span></label><i id="expandable" name="UfTab" class="material-icons circle blue-text-gradient-modal">expand_more</i></div><div id="' + idModule + '-body" class="collapsible-body custom-padding-0"></div></li>');
     checkExpandables();
     checkSelectionListenersMPs();
 }
@@ -228,4 +216,27 @@ function applyDisabledClass(id) {
 
 function removeDisabledClass(id) {
     $("#" + id).removeClass("disabled");
+}
+
+function checkExpandables() {
+    $("i.blue-text-gradient-modal").each(function() {
+        $(this).parent().prop("onclick", null).off("click");
+        $(this).parent().on("click", function() {
+            if ($(this).children("i.blue-text-gradient-modal[name=dashboardTab]").length > 0) {
+                if ($(this).children("i.blue-text-gradient-modal[name=dashboardTab]")[0].innerHTML === "expand_more") {
+                    $("i.blue-text-gradient-modal[name=dashboardTab]").each(function() {$(this)[0].innerHTML = "expand_more";});
+                    $(this).children("i.blue-text-gradient-modal[name=dashboardTab]")[0].innerHTML = "expand_less";
+                } else {
+                    $(this).children("i.blue-text-gradient-modal[name=dashboardTab]")[0].innerHTML = "expand_more";
+                }
+            } else {
+                if ($(this).children("i.blue-text-gradient-modal[name=UfTab]")[0].innerHTML === "expand_more") {
+                    $("i.blue-text-gradient-modal[name=UfTab]").each(function() {$(this)[0].innerHTML = "expand_more";});
+                    $(this).children("i.blue-text-gradient-modal[name=UfTab]")[0].innerHTML = "expand_less";
+                } else {
+                    $(this).children("i.blue-text-gradient-modal[name=UfTab]")[0].innerHTML = "expand_more";
+                }
+            }
+        });
+    });
 }

@@ -21,18 +21,13 @@
 <body id="body">
 	<nav id="navbar" class="nav-extended blue custom-border-radius-bottom custom-width-100 custom-margin-auto"
 		role="navigation">
-		<div class="nav-wrapper container"><a id="logo-container" href="#"
-				class="brand-logo center blue-text-gradient">Matrics IETI</a></div>
+		<div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo center blue-text-gradient">Matrics IETI</a></div>
 		<div class="nav-content">
 			<ul class="tabs blue tabs-fixed-width blue-gradient-180">
-				<li class="tab"><a class="waves-effect waves-light custom-border-radius blue-text-gradient2 custom-wrap"
-						href="#dashboardTab">Inici</a></li>
-				<li class="tab"><a class="waves-effect waves-light custom-border-radius blue-text-gradient2 custom-wrap"
-						href="#reqTab">Requisits</a></li>
-				<li class="tab"><a class="waves-effect waves-light custom-border-radius blue-text-gradient2 custom-wrap"
-						href="#ufTab">UFs</a></li>
-				<li class="tab"><a class="waves-effect waves-light custom-border-radius blue-text-gradient2 custom-wrap"
-						href="#dadesTab">Dades</a></li>
+				<li class="tab"><a class="waves-effect waves-light custom-border-radius blue-text-gradient2 custom-wrap" href="#dashboardTab">Inici</a></li>
+				<li class="tab"><a class="waves-effect waves-light custom-border-radius blue-text-gradient2 custom-wrap" href="#reqTab">Requisits</a></li>
+				<li class="tab"><a class="waves-effect waves-light custom-border-radius blue-text-gradient2 custom-wrap" href="#ufTab">UFs</a></li>
+				<li class="tab"><a class="waves-effect waves-light custom-border-radius blue-text-gradient2 custom-wrap" href="#dadesTab">Dades</a></li>
 			</ul>
 		</div>
 	</nav>
@@ -42,8 +37,11 @@
 		<h5 class="custom-margin-top-bottom-1em">Estat de matriculaci&#243;:</h5>
 		<ul class="collapsible custom-border-radius custom-scroll-y">
 			<li>
-				<div class="collapsible-header ">Requeriments<i id="statusR"
-						class="material-icons circle red-text">brightness_1</i></div>
+				<div class="collapsible-header ">
+					<i id="expandable" name="dashboardTab" class="material-icons circle blue-text-gradient-modal" style="margin-left: 0px;margin-right: 0.5em;text-align: center;">expand_more</i>
+					Requeriments
+					<i id="statusR"class="material-icons circle grey-text text-lighten-1">brightness_1</i>
+				</div>
 				<div class="collapsible-body custom-padding-top-bottom-1em">
 					<p>
 						<i class="material-icons circle red-text tiny">brightness_1</i>&ThickSpace; Vermell
@@ -60,8 +58,11 @@
 				</div>
 			</li>
 			<li>
-				<div class="collapsible-header ">UFs a matricular<i id="statusU"
-						class="material-icons circle red-text">brightness_1</i></div>
+				<div class="collapsible-header ">
+					<i id="expandable" name="dashboardTab" class="material-icons circle blue-text-gradient-modal" style="margin-left: 0px;margin-right: 0.5em;text-align: center;">expand_more</i>
+					UFs a matricular
+					<i id="statusU" class="material-icons circle grey-text text-lighten-1">brightness_1</i>
+				</div>
 				<div class="collapsible-body custom-padding-top-bottom-1em">
 					<p>
 						<i class="material-icons circle red-text tiny">brightness_1</i>&ThickSpace; Vermell
@@ -78,8 +79,11 @@
 				</div>
 			</li>
 			<li>
-				<div class="collapsible-header ">Dades personals<i id="statusD"
-						class="material-icons circle red-text">brightness_1</i></div>
+				<div class="collapsible-header ">
+					<i id="expandable" name="dashboardTab" class="material-icons circle blue-text-gradient-modal" style="margin-left: 0px;margin-right: 0.5em;text-align: center;">expand_more</i>
+					Dades personals
+					<i id="statusD" class="material-icons circle grey-text text-lighten-1">brightness_1</i>
+				</div>
 				<div class="collapsible-body custom-padding-top-bottom-1em">
 					<p>
 						<i class="material-icons circle red-text tiny">brightness_1</i>&ThickSpace; Vermell
@@ -96,6 +100,21 @@
 				</div>
 			</li>
 		</ul>
+		<!-- Dades -->
+		<blockquote>
+			<h5 id="titleHint" step="1">Primer pas!</h5>
+			<span id="contentHint" step="1">
+				<p>
+					- Fes clic a la pestanya <em>Dades</em>, aquesta cont&eacute; les teves dades personals.
+				</p>
+				<p>
+					- Asegura't que s&oacute;n totes correctes i prem el bot&oacute; <em>Validar</em>.
+				</p>
+				<p>
+					- En cas de no estar d'acord amb les dades actuals, per motius de seguretat tindr&agrave;s que contactar amb secretaria.
+				</p>
+			</span>
+		</blockquote>
 	</div>
 
 	<!-- Tab Requisits -->
@@ -131,10 +150,8 @@
 	<!-- Tab UFs -->
 	<div id="ufTab" class="container custom-width-80">
 		<h5 class="center-align">Jardineria i floristeria</h5>
-		<a id="saveButton"
-			class="waves-effect waves-light custom-display-block custom-width-75 custom-margin-auto custom-margin-top-bottom-1-5em blue-gradient btn-large custom-border-radius center-align">Guardar</a>
-		<ul id="ufList"
-			class="collapsible custom-border-radius custom-scroll-y custom-scroll-x-hidden custom-height-35vh">
+		<a id="saveButton" class="waves-effect waves-light custom-display-block custom-width-75 custom-margin-auto custom-margin-top-bottom-1-5em blue-gradient btn-large custom-border-radius center-align">Guardar</a>
+		<ul id="ufList" class="collapsible custom-border-radius custom-scroll-y custom-scroll-x-hidden custom-height-35vh">
 			<!-- TEMP DATA - This ul should be empty on PRO -->
 			<!-- <li> 
 					<div class="collapsible-header valign-wrapper">
