@@ -116,6 +116,14 @@ body {
   margin-left: 1em;
 }
 
+.custom-margin-top-05em-negative {
+  margin-top: -0.5em !important;
+}
+
+.custom-margin-bottom-05em-negative {
+  margin-bottom: -0.5em !important;
+}
+
 /* Paddings: */
 .custom-padding-0 {
   padding: 0 !important;
@@ -184,6 +192,14 @@ body {
 
 .blue-gradient-180 {
   background: linear-gradient(180deg, rgba(33,150,243,1) 50%, rgba(4,72,184,1) 150%);
+}
+
+.red-gradient {
+  background: linear-gradient(45deg, rgba(150,15,5,1) 0%, rgba(255,0,0,1) 100%);
+}
+
+.blue-text {
+  color: #2196F3;
 }
 
 .blue-text-gradient {
@@ -288,6 +304,21 @@ h4 {
   margin: 1.52rem 0 0.912rem 0;
 }
 
+.custom-h5 {
+  font-size: 1.64rem;
+  line-height: 110%;
+  margin: 0 0 0.656rem 0;
+}
+
+blockquote {
+  margin: 2em 0;
+  padding-left: 1.5rem;
+  background-clip: padding-box;
+  border-left-width: 5px;
+  border-left-style: solid;
+  border-image: linear-gradient(to top, rgba(33,184,243,0) 0%, rgba(33,184,243,0.25) 25%, rgba(33,150,243,0.75) 50%, rgba(4,72,184,1) 125%) 1 100%;
+}
+
 .collapsible-header i {
   font-size: 1.6rem;
   text-align: right;
@@ -311,6 +342,10 @@ h4 {
 [type="radio"]:checked + span::after {
   background-color: #2196F3;
   border: 2px solid #2196F3;
+}
+
+#statusR, #statusU, #statusD {
+  transition: color 1s;
 }
 
 /* Font Navbar */

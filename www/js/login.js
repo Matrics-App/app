@@ -16,33 +16,46 @@ let skipLogin = true;
 
 function onDeviceReady() {
     loginButton.onclick = function() {
-        $("#loading").modal('open');
         if (skipLogin) {
-            // Just for testing purposes
-            window.location.href = "index.html";
-        } else { 
-            ajaxGetLogin("https://", "/api?email=" +emailField.value + "&password=" + CryptoJS.SHA256(passwordField.value).toString(), "text");
+                window.location.href = "index.html";
+        } else {
+            if (validateFieldsLogin()) {
+                $("#loading").modal('open');
+                ajaxLogin();
+            } else {
+                sendToast("Els camps Email i Contrasenya no poden estar buits.");
+            }
         }
     }
 } 
 
-function ajaxGetLogin(url, query, dataType) {
+function validateFieldsLogin() {
+    return (!emailField.value || emailField.value.trim() === "" || !passwordField.value || passwordField.value.trim() === "") ? false : true;
+}
+
+function ajaxLogin() {
+    var formData = new FormData;
+    formData.append("email", emailField.value);
+    formData.append("password", CryptoJS.SHA256(passwordField.value).toString());
+
     $.ajax({
-        method: "GET",
-        url: url + query,
-        dataType: dataType,
+        url: "http://18.234.231.223:8000",
+        type: "POST",
+        data: formData,
+        processData: false,  // tell jQuery not to process the data
+        contentType: false   // tell jQuery not to set contentType
     }).done(function(xhr) {
-        console.log(xhr.status);
+        console.log(xhr);
         window.location.href = "index.html";
-    }).fail(function() {
-        sendToast("Usuari o contrasenya err" + "\u00F2" + "nia...");
+    }).error(function() {
+        sendToast("L\'email o la contrasenya no s\u00F3n correctes.");
         $("#loading").modal('close');
     }).always(function() {
         $("#loading").modal('close');
     });
 }
 
-function sendToast(content, duration) {
-    M.toast({html: content, displayLength: duration, classes: 'rounded'});
+function sendToast(content) {
+    M.toast({html: content, displayLength: 3000, classes: 'rounded red-gradient'});
 }
   
