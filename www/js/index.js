@@ -33,9 +33,10 @@ let hintRequisits = $("#dashboardInfoRequisits");
 let saveUFsButton = $("#saveUFsButton");
 
 // Variables Tab Dades:
+let userData =JSON.parse('{"nombre":"dani","apellido1":"ronda","apellido2":"palasi","dni":"46465871K","birthplace":"Barcelona","birthday":"01/08/2000","address":"plz milagros consarnau sabate 15 4 3","city":"Hospitalet","postal_code":"54815","phone_number":"936558741","emergency_number":"98563221","tutor_1":"dani powenwne jhjdwcmokwd","tutor_2":"safiupbdvsapi dsaihadvsiunl"}');
 
 // Booleanos generales:
-let skipWizard = false;
+let skipWizard = true;
 
 // Modal variables: 
 let modalBtn = $("#wizard-floating-btn");
@@ -74,9 +75,12 @@ function onDeviceReady() {
     // Control the expand icons on each Module in UFs Tab
     checkExpandables();
 
+    //Load user data
+    getUserData();
+
     saveUFsButton.on('click', function() {
         setUfs();
-    })
+    });
 }
 
 // Funciones Tab Inici (Dashboard):
@@ -251,6 +255,20 @@ function addUf(idModule, idUf, ufName) {
 }
 
 // Funciones Tab Dades:
+function getUserData(){
+    $("#dadesNombre")[0].innerHTML=userData.nombre;
+    $("#dadesApellidos")[0].innerHTML=userData.apellido1;
+    $("#dadesDNI")[0].innerHTML=userData.dni;
+    $("#dadesLlocNaixement")[0].innerHTML=userData.birthplace;
+    $("#dadesNaixement")[0].innerHTML=userData.birthday;
+    $("#dadesDireccio")[0].innerHTML=userData.address;
+    $("#dadesCiutat")[0].innerHTML=userData.city;
+    $("#dadesCodiPostal")[0].innerHTML=userData.postal_code;
+    $("#dadesTelefon")[0].innerHTML=userData.phone_number;
+    $("#dadesTelefonEmergencia")[0].innerHTML=userData.emergency_number;
+    $("#dadesTutor1")[0].innerHTML=userData.tutor_1;
+    $("#dadesTutor2")[0].innerHTML=userData.tutor_2;
+}
 
 // Funciones generales:
 function sendToast(content) {
