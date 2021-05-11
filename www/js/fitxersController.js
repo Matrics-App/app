@@ -5,6 +5,10 @@ function onDeviceReady() {
     document.getElementById("reqPhoto").onclick = function () {
         navigator.camera.getPicture(onSuccess, onFail, setOptions(1));
     }
+
+    document.getElementById("reqGallery").onclick = function () {
+        navigator.camera.getPicture(onSuccess, onFail, setOptions(0));
+    }
 }
 
 function getRequisits(){
@@ -38,7 +42,7 @@ function getRequisits(){
 function setOptions(srcType) {
     var options = {
         quality: 100,
-        destinationType: Camera.DestinationType.FILE_URI,
+        destinationType: Camera.DestinationType.DATA_URL,
         sourceType: srcType,
         encodingType: Camera.EncodingType.JPEG,
         mediaType: Camera.MediaType.PICTURE,
@@ -49,10 +53,9 @@ function setOptions(srcType) {
     return options;
 }
 
-function onSuccess(imageURI) {
-    var image = document.getElementById('myImage');
-    image.src = imageURI;
-    console.log(image.src);
+function onSuccess(imageData) {
+    var image = "data:image/jpeg;base64," + imageData;
+    console.log(image);
 }
 
 function onFail(message) {
