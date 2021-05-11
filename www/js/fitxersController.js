@@ -1,6 +1,14 @@
 getRequisits();
 
+document.addEventListener("deviceready", onDeviceReady, false);
+function onDeviceReady() {
+    document.getElementById("reqPhoto").onclick = function () {
+        navigator.camera.getPicture(onSuccess, onFail, setOptions(1));
+    }
+}
+
 function getRequisits(){
+
 
     var arrayStatus = ['<div class="valign-wrapper"><td class="center"><i style="opacity:0.3" class="material-icons circle gray-text custom-icon-padding">brightness_1</i><i class="material-icons circle red-text custom-icon-padding">brightness_1</i><i style="opacity:0.3" class="material-icons circle amber-text custom-icon-padding">brightness_1</i><i style="opacity:0.3" class="material-icons circle light-green-text custom-icon-padding">brightness_1</i></td></div>',
         '<div class="valign-wrapper"><td class="center"><i style="opacity:0.3" class="material-icons circle gray-text custom-icon-padding">brightness_1</i><i style="opacity:0.3" class="material-icons circle red-text custom-icon-padding">brightness_1</i><i class="material-icons circle amber-text custom-icon-padding">brightness_1</i><i style="opacity:0.3" class="material-icons circle light-green-text custom-icon-padding">brightness_1</i></td></div>',
@@ -25,4 +33,28 @@ function getRequisits(){
             instance.open();
         }
     }
+}
+
+function setOptions(srcType) {
+    var options = {
+        quality: 100,
+        destinationType: Camera.DestinationType.FILE_URI,
+        sourceType: srcType,
+        encodingType: Camera.EncodingType.JPEG,
+        mediaType: Camera.MediaType.PICTURE,
+        allowEdit: true,
+        correctOrientation: true,
+        direction: Camera.Direction.BACK
+    }
+    return options;
+}
+
+function onSuccess(imageURI) {
+    var image = document.getElementById('myImage');
+    image.src = imageURI;
+    console.log(image.src);
+}
+
+function onFail(message) {
+    alert('Failed because: ' + message);
 }
