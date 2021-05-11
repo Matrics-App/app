@@ -33,6 +33,9 @@
             $('.fixed-action-btn').floatingActionButton();
         });
 
+        //Load user data
+        getUserData();
+
     }); // end of document ready
 })(jQuery); // end of jQuery name space
 
