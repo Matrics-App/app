@@ -1,12 +1,12 @@
 (function($) {
     $(function() {
         // Wizard modal options:
-        var modalItems = document.querySelectorAll('#wizard');
-        M.Modal.init(modalItems, {opacity: 0.7, dismissible: false, endingTop: '7%'});
+        var modalWizard = document.querySelectorAll('#wizard');
+        M.Modal.init(modalWizard, {opacity: 0.7, dismissible: false, endingTop: '7%'});
 
         // Loading modal options:
-        var modalItems = document.querySelectorAll('#loading');
-        M.Modal.init(modalItems, {opacity: 0.5, dismissible: false, endingTop: '35%'});
+        var modalLoading = document.querySelectorAll('#loading');
+        M.Modal.init(modalLoading, {opacity: 0.5, dismissible: false, endingTop: '35%'});
 
         // Wizard modal css:
         $(".modal-content").css("padding", "0px");
@@ -26,13 +26,15 @@
 
         // Para cambiar el click de cancelar en el pago. Hara que vuelva a la aplicacion (WIP)
         $("#divImgCancelar").on("click", function() {window.location.href = "javascript:history.back()"});
-    
 
         $(document).ready(function() {
             $('.tabs').tabs();
             $('.collapsible').collapsible();
             $('.fixed-action-btn').floatingActionButton();
         });
+
+        //Load user data
+        getUserData();
 
     }); // end of document ready
 })(jQuery); // end of jQuery name space

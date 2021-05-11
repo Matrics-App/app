@@ -1,13 +1,39 @@
-
+(function($) {
+    $(function() {
+        if (!skipWizard) {
+            // Inicio del wizard:
+            $("#wizard").modal('open');
+    
+            // Paginamiento del wizard:
+            modalBtn.on( "click", function() {
+                wizardPageControl();
+            });
+        }
+    });
+})(jQuery); 
 
 document.addEventListener('deviceready', onDeviceReady, false);
 
+// Variables generales:
+let body = document.getElementById("body");
+
+// Variables Tab Inici (Dashboard):
 let statusR = $("#statusR");   // Status Requeriments
 let statusU = $("#statusU");   // Status UFs
 let statusD = $("#statusD");   // Status Dades Personals
 
-// Variables generales:
-let body = document.getElementById("body");
+let hintDades = $("#dashboardInfoDades");
+let hintUFs = $("#dashboardInfoUFs");
+let hintPayment = $("#dashboardInfoPay");
+let hintRequisits = $("#dashboardInfoRequisits");
+
+// Variables Tab Requisits:
+
+// Variables Tab UFs:
+let saveUFsButton = $("#saveUFsButton");
+
+// Variables Tab Dades:
+let userData =JSON.parse('{"nombre":"dani","apellido1":"ronda","apellido2":"palasi","dni":"46465871K","birthplace":"Barcelona","birthday":"01/08/2000","address":"plz milagros consarnau sabate 15 4 3","city":"Hospitalet","postal_code":"54815","phone_number":"936558741","emergency_number":"98563221","tutor_1":"dani powenwne jhjdwcmokwd","tutor_2":"safiupbdvsapi dsaihadvsiunl"}');
 
 // Booleanos generales:
 let skipWizard = true;
@@ -49,62 +75,90 @@ function onDeviceReady() {
     // Control the expand icons on each Module in UFs Tab
     checkExpandables();
 
-    if (!skipWizard) {
-        $("#wizard").modal('open');
+    //Load user data
+    getUserData();
 
-        // Paginamiento del wizard:
-        modalBtn.on( "click", function() {
-            wizardPageControl();
-        });
-    }
+    saveUFsButton.on('click', function() {
+        setUfs();
+    });
 }
 
 // Funciones Tab Inici (Dashboard):
-function setStatus(type, status, bool) {
+function setStatus(type, status) {
     if (status == 0) {
         type.removeClass("orange-text");
         type.removeClass("green-text");
-        type.addClass("red-text");
-        
-        generalStatus[bool] = false;
+        type.removeClass("grey-text");
+        type.removeClass("text-lightn-1");
+        type.addClass("green-text");
     } else if (status == 1) {
         type.removeClass("green-text");
         type.removeClass("red-text");
+        type.removeClass("grey-text");
+        type.removeClass("text-lightn-1");
         type.addClass("orange-text");
-        generalStatus[bool] = false;
     } else if (status == 2) {
         type.removeClass("orange-text");
         type.removeClass("red-text");
-        type.addClass("green-text");
-        generalStatus[bool] = true;
+        type.removeClass("grey-text");
+        type.removeClass("text-lightn-1");
+        type.addClass("red-text");
+    }
+}
+
+function hintMenuControl() {
+    switch (statusR) {
+        case 0:
+            
+            break;
+        case 1:
+        
+            break;
+        case 2:
+    
+            break;
+        default:
+            break;
     }
 
-    if (generalStatus[0] && generalStatus[1] && generalStatus[2]) {
-        applyPulseEffect();
-    } else {
-        removePulseEffect();
+    switch (statusU) {
+        case 0:
+            
+            break;
+        case 1:
+        
+            break;
+        case 2:
+    
+            break;
+        default:
+            break;
     }
+    
+    switch (statusD) {
+        case 0:
+            
+            break;
+        case 1:
+        
+            break;
+        case 2:
+    
+            break;
+        default:
+            break;
+    }
+
 }
 
 // Funciones Tab Requisits:
 
-// Funciones Tab UFs:
-function checkExpandables() {
-    $("i.blue-text-gradient-modal").each(function() {
-        $(this).parent().prop("onclick", null).off("click");
-        $(this).parent().on("click", function() {
-            if ($(this).children("i.blue-text-gradient-modal")[0].innerHTML === "expand_more") {
-                $("i.blue-text-gradient-modal").each(function() {$(this)[0].innerHTML = "expand_more";});
-                $(this).children("i.blue-text-gradient-modal")[0].innerHTML = "expand_less";
-            } else {
-                $(this).children("i.blue-text-gradient-modal")[0].innerHTML = "expand_more";
-            }
-        });
-    });
-}
 
-// Cada vez que se agregue un Modulo, esta funcion reiniciara los onclick para tener dicho modulo nuevo en cuenta.
-// Si la checkbox de un modulo se marca, todas sus checkbox de UF se marcaran.
+// Funciones Tab UFs:
+
+/** Cada vez que se agregue un Modulo, esta funcion reiniciara los onclick para tener dicho modulo nuevo en cuenta.
+ *  Si la checkbox de un modulo se marca, todas sus checkbox de UF se marcaran.
+ */
 function checkSelectionListenersMPs() {
     $("[name=MP]").each(function() {
         $(this).prop("onclick", null).off("click");
@@ -118,8 +172,10 @@ function checkSelectionListenersMPs() {
     });
 }
 
-// Cada vez que se agregue una UF, esta funcion reiniciara los onclick para tener dicha UF nueva en cuenta.
-// Si la checkbox de una UF se marca o desmarca, se controlara si todas las UF hermanas del mismo modulo estan marcadas o no, para marcar la checkbox del Modulo padre o desmarcarla (VALGA LA REDUNDANCIA).
+/** Cada vez que se agregue una UF, esta funcion reiniciara los onclick para tener dicha UF nueva en cuenta.
+ *  Si la checkbox de una UF se marca o desmarca, se controlara si todas las UF hermanas del mismo modulo 
+ *  estan marcadas o no, para marcar la checkbox del Modulo padre o desmarcarla (VALGA LA REDUNDANCIA).
+ */
 function checkSelectionListenersUFs() {
     let areAllchecked = false;
     $("[name=UF]").each(function() {
@@ -164,23 +220,23 @@ function getUfs(url, query, dataType) {
     });
 }
 
-
 // funcion a la que llamar cuando se pulse el boton de guardar y que mandara las UFs seleccionadas a la base
-function setUfs(){
-
-    $("[name=UF]:checked");
-
+function setUfs(url, query, token){
     $.ajax({
         method: "POST",
         url: url + query,
         datatype: String,
         data: ({
-          token: token
+          token: token === undefined ? "" : token
         })
     }).done(function(xhr) {
         console.log(xhr.status);
         
+        // Cambiar el estado del las UFs a 1 (Ambar)
+        setStatus(statusU, 1);
     }).fail(function() {
+        // Cambiar el estado del las UFs a 2 (Rojo)
+        setStatus(statusU, 2);
         sendToast("No s'ha pogut connectar amb el servidor. Si us plau torna a intentar-ho m\u00E9s tard.");
     }).always(function() {
         
@@ -188,7 +244,7 @@ function setUfs(){
 }
 
 function addModule(idModule, moduleName) {                                                                            
-    $("#ufList").append('<li><div id="' + idModule + '-header" class="collapsible-header valign-wrapper"><label style="margin-left: 0.5em; max-width: 95%; white-space: break-spaces;"><input id="' + idModule + '" type="checkbox" name="MP"/><span></span></label><label style="margin-left: 0.5em; max-width: 95%; white-space: break-spaces; font-size: 1em">' + moduleName + '</span></label><i id="expandable" class="material-icons circle blue-text-gradient-modal">expand_more</i></div><div id="' + idModule + '-body" class="collapsible-body custom-padding-0"></div></li>');
+    $("#ufList").append('<li><div id="' + idModule + '-header" class="collapsible-header valign-wrapper"><label style="margin-left: 0.5em; max-width: 95%; white-space: break-spaces;"><input id="' + idModule + '" type="checkbox" name="MP"/><span></span></label><label style="margin-left: 0.5em; max-width: 95%; white-space: break-spaces; font-size: 1em">' + moduleName + '</span></label><i id="expandable" name="UfTab" class="material-icons circle blue-text-gradient-modal">expand_more</i></div><div id="' + idModule + '-body" class="collapsible-body custom-padding-0"></div></li>');
     checkExpandables();
     checkSelectionListenersMPs();
 }
@@ -199,8 +255,26 @@ function addUf(idModule, idUf, ufName) {
 }
 
 // Funciones Tab Dades:
+function getUserData(){
+    $("#dadesNombre")[0].innerHTML=userData.nombre;
+    $("#dadesApellidos")[0].innerHTML=userData.apellido1;
+    $("#dadesDNI")[0].innerHTML=userData.dni;
+    $("#dadesLlocNaixement")[0].innerHTML=userData.birthplace;
+    $("#dadesNaixement")[0].innerHTML=userData.birthday;
+    $("#dadesDireccio")[0].innerHTML=userData.address;
+    $("#dadesCiutat")[0].innerHTML=userData.city;
+    $("#dadesCodiPostal")[0].innerHTML=userData.postal_code;
+    $("#dadesTelefon")[0].innerHTML=userData.phone_number;
+    $("#dadesTelefonEmergencia")[0].innerHTML=userData.emergency_number;
+    $("#dadesTutor1")[0].innerHTML=userData.tutor_1;
+    $("#dadesTutor2")[0].innerHTML=userData.tutor_2;
+}
 
 // Funciones generales:
+function sendToast(content) {
+    M.toast({html: content, displayLength: 3000, classes: 'rounded red-gradient'});
+}
+
 function applyPulseEffect(id) {
     $("#" + id).addClass("pulse");
 }
@@ -215,4 +289,27 @@ function applyDisabledClass(id) {
 
 function removeDisabledClass(id) {
     $("#" + id).removeClass("disabled");
+}
+
+function checkExpandables() {
+    $("i.blue-text-gradient-modal").each(function() {
+        $(this).parent().prop("onclick", null).off("click");
+        $(this).parent().on("click", function() {
+            if ($(this).children("i.blue-text-gradient-modal[name=dashboardTab]").length > 0) {
+                if ($(this).children("i.blue-text-gradient-modal[name=dashboardTab]")[0].innerHTML === "expand_more") {
+                    $("i.blue-text-gradient-modal[name=dashboardTab]").each(function() {$(this)[0].innerHTML = "expand_more";});
+                    $(this).children("i.blue-text-gradient-modal[name=dashboardTab]")[0].innerHTML = "expand_less";
+                } else {
+                    $(this).children("i.blue-text-gradient-modal[name=dashboardTab]")[0].innerHTML = "expand_more";
+                }
+            } else {
+                if ($(this).children("i.blue-text-gradient-modal[name=UfTab]")[0].innerHTML === "expand_more") {
+                    $("i.blue-text-gradient-modal[name=UfTab]").each(function() {$(this)[0].innerHTML = "expand_more";});
+                    $(this).children("i.blue-text-gradient-modal[name=UfTab]")[0].innerHTML = "expand_less";
+                } else {
+                    $(this).children("i.blue-text-gradient-modal[name=UfTab]")[0].innerHTML = "expand_more";
+                }
+            }
+        });
+    });
 }
