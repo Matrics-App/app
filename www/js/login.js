@@ -12,7 +12,7 @@ let passwordField = document.getElementById("passwordField");
 let userToken = "";
 
 // Testing
-let skipLogin = false;
+let skipLogin = true;
 
 function onDeviceReady() {
     loginButton.onclick = function() {
@@ -21,7 +21,7 @@ function onDeviceReady() {
         } else {
             if (validateFieldsLogin()) {
                 $("#loading").modal('open');
-                ajaxLogin("/api/token");
+                ajaxLogin();
             } else {
                 sendToast("Els camps Email i Contrasenya no poden estar buits.");
             }
@@ -33,7 +33,7 @@ function validateFieldsLogin() {
     return (!emailField.value || emailField.value.trim() === "" || !passwordField.value || passwordField.value.trim() === "") ? false : true;
 }
 
-function ajaxGetLogin(query) {
+function ajaxLogin() {
     var formData = new FormData;
     formData.append("email", emailField.value);
     formData.append("password", CryptoJS.SHA256(passwordField.value).toString());
@@ -48,7 +48,7 @@ function ajaxGetLogin(query) {
         console.log(xhr);
         window.location.href = "index.html";
     }).error(function() {
-        sendToast("Usuari o contrasenya err" + "\u00F2" + "nia...");
+        sendToast("L\'email o la contrasenya no s\u00F3n correctes.");
         $("#loading").modal('close');
     }).always(function() {
         $("#loading").modal('close');

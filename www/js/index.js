@@ -14,6 +14,9 @@
 
 document.addEventListener('deviceready', onDeviceReady, false);
 
+// Booleanos generales:
+let skipWizard = false;
+
 // Variables generales:
 let body = document.getElementById("body");
 
@@ -34,9 +37,6 @@ let saveUFsButton = $("#saveUFsButton");
 
 // Variables Tab Dades:
 let userData =JSON.parse('{"nombre":"dani","apellido1":"ronda","apellido2":"palasi","dni":"46465871K","birthplace":"Barcelona","birthday":"01/08/2000","address":"plz milagros consarnau sabate 15 4 3","city":"Hospitalet","postal_code":"54815","phone_number":"936558741","emergency_number":"98563221","tutor_1":"dani powenwne jhjdwcmokwd","tutor_2":"safiupbdvsapi dsaihadvsiunl"}');
-
-// Booleanos generales:
-let skipWizard = true;
 
 // Modal variables: 
 let modalBtn = $("#wizard-floating-btn");
