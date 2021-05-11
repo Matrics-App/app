@@ -17,18 +17,13 @@ let skipLogin = true;
 function onDeviceReady() {
     loginButton.onclick = function() {
         if (skipLogin) {
-            if (validateFieldsLogin()) {
-                $("#loading").modal('open');
                 window.location.href = "index.html";
-            } else {
-                sendToast("Els camps Email i Contrasenya no poden estar buits.", 3000);
-            }
         } else {
             if (validateFieldsLogin()) {
                 $("#loading").modal('open');
                 ajaxLogin("https://", "/api?email=" +emailField.value + "&password=" + CryptoJS.SHA256(passwordField.value).toString(), "text");
             } else {
-                sendToast("Els camps Email i Contrasenya no poden estar buits.", 3000);
+                sendToast("Els camps Email i Contrasenya no poden estar buits.");
             }
         }
     }
@@ -54,7 +49,7 @@ function ajaxLogin(url, query, dataType) {
     });
 }
 
-function sendToast(content, duration) {
-    M.toast({html: content, displayLength: duration, classes: 'rounded blue-gradient'});
+function sendToast(content) {
+    M.toast({html: content, displayLength: 3000, classes: 'rounded red-gradient'});
 }
   

@@ -42,18 +42,18 @@
 					Requeriments
 					<i id="statusR"class="material-icons circle grey-text text-lighten-1">brightness_1</i>
 				</div>
-				<div class="collapsible-body custom-padding-top-bottom-1em">
-					<p>
-						<i class="material-icons circle red-text tiny">brightness_1</i>&ThickSpace; Vermell
-						si els arxius han estat revisats, s&oacute;n incorrectes i cal tornar a enviar-los.
+				<div class="collapsible-body">
+					<p class="custom-margin-top-05em-negative">
+						<i class="material-icons circle red-text tiny">brightness_1</i>&ThickSpace; 
+						Vermell si els documents han estat revisats, s&oacute;n incorrectes i cal tornar a enviar-los.
 					</p>
 					<p>
-						<i class="material-icons circle orange-text tiny">brightness_1</i>&ThickSpace; Groc
-						si estan pendent de validaci&oacute; a secretaria.
+						<i class="material-icons circle orange-text tiny">brightness_1</i>&ThickSpace; 
+						Groc si tots els documents estan pendent de validaci&oacute; a secretaria.
 					</p>
-					<p>
-						<i class="material-icons circle green-text tiny">brightness_1</i>&ThickSpace; Verd
-						si els documents s'han validat correctament des de secret&agrave;ria.
+					<p class="custom-margin-bottom-05em-negative">
+						<i class="material-icons circle green-text tiny">brightness_1</i>&ThickSpace; 
+						Verd si els documents s'han validat correctament des de secret&agrave;ria.
 					</p>
 				</div>
 			</li>
@@ -63,18 +63,18 @@
 					UFs a matricular
 					<i id="statusU" class="material-icons circle grey-text text-lighten-1">brightness_1</i>
 				</div>
-				<div class="collapsible-body custom-padding-top-bottom-1em">
-					<p>
-						<i class="material-icons circle red-text tiny">brightness_1</i>&ThickSpace; Vermell
-						si les UFs no han estat guardades en el teu perfil.
+				<div class="collapsible-body">
+					<p class="custom-margin-top-05em-negative">
+						<i class="material-icons circle red-text tiny">brightness_1</i>&ThickSpace; 
+						Vermell si les UFs no s'han pogut guardar en el teu perfil.
 					</p>
 					<p>
-						<i class="material-icons circle orange-text tiny">brightness_1</i>&ThickSpace; Groc
-						si estan pendent de pagament.
+						<i class="material-icons circle orange-text tiny">brightness_1</i>&ThickSpace; 
+						Groc si estan les UFs estan ben guardades per&ograve; pendent de pagament.
 					</p>
-					<p>
-						<i class="material-icons circle green-text tiny">brightness_1</i>&ThickSpace; Verd
-						si ja s'han guardat i pagat.
+					<p class="custom-margin-bottom-05em-negative">
+						<i class="material-icons circle green-text tiny">brightness_1</i>&ThickSpace; 
+						Verd si ja s'han guardat i pagat.
 					</p>
 				</div>
 			</li>
@@ -84,34 +84,38 @@
 					Dades personals
 					<i id="statusD" class="material-icons circle grey-text text-lighten-1">brightness_1</i>
 				</div>
-				<div class="collapsible-body custom-padding-top-bottom-1em">
-					<p>
-						<i class="material-icons circle red-text tiny">brightness_1</i>&ThickSpace; Vermell
-						si les dades que has visualitzat contenen algun error.
+				<div class="collapsible-body">
+					<p class="custom-margin-top-05em-negative">
+						<i class="material-icons circle red-text tiny">brightness_1</i>&ThickSpace; 
+						Vermell si les dades que has visualitzat contenen algun error.
 					</p>
 					<p>
-						<i class="material-icons circle orange-text tiny">brightness_1</i>&ThickSpace; Groc
-						si estan pendents de validaci&oacute;.
+						<i class="material-icons circle orange-text tiny">brightness_1</i>&ThickSpace; 
+						Groc si estan pendents de validaci&oacute;.
 					</p>
-					<p>
-						<i class="material-icons circle green-text tiny">brightness_1</i>&ThickSpace; Verd
-						si has verificat que les teves dades personals s&oacute;n correctes.
+					<p class="custom-margin-bottom-05em-negative">
+						<i class="material-icons circle green-text tiny">brightness_1</i>&ThickSpace; 
+						Verd si has verificat que les teves dades personals s&oacute;n correctes.
 					</p>
 				</div>
 			</li>
 		</ul>
-		<!-- Dades -->
-		<blockquote>
-			<h5 id="titleHint" step="1">Primer pas!</h5>
-			<span id="contentHint" step="1">
-				<p>
-					- Fes clic a la pestanya <em>Dades</em>, aquesta cont&eacute; les teves dades personals.
+
+		<!-- TODO LIST - Hint Menu -->
+		<blockquote class="custom-scroll-y">
+			<h5 id="titleHint" class="custom-h5">Tasques a fer:</h5>
+			<span id="contentHint">
+				<p id="dashboardInfoDades" step="0">
+					- Validar les teves dades personals. <!-- Per fer-ho comprova que tot sigui correcte a la pestanya <em>Dades</em>. -->
 				</p>
-				<p>
-					- Asegura't que s&oacute;n totes correctes i prem el bot&oacute; <em>Validar</em>.
+				<p id="dashboardInfoUFs" step="0">
+					- Seleccionar les UFs a les que et vols matricular. <!-- Per fer-ho selecciona les UFs i prem el bot&oacute; <em>Guardar</em> a la pestanya <em>UFS</em>. -->
 				</p>
-				<p>
-					- En cas de no estar d'acord amb les dades actuals, per motius de seguretat tindr&agrave;s que contactar amb secretaria.
+				<p id="dashboardInfoPay" step="0">
+					- Realitzar el pagament de la matr&iacute;cula. <!-- Per fer-ho segueix els pasos al pr&eacute;mer el bot&oacute; <em>Seleccionar m&eacute;tode de pagament</em> a la pestanya <em>UFS</em>. -->
+				</p>
+				<p id="dashboardInfoRequisits" step="0">
+					- Pujar els arxius o fotografies dels documents necessaris. <!-- Per fer-ho puja cada document al seu apartat corresponent a la pestanya <em>Requisits</em>. -->
 				</p>
 			</span>
 		</blockquote>
@@ -122,9 +126,11 @@
 		<div id="paneProfile" class="container">
 			<h4 id="userProfile">#PERFIL</h4>
 		</div>
+
 		<div id="paneRequisits" class="container right-align">
 
 		</div>
+
 		<div id="reqModal" class="modal bottom-sheet">
 			<div class="modal-content">
 				<h4>MatriculaT</h4>
@@ -150,7 +156,7 @@
 	<!-- Tab UFs -->
 	<div id="ufTab" class="container custom-width-80">
 		<h5 class="center-align">Jardineria i floristeria</h5>
-		<a id="saveButton" class="waves-effect waves-light custom-display-block custom-width-75 custom-margin-auto custom-margin-top-bottom-1-5em blue-gradient btn-large custom-border-radius center-align">Guardar</a>
+		<a id="saveUFsButton" class="waves-effect waves-light custom-display-block custom-width-75 custom-margin-auto custom-margin-top-bottom-1-5em blue-gradient btn-large custom-border-radius center-align">Guardar</a>
 		<ul id="ufList" class="collapsible custom-border-radius custom-scroll-y custom-scroll-x-hidden custom-height-35vh">
 			<!-- TEMP DATA - This ul should be empty on PRO -->
 			<!-- <li> 
@@ -184,13 +190,12 @@
 			</table>
 		</div>
 
-		<form name="formPayment" class="custom-margin-bottom-1em" id="formPayment"
-			action="https://sis-t.redsys.es:25443/sis/realizarPago" method="POST">
-			<input type="hidden" name="Ds_SignatureVersion" value="HMAC_SHA256_V1" />
-			<input type="hidden" name="Ds_MerchantParameters" />
-			<input type="hidden" name="Ds_Signature" />
-			<input type="hidden" id="tfAmount" value="200"><br />
-			<input type="submit" value="Realitzar pagament" class="custom-border-radius btn blue" />
+		<form name="formPayment" class="center-align" id="formPayment" action="https://sis-t.redsys.es:25443/sis/realizarPago" method="POST">
+			<input type="hidden" name="Ds_SignatureVersion" value="HMAC_SHA256_V1"/>
+			<input type="hidden" name="Ds_MerchantParameters"/>
+			<input type="hidden" name="Ds_Signature"/>
+			<input type="hidden" id="tfAmount" value="200"><br/>
+			<input type="submit" value="M&egrave;todes de pagament" class="custom-border-radius btn-large blue"/>
 		</form>
 	</div>
 
@@ -203,8 +208,7 @@
 	<div id="wizard" class="modal">
 		<div class="modal-content">
 			<nav id="navbar" class="blue custom-width-100 custom-margin-auto blue-gradient-180" role="navigation">
-				<div class="nav-wrapper container"><span id="logo-container" href="#"
-						class="brand-logo center blue-text-gradient">Inici</span></div>
+				<div class="nav-wrapper container"><span id="logo-container" href="#" class="brand-logo center blue-text-gradient">Inici</span></div>
 			</nav>
 
 			<!--  Inici -->
