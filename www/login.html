@@ -7,7 +7,7 @@
 
 		<!-- cordova-headers -->
 		<meta http-equiv="Content-Security-Policy"
-			content="default-src https://code.jquery.com https://fonts.gstatic.com 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src https://fonts.googleapis.com 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
+			content="default-src http://18.234.231.223:8000 https://code.jquery.com https://fonts.gstatic.com 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src https://fonts.googleapis.com 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
 		<meta name="format-detection" content="telephone=no">
 		<meta name="msapplication-tap-highlight" content="no">
 
@@ -24,7 +24,7 @@
 
 		<div class="container custom-width-80">
 			<div class="row custom-margin-top-2em">
-				<form class="col s12 custom-border custom-border-radius custom-padding-1em white">
+				<form id="formLogin" class="col s12 custom-border custom-border-radius custom-padding-1em white">
 					<div class="input-field col s12">
 						<input id="emailField" type="email" class="validate">
 						<label for="emailField">Email</label>

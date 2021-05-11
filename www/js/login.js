@@ -12,7 +12,7 @@ let passwordField = document.getElementById("passwordField");
 let userToken = "";
 
 // Testing
-let skipLogin = true;
+let skipLogin = false;
 
 function onDeviceReady() {
     loginButton.onclick = function() {
@@ -21,7 +21,7 @@ function onDeviceReady() {
         } else {
             if (validateFieldsLogin()) {
                 $("#loading").modal('open');
-                ajaxLogin("https://", "/api?email=" +emailField.value + "&password=" + CryptoJS.SHA256(passwordField.value).toString(), "text");
+                ajaxLogin("/api/token");
             } else {
                 sendToast("Els camps Email i Contrasenya no poden estar buits.");
             }
@@ -33,15 +33,21 @@ function validateFieldsLogin() {
     return (!emailField.value || emailField.value.trim() === "" || !passwordField.value || passwordField.value.trim() === "") ? false : true;
 }
 
-function ajaxLogin(url, query, dataType) {
+function ajaxGetLogin(query) {
+    var formData = new FormData;
+    formData.append("email", emailField.value);
+    formData.append("password", CryptoJS.SHA256(passwordField.value).toString());
+
     $.ajax({
-        method: "GET",
-        url: url + query,
-        dataType: dataType,
+        url: "http://18.234.231.223:8000",
+        type: "POST",
+        data: formData,
+        processData: false,  // tell jQuery not to process the data
+        contentType: false   // tell jQuery not to set contentType
     }).done(function(xhr) {
-        console.log(xhr.status);
+        console.log(xhr);
         window.location.href = "index.html";
-    }).fail(function() {
+    }).error(function() {
         sendToast("Usuari o contrasenya err" + "\u00F2" + "nia...");
         $("#loading").modal('close');
     }).always(function() {
