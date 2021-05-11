@@ -16,26 +16,30 @@ let skipLogin = false;
 
 function onDeviceReady() {
     loginButton.onclick = function() {
-        $("#loading").modal('open');
         if (skipLogin) {
-            // Just for testing purposes
-            window.location.href = "index.html";
-        } else { 
-            ajaxGetLogin("http://18.234.231.223:8000", "/api/token?email=" +emailField.value + "&password=" + CryptoJS.SHA256(passwordField.value).toString(), "text");
+                window.location.href = "index.html";
+        } else {
+            if (validateFieldsLogin()) {
+                $("#loading").modal('open');
+                ajaxLogin("/api/token");
+            } else {
+                sendToast("Els camps Email i Contrasenya no poden estar buits.");
+            }
         }
     }
 } 
 
-function ajaxGetLogin(url, query, dataType) {
-    
-    console.log("patata");
+function validateFieldsLogin() {
+    return (!emailField.value || emailField.value.trim() === "" || !passwordField.value || passwordField.value.trim() === "") ? false : true;
+}
 
+function ajaxGetLogin(query) {
     var formData = new FormData;
     formData.append("email", emailField.value);
     formData.append("password", CryptoJS.SHA256(passwordField.value).toString());
 
     $.ajax({
-        url: "http://18.234.231.223:8000/api/token",
+        url: "http://18.234.231.223:8000",
         type: "POST",
         data: formData,
         processData: false,  // tell jQuery not to process the data
@@ -51,7 +55,7 @@ function ajaxGetLogin(url, query, dataType) {
     });
 }
 
-function sendToast(content, duration) {
-    M.toast({html: content, displayLength: duration, classes: 'rounded'});
+function sendToast(content) {
+    M.toast({html: content, displayLength: 3000, classes: 'rounded red-gradient'});
 }
   

@@ -22,9 +22,15 @@ let statusR = $("#statusR");   // Status Requeriments
 let statusU = $("#statusU");   // Status UFs
 let statusD = $("#statusD");   // Status Dades Personals
 
+let hintDades = $("#dashboardInfoDades");
+let hintUFs = $("#dashboardInfoUFs");
+let hintPayment = $("#dashboardInfoPay");
+let hintRequisits = $("#dashboardInfoRequisits");
+
 // Variables Tab Requisits:
 
 // Variables Tab UFs:
+let saveUFsButton = $("#saveUFsButton");
 
 // Variables Tab Dades:
 
@@ -33,7 +39,6 @@ let skipWizard = false;
 
 // Modal variables: 
 let modalBtn = $("#wizard-floating-btn");
-
 
 // Funcion inicial
 function onDeviceReady() {
@@ -68,51 +73,84 @@ function onDeviceReady() {
 
     // Control the expand icons on each Module in UFs Tab
     checkExpandables();
+
+    saveUFsButton.on('click', function() {
+        setUfs();
+    })
 }
 
 // Funciones Tab Inici (Dashboard):
-function setStatus(type, status, bool) {
+function setStatus(type, status) {
     if (status == 0) {
         type.removeClass("orange-text");
         type.removeClass("green-text");
-        type.addClass("red-text");
-        
-        generalStatus[bool] = false;
+        type.removeClass("grey-text");
+        type.removeClass("text-lightn-1");
+        type.addClass("green-text");
     } else if (status == 1) {
         type.removeClass("green-text");
         type.removeClass("red-text");
+        type.removeClass("grey-text");
+        type.removeClass("text-lightn-1");
         type.addClass("orange-text");
-        generalStatus[bool] = false;
     } else if (status == 2) {
         type.removeClass("orange-text");
         type.removeClass("red-text");
-        type.addClass("green-text");
-        generalStatus[bool] = true;
+        type.removeClass("grey-text");
+        type.removeClass("text-lightn-1");
+        type.addClass("red-text");
+    }
+}
+
+function hintMenuControl() {
+    switch (statusR) {
+        case 0:
+            
+            break;
+        case 1:
+        
+            break;
+        case 2:
+    
+            break;
+        default:
+            break;
     }
 
-    if (generalStatus[0] && generalStatus[1] && generalStatus[2]) {
-        applyPulseEffect();
-    } else {
-        removePulseEffect();
+    switch (statusU) {
+        case 0:
+            
+            break;
+        case 1:
+        
+            break;
+        case 2:
+    
+            break;
+        default:
+            break;
     }
+    
+    switch (statusD) {
+        case 0:
+            
+            break;
+        case 1:
+        
+            break;
+        case 2:
+    
+            break;
+        default:
+            break;
+    }
+
 }
 
 // Funciones Tab Requisits:
 
+
 // Funciones Tab UFs:
-function checkExpandables() {
-    $("i.blue-text-gradient-modal").each(function() {
-        $(this).parent().prop("onclick", null).off("click");
-        $(this).parent().on("click", function() {
-            if ($(this).children("i.blue-text-gradient-modal")[0].innerHTML === "expand_more") {
-                $("i.blue-text-gradient-modal").each(function() {$(this)[0].innerHTML = "expand_more";});
-                $(this).children("i.blue-text-gradient-modal")[0].innerHTML = "expand_less";
-            } else {
-                $(this).children("i.blue-text-gradient-modal")[0].innerHTML = "expand_more";
-            }
-        });
-    });
-}
 
 /** Cada vez que se agregue un Modulo, esta funcion reiniciara los onclick para tener dicho modulo nuevo en cuenta.
  *  Si la checkbox de un modulo se marca, todas sus checkbox de UF se marcaran.
@@ -179,21 +217,22 @@ function getUfs(url, query, dataType) {
 }
 
 // funcion a la que llamar cuando se pulse el boton de guardar y que mandara las UFs seleccionadas a la base
-function setUfs(){
-
-    $("[name=UF]:checked");
-
+function setUfs(url, query, token){
     $.ajax({
         method: "POST",
         url: url + query,
         datatype: String,
         data: ({
-          token: token
+          token: token === undefined ? "" : token
         })
     }).done(function(xhr) {
         console.log(xhr.status);
         
+        // Cambiar el estado del las UFs a 1 (Ambar)
+        setStatus(statusU, 1);
     }).fail(function() {
+        // Cambiar el estado del las UFs a 2 (Rojo)
+        setStatus(statusU, 2);
         sendToast("No s'ha pogut connectar amb el servidor. Si us plau torna a intentar-ho m\u00E9s tard.");
     }).always(function() {
         
@@ -201,7 +240,7 @@ function setUfs(){
 }
 
 function addModule(idModule, moduleName) {                                                                            
-    $("#ufList").append('<li><div id="' + idModule + '-header" class="collapsible-header valign-wrapper"><label style="margin-left: 0.5em; max-width: 95%; white-space: break-spaces;"><input id="' + idModule + '" type="checkbox" name="MP"/><span></span></label><label style="margin-left: 0.5em; max-width: 95%; white-space: break-spaces; font-size: 1em">' + moduleName + '</span></label><i id="expandable" class="material-icons circle blue-text-gradient-modal">expand_more</i></div><div id="' + idModule + '-body" class="collapsible-body custom-padding-0"></div></li>');
+    $("#ufList").append('<li><div id="' + idModule + '-header" class="collapsible-header valign-wrapper"><label style="margin-left: 0.5em; max-width: 95%; white-space: break-spaces;"><input id="' + idModule + '" type="checkbox" name="MP"/><span></span></label><label style="margin-left: 0.5em; max-width: 95%; white-space: break-spaces; font-size: 1em">' + moduleName + '</span></label><i id="expandable" name="UfTab" class="material-icons circle blue-text-gradient-modal">expand_more</i></div><div id="' + idModule + '-body" class="collapsible-body custom-padding-0"></div></li>');
     checkExpandables();
     checkSelectionListenersMPs();
 }
@@ -214,6 +253,10 @@ function addUf(idModule, idUf, ufName) {
 // Funciones Tab Dades:
 
 // Funciones generales:
+function sendToast(content) {
+    M.toast({html: content, displayLength: 3000, classes: 'rounded red-gradient'});
+}
+
 function applyPulseEffect(id) {
     $("#" + id).addClass("pulse");
 }
@@ -228,4 +271,27 @@ function applyDisabledClass(id) {
 
 function removeDisabledClass(id) {
     $("#" + id).removeClass("disabled");
+}
+
+function checkExpandables() {
+    $("i.blue-text-gradient-modal").each(function() {
+        $(this).parent().prop("onclick", null).off("click");
+        $(this).parent().on("click", function() {
+            if ($(this).children("i.blue-text-gradient-modal[name=dashboardTab]").length > 0) {
+                if ($(this).children("i.blue-text-gradient-modal[name=dashboardTab]")[0].innerHTML === "expand_more") {
+                    $("i.blue-text-gradient-modal[name=dashboardTab]").each(function() {$(this)[0].innerHTML = "expand_more";});
+                    $(this).children("i.blue-text-gradient-modal[name=dashboardTab]")[0].innerHTML = "expand_less";
+                } else {
+                    $(this).children("i.blue-text-gradient-modal[name=dashboardTab]")[0].innerHTML = "expand_more";
+                }
+            } else {
+                if ($(this).children("i.blue-text-gradient-modal[name=UfTab]")[0].innerHTML === "expand_more") {
+                    $("i.blue-text-gradient-modal[name=UfTab]").each(function() {$(this)[0].innerHTML = "expand_more";});
+                    $(this).children("i.blue-text-gradient-modal[name=UfTab]")[0].innerHTML = "expand_less";
+                } else {
+                    $(this).children("i.blue-text-gradient-modal[name=UfTab]")[0].innerHTML = "expand_more";
+                }
+            }
+        });
+    });
 }
