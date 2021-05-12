@@ -79,7 +79,7 @@ function onDeviceReady() {
     getUserData();
 
     saveUFsButton.on('click', function() {
-        setUfs();
+        setUfs("esto es para que falle", "", "text");
     });
 }
 
@@ -227,7 +227,7 @@ function setUfs(url, query, token){
         url: url + query,
         datatype: String,
         data: ({
-          token: token === undefined ? "" : token
+          token: token
         })
     }).done(function(xhr) {
         console.log(xhr.status);

@@ -8,6 +8,10 @@
         var modalLoading = document.querySelectorAll('#loading');
         M.Modal.init(modalLoading, {opacity: 0.5, dismissible: false, endingTop: '35%'});
 
+        // Login helper modal options:
+        var modalHelper = document.querySelectorAll('#loginHelper');
+        M.Modal.init(modalHelper, {opacity: 0.7, dismissible: true, endingTop: '7%'});
+
         // Wizard modal css:
         $(".modal-content").css("padding", "0px");
         $("#wizard").css("max-height", "85%");
@@ -19,11 +23,16 @@
         $("#loading").css("padding", "2em");
         $("#loading").css("overflow", "hidden");
         $("#loading").addClass("custom-border-radius");
-
         $(".preloader-wrapper").css("display", "block");
         $(".preloader-wrapper").css("margin", "auto");
         $(".preloader-wrapper").css("margin-bottom", "2em");
 
+        // Login helper modal css:
+        $("#loginHelper").css("max-height", "85%");
+        $("#loginHelper").css("overflow", "hidden");
+        $("#loginHelper").addClass("custom-height-90");
+        $("#loginHelper").addClass("custom-border-radius");
+        
         // Para cambiar el click de cancelar en el pago. Hara que vuelva a la aplicacion (WIP)
         $("#divImgCancelar").on("click", function() {window.location.href = "javascript:history.back()"});
 
