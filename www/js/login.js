@@ -47,6 +47,7 @@ function ajaxLogin() {
     }).done(function(xhr) {
        console.log(xhr)
        if (xhr.Token) {
+        localStorage.setItem("token",xhr.Token );
         userToken= xhr.Token;
         window.location.href = "index.html";
        }else{
