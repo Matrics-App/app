@@ -12,7 +12,7 @@ let passwordField = document.getElementById("passwordField");
 let userToken = "";
 
 // Testing
-let skipLogin = true;
+let skipLogin = false;
 
 function onDeviceReady() {
     loginButton.onclick = function() {
@@ -45,10 +45,16 @@ function ajaxLogin() {
         processData: false,  // tell jQuery not to process the data
         contentType: false   // tell jQuery not to set contentType
     }).done(function(xhr) {
-       
+       console.log(xhr)
+       if (xhr.Token) {
         userToken= xhr.Token;
-        
         window.location.href = "index.html";
+       }else{
+           console.log("maaal")
+       }
+       
+        
+       // window.location.href = "index.html";
     }).error(function() {
         sendToast("L\'email o la contrasenya no s\u00F3n correctes.");
         $("#loading").modal('close');
