@@ -12,23 +12,28 @@ let passwordField = document.getElementById("passwordField");
 let userToken = "";
 
 // Testing
-let skipLogin = false;
+let skipLogin = true;
 
 function onDeviceReady() {
     loginButton.onclick = function() {
-        $("#loading").modal('open');
         if (skipLogin) {
-            // Just for testing purposes
-            window.location.href = "index.html";
-        } else { 
-            ajaxGetLogin();
+                window.location.href = "index.html";
+        } else {
+            if (validateFieldsLogin()) {
+                $("#loading").modal('open');
+                ajaxLogin();
+            } else {
+                sendToast("Els camps Email i Contrasenya no poden estar buits.");
+            }
         }
     }
 } 
 
-function ajaxGetLogin() {
-   
+function validateFieldsLogin() {
+    return (!emailField.value || emailField.value.trim() === "" || !passwordField.value || passwordField.value.trim() === "") ? false : true;
+}
 
+function ajaxLogin() {
     var formData = new FormData;
     formData.append("email", emailField.value);
     formData.append("password", passwordField.value.toString());
@@ -45,14 +50,14 @@ function ajaxGetLogin() {
         
         window.location.href = "index.html";
     }).error(function() {
-        sendToast("Usuari o contrasenya err" + "\u00F2" + "nia...");
+        sendToast("L\'email o la contrasenya no s\u00F3n correctes.");
         $("#loading").modal('close');
     }).always(function() {
         $("#loading").modal('close');
     });
 }
 
-function sendToast(content, duration) {
-    M.toast({html: content, displayLength: duration, classes: 'rounded'});
+function sendToast(content) {
+    M.toast({html: content, displayLength: 3000, classes: 'rounded red-gradient'});
 }
   
