@@ -8,7 +8,7 @@
 
 	<!-- cordova-headers -->
 	<meta http-equiv="Content-Security-Policy"
-		content="default-src https://sis-t.redsys.es:25443/sis https://accounts.google.com https://apis.google.com/js/platform.js https://apis.google.com https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js https://fonts.gstatic.com 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src https://fonts.googleapis.com 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
+		content="default-src http://34.203.46.101:8000 https://sis-t.redsys.es:25443/sis https://accounts.google.com https://apis.google.com/js/platform.js https://apis.google.com https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js https://fonts.gstatic.com 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src https://fonts.googleapis.com 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
 	<meta name="format-detection" content="telephone=no">
 	<meta name="msapplication-tap-highlight" content="no">
 
@@ -123,32 +123,28 @@
 
 	<!-- Tab Requisits -->
 	<div id="reqTab" class="container custom-padding-top-1em custom-width-80">
+		
 		<div id="paneProfile" class="container">
 			<h4 id="userProfile">#PERFIL</h4>
 		</div>
-
-		<div id="paneRequisits" class="container right-align">
-
-		</div>
-
+		
+		<div id="paneRequisits" class="right-align"></div>
+    
 		<div id="reqModal" class="modal bottom-sheet">
-			<div class="modal-content">
+			<div class="modal-content custom-padding-1em">
 				<h4>MatriculaT</h4>
-				<div id="reqModalGallery" style="display:flex; flex-direction:row;">
-					<i class="material-icons circle blue-text custom-icon-padding">camera_alt</i>
-					<p>Fer una fotgrafia</p>
+				<div class="custom-padding-top-1em" style="display:flex; flex-direction:row;">
+					<a id="reqPhoto" style="border-radius: 20px;" class="waves-effect waves-light btn blue-gradient"><i class="material-icons left">camera_alt</i>FES-HI UNA FOTO!</a>
 				</div>
-				<div id="reqModalGallery" style="display:flex; flex-direction:row;">
-					<i class="material-icons circle blue-text custom-icon-padding">image</i>
-					<p>Pujar una imatge</p>
+				<div class="custom-padding-top-1em" style="display:flex; flex-direction:row;">
+					<a id="reqGallery" style="border-radius: 20px;" class="waves-effect waves-light btn blue-gradient"><i class="material-icons left">photo</i>PUJA UNA FOTOGRAFIA!</a>
 				</div>
-				<div id="reqModalGallery" style="display:flex; flex-direction:row;">
-					<i class="material-icons circle blue-text custom-icon-padding">file_upload</i>
-					<p>Pujar un fitxer</p>
+				<div class="custom-padding-top-1em" style="display:flex; flex-direction:row;">
+					<a id="reqFile" style="border-radius: 20px;" class="waves-effect waves-light btn blue-gradient"><i class="material-icons left">file_upload</i>PUJA UN FITXER!</a>
 				</div>
 			</div>
 			<div class="modal-footer">
-				<a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+				<a href="#!" class="modal-close waves-effect waves-green btn-flat">Tanca!</a>
 			</div>
 		</div>
 	</div>
