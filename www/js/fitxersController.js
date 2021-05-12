@@ -9,6 +9,16 @@ function onDeviceReady() {
     document.getElementById("reqGallery").onclick = function () {
         navigator.camera.getPicture(onSuccess, onFail, setOptions(0));
     }
+
+    document.getElementById("reqFile").onclick = function () {
+        customFileChooser.open('application/pdf',function (uri){
+            alert(uri)
+            const file = new File(uri);
+            alert(file)
+      }, function(err){
+            alert(err);
+      });
+    }
 }
 
 function getRequisits(){
@@ -46,7 +56,7 @@ function setOptions(srcType) {
         sourceType: srcType,
         encodingType: Camera.EncodingType.JPEG,
         mediaType: Camera.MediaType.PICTURE,
-        allowEdit: true,
+        allowEdit: false,
         correctOrientation: true,
         direction: Camera.Direction.BACK
     }
