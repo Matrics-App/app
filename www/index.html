@@ -8,7 +8,7 @@
 
 	<!-- cordova-headers -->
 	<meta http-equiv="Content-Security-Policy"
-		content="default-src https://sis-t.redsys.es:25443/sis https://accounts.google.com https://apis.google.com/js/platform.js https://apis.google.com https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js https://fonts.gstatic.com 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src https://fonts.googleapis.com 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
+		content="default-src http://34.203.46.101:8000 https://sis-t.redsys.es:25443/sis https://accounts.google.com https://apis.google.com/js/platform.js https://apis.google.com https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js https://fonts.gstatic.com 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src https://fonts.googleapis.com 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
 	<meta name="format-detection" content="telephone=no">
 	<meta name="msapplication-tap-highlight" content="no">
 
@@ -21,18 +21,13 @@
 <body id="body">
 	<nav id="navbar" class="nav-extended blue custom-border-radius-bottom custom-width-100 custom-margin-auto"
 		role="navigation">
-		<div class="nav-wrapper container"><a id="logo-container" href="#"
-				class="brand-logo center blue-text-gradient">Matrics IETI</a></div>
+		<div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo center blue-text-gradient">Matrics IETI</a></div>
 		<div class="nav-content">
 			<ul class="tabs blue tabs-fixed-width blue-gradient-180">
-				<li class="tab"><a class="waves-effect waves-light custom-border-radius blue-text-gradient2 custom-wrap"
-						href="#dashboardTab">Inici</a></li>
-				<li class="tab"><a class="waves-effect waves-light custom-border-radius blue-text-gradient2 custom-wrap"
-						href="#reqTab">Requisits</a></li>
-				<li class="tab"><a class="waves-effect waves-light custom-border-radius blue-text-gradient2 custom-wrap"
-						href="#ufTab">UFs</a></li>
-				<li class="tab"><a class="waves-effect waves-light custom-border-radius blue-text-gradient2 custom-wrap"
-						href="#dadesTab">Dades</a></li>
+				<li class="tab"><a class="waves-effect waves-light custom-border-radius blue-text-gradient2 custom-wrap" href="#dashboardTab">Inici</a></li>
+				<li class="tab"><a class="waves-effect waves-light custom-border-radius blue-text-gradient2 custom-wrap" href="#reqTab">Requisits</a></li>
+				<li class="tab"><a class="waves-effect waves-light custom-border-radius blue-text-gradient2 custom-wrap" href="#ufTab">UFs</a></li>
+				<li class="tab"><a class="waves-effect waves-light custom-border-radius blue-text-gradient2 custom-wrap" href="#dadesTab">Dades</a></li>
 			</ul>
 		</div>
 	</nav>
@@ -42,88 +37,114 @@
 		<h5 class="custom-margin-top-bottom-1em">Estat de matriculaci&#243;:</h5>
 		<ul class="collapsible custom-border-radius custom-scroll-y">
 			<li>
-				<div class="collapsible-header ">Requeriments<i id="statusR"
-						class="material-icons circle red-text">brightness_1</i></div>
-				<div class="collapsible-body custom-padding-top-bottom-1em">
-					<p>
-						<i class="material-icons circle red-text tiny">brightness_1</i>&ThickSpace; Vermell
-						si els arxius han estat revisats, s&oacute;n incorrectes i cal tornar a enviar-los.
+				<div class="collapsible-header ">
+					<i id="expandable" name="dashboardTab" class="material-icons circle blue-text-gradient-modal" style="margin-left: 0px;margin-right: 0.5em;text-align: center;">expand_more</i>
+					Requeriments
+					<i id="statusR"class="material-icons circle grey-text text-lighten-1">brightness_1</i>
+				</div>
+				<div class="collapsible-body">
+					<p class="custom-margin-top-05em-negative">
+						<i class="material-icons circle red-text tiny">brightness_1</i>&ThickSpace; 
+						Vermell si els documents han estat revisats, s&oacute;n incorrectes i cal tornar a enviar-los.
 					</p>
 					<p>
-						<i class="material-icons circle orange-text tiny">brightness_1</i>&ThickSpace; Groc
-						si estan pendent de validaci&oacute; a secretaria.
+						<i class="material-icons circle orange-text tiny">brightness_1</i>&ThickSpace; 
+						Groc si tots els documents estan pendent de validaci&oacute; a secretaria.
 					</p>
-					<p>
-						<i class="material-icons circle green-text tiny">brightness_1</i>&ThickSpace; Verd
-						si els documents s'han validat correctament des de secret&agrave;ria.
+					<p class="custom-margin-bottom-05em-negative">
+						<i class="material-icons circle green-text tiny">brightness_1</i>&ThickSpace; 
+						Verd si els documents s'han validat correctament des de secret&agrave;ria.
 					</p>
 				</div>
 			</li>
 			<li>
-				<div class="collapsible-header ">UFs a matricular<i id="statusU"
-						class="material-icons circle red-text">brightness_1</i></div>
-				<div class="collapsible-body custom-padding-top-bottom-1em">
-					<p>
-						<i class="material-icons circle red-text tiny">brightness_1</i>&ThickSpace; Vermell
-						si les UFs no han estat guardades en el teu perfil.
+				<div class="collapsible-header ">
+					<i id="expandable" name="dashboardTab" class="material-icons circle blue-text-gradient-modal" style="margin-left: 0px;margin-right: 0.5em;text-align: center;">expand_more</i>
+					UFs a matricular
+					<i id="statusU" class="material-icons circle grey-text text-lighten-1">brightness_1</i>
+				</div>
+				<div class="collapsible-body">
+					<p class="custom-margin-top-05em-negative">
+						<i class="material-icons circle red-text tiny">brightness_1</i>&ThickSpace; 
+						Vermell si les UFs no s'han pogut guardar en el teu perfil.
 					</p>
 					<p>
-						<i class="material-icons circle orange-text tiny">brightness_1</i>&ThickSpace; Groc
-						si estan pendent de pagament.
+						<i class="material-icons circle orange-text tiny">brightness_1</i>&ThickSpace; 
+						Groc si estan les UFs estan ben guardades per&ograve; pendent de pagament.
 					</p>
-					<p>
-						<i class="material-icons circle green-text tiny">brightness_1</i>&ThickSpace; Verd
-						si ja s'han guardat i pagat.
+					<p class="custom-margin-bottom-05em-negative">
+						<i class="material-icons circle green-text tiny">brightness_1</i>&ThickSpace; 
+						Verd si ja s'han guardat i pagat.
 					</p>
 				</div>
 			</li>
 			<li>
-				<div class="collapsible-header ">Dades personals<i id="statusD"
-						class="material-icons circle red-text">brightness_1</i></div>
-				<div class="collapsible-body custom-padding-top-bottom-1em">
-					<p>
-						<i class="material-icons circle red-text tiny">brightness_1</i>&ThickSpace; Vermell
-						si les dades que has visualitzat contenen algun error.
+				<div class="collapsible-header ">
+					<i id="expandable" name="dashboardTab" class="material-icons circle blue-text-gradient-modal" style="margin-left: 0px;margin-right: 0.5em;text-align: center;">expand_more</i>
+					Dades personals
+					<i id="statusD" class="material-icons circle grey-text text-lighten-1">brightness_1</i>
+				</div>
+				<div class="collapsible-body">
+					<p class="custom-margin-top-05em-negative">
+						<i class="material-icons circle red-text tiny">brightness_1</i>&ThickSpace; 
+						Vermell si les dades que has visualitzat contenen algun error.
 					</p>
 					<p>
-						<i class="material-icons circle orange-text tiny">brightness_1</i>&ThickSpace; Groc
-						si estan pendents de validaci&oacute;.
+						<i class="material-icons circle orange-text tiny">brightness_1</i>&ThickSpace; 
+						Groc si estan pendents de validaci&oacute;.
 					</p>
-					<p>
-						<i class="material-icons circle green-text tiny">brightness_1</i>&ThickSpace; Verd
-						si has verificat que les teves dades personals s&oacute;n correctes.
+					<p class="custom-margin-bottom-05em-negative">
+						<i class="material-icons circle green-text tiny">brightness_1</i>&ThickSpace; 
+						Verd si has verificat que les teves dades personals s&oacute;n correctes.
 					</p>
 				</div>
 			</li>
 		</ul>
+
+		<!-- TODO LIST - Hint Menu -->
+		<blockquote class="custom-scroll-y">
+			<h5 id="titleHint" class="custom-h5">Tasques a fer:</h5>
+			<span id="contentHint">
+				<p id="dashboardInfoDades" step="0">
+					- Validar les teves dades personals. <!-- Per fer-ho comprova que tot sigui correcte a la pestanya <em>Dades</em>. -->
+				</p>
+				<p id="dashboardInfoUFs" step="0">
+					- Seleccionar les UFs a les que et vols matricular. <!-- Per fer-ho selecciona les UFs i prem el bot&oacute; <em>Guardar</em> a la pestanya <em>UFS</em>. -->
+				</p>
+				<p id="dashboardInfoPay" step="0">
+					- Realitzar el pagament de la matr&iacute;cula. <!-- Per fer-ho segueix els pasos al pr&eacute;mer el bot&oacute; <em>Seleccionar m&eacute;tode de pagament</em> a la pestanya <em>UFS</em>. -->
+				</p>
+				<p id="dashboardInfoRequisits" step="0">
+					- Pujar els arxius o fotografies dels documents necessaris. <!-- Per fer-ho puja cada document al seu apartat corresponent a la pestanya <em>Requisits</em>. -->
+				</p>
+			</span>
+		</blockquote>
 	</div>
 
 	<!-- Tab Requisits -->
 	<div id="reqTab" class="container custom-padding-top-1em custom-width-80">
+		
 		<div id="paneProfile" class="container">
 			<h4 id="userProfile">#PERFIL</h4>
 		</div>
-		<div id="paneRequisits" class="container right-align">
-
-		</div>
+		
+		<div id="paneRequisits" class="right-align"></div>
+    
 		<div id="reqModal" class="modal bottom-sheet">
-			<div class="modal-content">
+			<div class="modal-content custom-padding-1em">
 				<h4>MatriculaT</h4>
-				<div id="reqModalGallery" style="display:flex; flex-direction:row;">
-					<i class="material-icons circle blue-text custom-icon-padding">camera_alt</i>
-					<p>Fer una fotgrafia</p>
+				<div class="custom-padding-top-1em" style="display:flex; flex-direction:row;">
+					<a id="reqPhoto" style="border-radius: 20px;" class="waves-effect waves-light btn blue-gradient"><i class="material-icons left">camera_alt</i>FES-HI UNA FOTO!</a>
 				</div>
-				<div id="reqModalGallery" style="display:flex; flex-direction:row;">
-					<i class="material-icons circle blue-text custom-icon-padding">image</i>
-					<p>Pujar una imatge</p>
+				<div class="custom-padding-top-1em" style="display:flex; flex-direction:row;">
+					<a id="reqGallery" style="border-radius: 20px;" class="waves-effect waves-light btn blue-gradient"><i class="material-icons left">photo</i>PUJA UNA FOTOGRAFIA!</a>
 				</div>
-				<div id="reqModalGallery" style="display:flex; flex-direction:row;">
-					<i class="material-icons circle blue-text custom-icon-padding">file_upload</i>
-					<p>Pujar un fitxer</p>
+				<div class="custom-padding-top-1em" style="display:flex; flex-direction:row;">
+					<a id="reqFile" style="border-radius: 20px;" class="waves-effect waves-light btn blue-gradient"><i class="material-icons left">file_upload</i>PUJA UN FITXER!</a>
 				</div>
 			</div>
 			<div class="modal-footer">
-				<a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+				<a href="#!" class="modal-close waves-effect waves-green btn-flat">Tanca!</a>
 			</div>
 		</div>
 	</div>
@@ -131,10 +152,8 @@
 	<!-- Tab UFs -->
 	<div id="ufTab" class="container custom-width-80">
 		<h5 class="center-align">Jardineria i floristeria</h5>
-		<a id="saveButton"
-			class="waves-effect waves-light custom-display-block custom-width-75 custom-margin-auto custom-margin-top-bottom-1-5em blue-gradient btn-large custom-border-radius center-align">Guardar</a>
-		<ul id="ufList"
-			class="collapsible custom-border-radius custom-scroll-y custom-scroll-x-hidden custom-height-35vh">
+		<a id="saveUFsButton" class="waves-effect waves-light custom-display-block custom-width-75 custom-margin-auto custom-margin-top-bottom-1-5em blue-gradient btn-large custom-border-radius center-align">Guardar</a>
+		<ul id="ufList" class="collapsible custom-border-radius custom-scroll-y custom-scroll-x-hidden custom-height-35vh">
 			<!-- TEMP DATA - This ul should be empty on PRO -->
 			<!-- <li> 
 					<div class="collapsible-header valign-wrapper">
@@ -167,20 +186,19 @@
 			</table>
 		</div>
 
-		<form name="formPayment" class="custom-margin-bottom-1em" id="formPayment"
-			action="https://sis-t.redsys.es:25443/sis/realizarPago" method="POST">
-			<input type="hidden" name="Ds_SignatureVersion" value="HMAC_SHA256_V1" />
-			<input type="hidden" name="Ds_MerchantParameters" />
-			<input type="hidden" name="Ds_Signature" />
-			<input type="hidden" id="tfAmount" value="200"><br />
-			<input type="submit" value="Realitzar pagament" class="custom-border-radius btn blue" />
+		<form name="formPayment" class="center-align" id="formPayment" action="https://sis-t.redsys.es:25443/sis/realizarPago" method="POST">
+			<input type="hidden" name="Ds_SignatureVersion" value="HMAC_SHA256_V1"/>
+			<input type="hidden" name="Ds_MerchantParameters"/>
+			<input type="hidden" name="Ds_Signature"/>
+			<input type="hidden" id="tfAmount" value="200"><br/>
+			<input type="submit" value="M&egrave;todes de pagament" class="custom-border-radius btn-large blue"/>
 		</form>
 	</div>
 
 	<!-- Tab Dades -->
 	<div id="dadesTab" class="container custom-padding-top-1em custom-width-80">
-		<div class="custom-border custom-border-radius custom-scroll-y">
-			<table >
+		<div class="custom-margin-top-1em custom-border custom-border-radius custom-scroll-y" style="max-height: 65vh;">
+			<table>
 				<tbody>
 					<tr>
 						<th class="custom-padding-left-1em">Nombre</th>
@@ -239,8 +257,7 @@
 	<div id="wizard" class="modal">
 		<div class="modal-content">
 			<nav id="navbar" class="blue custom-width-100 custom-margin-auto blue-gradient-180" role="navigation">
-				<div class="nav-wrapper container"><span id="logo-container" href="#"
-						class="brand-logo center blue-text-gradient">Inici</span></div>
+				<div class="nav-wrapper container"><span id="logo-container" href="#" class="brand-logo center blue-text-gradient">Inici</span></div>
 			</nav>
 
 			<!--  Inici -->
