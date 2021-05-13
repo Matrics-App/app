@@ -25,6 +25,7 @@
         <allow-intent href="market:*" />
         <preference name="orientation" value="portrait"/>
         <edit-config file="AndroidManifest.xml" target="/manifest/application" mode="merge">
+            <application android:usesCleartextTraffic="true" />
             <application android:allowBackup="false"/>
         </edit-config>
     </platform>

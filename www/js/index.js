@@ -80,7 +80,7 @@ function onDeviceReady() {
     checkExpandables();
 
     //Load user data
-    getUserData("http://34.203.46.101:8000", "/api/user" , localStorage.getItem("token"));
+    getUserData("http://api-matrics-test.ieti.cat:8000", "/api/user" , localStorage.getItem("token"));
 
     saveUFsButton.on('click', function() {
         setUfs();
@@ -144,7 +144,7 @@ function hintMenuControl() {
             
             break;
         case 1:
-        
+            profilesandrequirement
             break;
         case 2:
     

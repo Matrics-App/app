@@ -39,16 +39,16 @@ function ajaxLogin() {
     formData.append("password", passwordField.value.toString());
 
     $.ajax({
-        url: "http://34.203.46.101:8000/api/token",
+        url: "http://api-matrics-test.ieti.cat:8000/api/token",
         type: "POST",
         data: formData,
         processData: false,  // tell jQuery not to process the data
         contentType: false   // tell jQuery not to set contentType
     }).done(function(xhr) {
        console.log(xhr)
+       alert(xhr);
        if (xhr.Token) {
         localStorage.setItem("token",xhr.Token );
-        userToken= xhr.Token;
         window.location.href = "index.html";
        }else{
            console.log("maaal")
@@ -57,6 +57,7 @@ function ajaxLogin() {
         
        // window.location.href = "index.html";
     }).error(function() {
+        alert("Patata");
         sendToast("L\'email o la contrasenya no s\u00F3n correctes.");
         $("#loading").modal('close');
     }).always(function() {
