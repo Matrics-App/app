@@ -23,7 +23,6 @@ function onDeviceReady() {
 
 function getRequisits(){
 
-
     var arrayStatus = ['<div class="valign-wrapper"><td class="center"><i style="opacity:0.3" class="material-icons circle gray-text custom-icon-padding">brightness_1</i><i class="material-icons circle red-text custom-icon-padding">brightness_1</i><i style="opacity:0.3" class="material-icons circle amber-text custom-icon-padding">brightness_1</i><i style="opacity:0.3" class="material-icons circle light-green-text custom-icon-padding">brightness_1</i></td></div>',
         '<div class="valign-wrapper"><td class="center"><i style="opacity:0.3" class="material-icons circle gray-text custom-icon-padding">brightness_1</i><i style="opacity:0.3" class="material-icons circle red-text custom-icon-padding">brightness_1</i><i class="material-icons circle amber-text custom-icon-padding">brightness_1</i><i style="opacity:0.3" class="material-icons circle light-green-text custom-icon-padding">brightness_1</i></td></div>',
         '<div class="valign-wrapper"><td class="center"><i style="opacity:0.3" class="material-icons circle gray-text custom-icon-padding">brightness_1</i><i style="opacity:0.3" class="material-icons circle red-text custom-icon-padding">brightness_1</i><i style="opacity:0.3" class="material-icons circle amber-text custom-icon-padding">brightness_1</i><i class="material-icons circle light-green-text custom-icon-padding">brightness_1</i></td></div>',
