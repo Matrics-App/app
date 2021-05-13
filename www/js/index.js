@@ -80,7 +80,7 @@ function onDeviceReady() {
     checkExpandables();
 
     //Load user data
-    getUserData("http://34.203.46.101:8000", "/api/user" , localStorage.getItem("token"));
+    getUserData(localStorage.getItem("token"));
 
     saveUFsButton.on('click', function() {
         setUfs("esto es para que falle", "", "text");
@@ -259,22 +259,18 @@ function addUf(idModule, idUf, ufName) {
 }
 
 // Funciones Tab Dades:
-function getUserData(url, query, token){
+function getUserData(){
     console.log(localStorage.getItem("token"));
     $.ajax({
         method: "GET",
-        url: url + query,
+        url: "http://34.203.46.101:8000/api/token",
         datatype: String,
         headers: {
-            "Authorization": "Token "+token
+            "Authorization": "Token " + localStorage.getItem("token")
         }
-         
-        
     }).done(function(userData) {
-        
-        
-        $("#dadesNombre")[0].innerHTML=userData.first_name ? userData.first_name : "-";
-        $("#dadesApellidos")[0].innerHTML=userData.last_name ? userData.last_name : "-";
+        $("#dadesNom")[0].innerHTML=userData.first_name ? userData.first_name : "-";
+        $("#dadesCognoms")[0].innerHTML=userData.last_name ? userData.last_name : "-";
         $("#dadesDNI")[0].innerHTML=userData.dni ? userData.dni : "-";
         $("#dadesLlocNaixement")[0].innerHTML=userData.birthplace ? userData.birthplace : "-";
         $("#dadesNaixement")[0].innerHTML=userData.birthday ? userData.birthday : "-";
@@ -287,7 +283,6 @@ function getUserData(url, query, token){
         $("#dadesTutor2")[0].innerHTML=userData.tutor_2 ? userData.tutor_2 : "-";
         setStatus(statusU, 1);
     }).fail(function() {
-        
         setStatus(statusU, 2);
         sendToast("No s'ha pogut connectar amb el servidor. Si us plau torna a intentar-ho m\u00E9s tard.");
     }).always(function() {
