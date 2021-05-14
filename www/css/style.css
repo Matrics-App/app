@@ -167,6 +167,11 @@ body {
   padding-right: 1em;
 }
 
+/* Transforms: */
+.custom-transform-vertical-translate {
+  transform: translate(0%, -50%) !important;
+}
+
 /* Borders: */
 .custom-border-none {
   border: none !important;
@@ -359,8 +364,22 @@ blockquote {
 }
 
 /* Effects: */
-.custom-blur {
-  -webkit-filter: blur(5px);
-  filter: blur(5px);
-  
+.custom-blur-on {
+  -webkit-filter: blur(10px);
+  filter: blur(10px);
+  filter: opacity(0);
+
+  transition: filter 0.5s, -webkit-filter 0.5s;
+}
+
+.custom-blur-off {
+  -webkit-filter: blur(0px);
+  filter: blur(0px);
+  filter: opacity(1);
+
+  transition: filter 0.5s, -webkit-filter 0.5s;
+}
+
+.waves-effect.waves-blue .waves-ripple {
+  background-color: rgba(161, 225, 255, 0.48);
 }
