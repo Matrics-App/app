@@ -15,7 +15,7 @@
 document.addEventListener('deviceready', onDeviceReady, false);
 
 // Booleanos generales:
-let skipWizard = true;
+let skipWizard = false;
 
 // Variables generales:
 let body = document.getElementById("body");
@@ -36,11 +36,6 @@ let hintRequisits = $("#dashboardInfoRequisits");
 let saveUFsButton = $("#saveUFsButton");
 
 // Variables Tab Dades:
-// let userData =JSON.parse('{"nombre":"dani","apellido1":"ronda","apellido2":"palasi","dni":"46465871K","birthplace":"Barcelona","birthday":"01/08/2000","address":"plz milagros consarnau sabate 15 4 3","city":"Hospitalet","postal_code":"54815","phone_number":"936558741","emergency_number":"98563221","tutor_1":"dani powenwne jhjdwcmokwd","tutor_2":"safiupbdvsapi dsaihadvsiunl"}');
-
-
-
-
 
 // Modal variables: 
 let modalBtn = $("#wizard-floating-btn");
@@ -85,6 +80,9 @@ function onDeviceReady() {
     saveUFsButton.on('click', function() {
         setUfs("esto es para que falle", "", "text");
     });
+
+    // Animacion para quitar el blur inicial (SIEMPRE AL FINAL DE LA FUNCION onDeviceReady)
+    $("#body").addClass("custom-blur-off");
 }
 
 // Funciones Tab Inici (Dashboard):
@@ -218,7 +216,8 @@ function getUfs(url, query, dataType) {
         console.log(xhr.status);
         
     }).fail(function() {
-        sendToast("No s'ha pogut connectar amb el servidor. Si us plau torna a intentar-ho m\u00E9s tard.");
+        console.log("Internal error: no se han podido recuperar las UFs del servidor");
+        // sendToast("No s'ha pogut connectar amb el servidor. Si us plau torna a intentar-ho m\u00E9s tard.");
     }).always(function() {
         
     });
@@ -284,7 +283,8 @@ function getUserData(){
         setStatus(statusU, 1);
     }).fail(function() {
         setStatus(statusU, 2);
-        sendToast("No s'ha pogut connectar amb el servidor. Si us plau torna a intentar-ho m\u00E9s tard.");
+        console.log("Internal error: no se han podido recuperar los datos personales");
+        //sendToast("No s'ha pogut connectar amb el servidor. Si us plau torna a intentar-ho m\u00E9s tard.");
     }).always(function() {
         
     });

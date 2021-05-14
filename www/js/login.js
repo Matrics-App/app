@@ -14,6 +14,7 @@ let skipLogin = true;
 function onDeviceReady() {
     loginButton.onclick = function() {
         if (skipLogin) {
+                $("#body").addClass("custom-blur-on");
                 window.location.href = "index.html";
         } else {
             if (validateFieldsLogin()) {
@@ -36,13 +37,14 @@ function ajaxLogin() {
     formData.append("password", passwordField.value.toString());
 
     $.ajax({
-        url: "http://34.203.46.101:8000/api/token",
+        url: "http://3.220.37.220:8000/api/token",
         type: "POST",
         data: formData,
         processData: false,  // tell jQuery not to process the data
         contentType: false   // tell jQuery not to set contentType
     }).done(function(xhr) {
         if (xhr.Token) {
+            $("#body").addClass("custom-blur-on");
             localStorage.setItem("token",xhr.Token);
             window.location.href = "index.html";
         }else{
