@@ -152,7 +152,7 @@ function hintMenuControl() {
             
             break;
         case 1:
-        
+            profilesandrequirement
             break;
         case 2:
     
