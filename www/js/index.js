@@ -31,6 +31,8 @@ let hintPayment = $("#dashboardInfoPay");
 let hintRequisits = $("#dashboardInfoRequisits");
 
 // Variables Tab Requisits:
+let reqPhoto = $("#reqPhoto");
+let reqGallery = $("#reqGallery");
 
 // Variables Tab UFs:
 let saveUFsButton = $("#saveUFsButton");
@@ -78,7 +80,15 @@ function onDeviceReady() {
     getUserData(localStorage.getItem("token"));
 
     saveUFsButton.on('click', function() {
-        setUfs("esto es para que falle", "", "text");
+        setUfs("esto es para que falle (temporalmente)", "", "text");
+    });
+
+    reqPhoto.on("click", function() {
+        navigator.camera.getPicture(onSuccess, onFail, setOptions(1));
+    });
+
+    reqGallery.on("click", function() {
+        navigator.camera.getPicture(onSuccess, onFail, setOptions(0));
     });
 
     // Animacion para quitar el blur inicial (SIEMPRE AL FINAL DE LA FUNCION onDeviceReady)
@@ -154,7 +164,28 @@ function hintMenuControl() {
 }
 
 // Funciones Tab Requisits:
+function setOptions(srcType) {
+    var options = {
+        quality: 100,
+        destinationType: Camera.DestinationType.DATA_URL,
+        sourceType: srcType,
+        encodingType: Camera.EncodingType.JPEG,
+        mediaType: Camera.MediaType.PICTURE,
+        allowEdit: true,
+        correctOrientation: true,
+        direction: Camera.Direction.BACK
+    }
+    return options;
+}
 
+function onSuccess(imageData) {
+    var image = "data:image/jpeg;base64," + imageData;
+    console.log(image);
+}
+
+function onFail(message) {
+    alert('Failed because: ' + message);
+}
 
 // Funciones Tab UFs:
 
@@ -280,21 +311,14 @@ function getUserData(){
         $("#dadesTelefonEmergencia")[0].innerHTML=userData.emergency_number ? userData.emergency_number : "-";
         $("#dadesTutor1")[0].innerHTML=userData.tutor_1 ? userData.tutor_1 : "-";
         $("#dadesTutor2")[0].innerHTML=userData.tutor_2 ? userData.tutor_2 : "-";
-        setStatus(statusU, 1);
+        setStatus(statusD, 1);
     }).fail(function() {
-        setStatus(statusU, 2);
+        setStatus(statusD, 2);
         console.log("Internal error: no se han podido recuperar los datos personales");
         //sendToast("No s'ha pogut connectar amb el servidor. Si us plau torna a intentar-ho m\u00E9s tard.");
     }).always(function() {
         
     });
-       
-        
-       // window.location.href = "index.html";
-    
-
-
-    
 }
 
 // Funciones generales:
