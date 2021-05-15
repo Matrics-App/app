@@ -14,6 +14,9 @@
 
 document.addEventListener('deviceready', onDeviceReady, false);
 
+// Booleanos generales:
+let skipWizard = true;
+
 // Variables generales:
 let body = document.getElementById("body");
 
@@ -33,10 +36,11 @@ let hintRequisits = $("#dashboardInfoRequisits");
 let saveUFsButton = $("#saveUFsButton");
 
 // Variables Tab Dades:
-let userData =JSON.parse('{"nombre":"dani","apellido1":"ronda","apellido2":"palasi","dni":"46465871K","birthplace":"Barcelona","birthday":"01/08/2000","address":"plz milagros consarnau sabate 15 4 3","city":"Hospitalet","postal_code":"54815","phone_number":"936558741","emergency_number":"98563221","tutor_1":"dani powenwne jhjdwcmokwd","tutor_2":"safiupbdvsapi dsaihadvsiunl"}');
+// let userData =JSON.parse('{"nombre":"dani","apellido1":"ronda","apellido2":"palasi","dni":"46465871K","birthplace":"Barcelona","birthday":"01/08/2000","address":"plz milagros consarnau sabate 15 4 3","city":"Hospitalet","postal_code":"54815","phone_number":"936558741","emergency_number":"98563221","tutor_1":"dani powenwne jhjdwcmokwd","tutor_2":"safiupbdvsapi dsaihadvsiunl"}');
 
-// Booleanos generales:
-let skipWizard = true;
+
+
+
 
 // Modal variables: 
 let modalBtn = $("#wizard-floating-btn");
@@ -76,10 +80,10 @@ function onDeviceReady() {
     checkExpandables();
 
     //Load user data
-    getUserData();
+    getUserData(localStorage.getItem("token"));
 
     saveUFsButton.on('click', function() {
-        setUfs();
+        setUfs("esto es para que falle", "", "text");
     });
 }
 
@@ -227,7 +231,7 @@ function setUfs(url, query, token){
         url: url + query,
         datatype: String,
         data: ({
-          token: token === undefined ? "" : token
+          token: token
         })
     }).done(function(xhr) {
         console.log(xhr.status);
@@ -256,18 +260,41 @@ function addUf(idModule, idUf, ufName) {
 
 // Funciones Tab Dades:
 function getUserData(){
-    $("#dadesNombre")[0].innerHTML=userData.nombre;
-    $("#dadesApellidos")[0].innerHTML=userData.apellido1;
-    $("#dadesDNI")[0].innerHTML=userData.dni;
-    $("#dadesLlocNaixement")[0].innerHTML=userData.birthplace;
-    $("#dadesNaixement")[0].innerHTML=userData.birthday;
-    $("#dadesDireccio")[0].innerHTML=userData.address;
-    $("#dadesCiutat")[0].innerHTML=userData.city;
-    $("#dadesCodiPostal")[0].innerHTML=userData.postal_code;
-    $("#dadesTelefon")[0].innerHTML=userData.phone_number;
-    $("#dadesTelefonEmergencia")[0].innerHTML=userData.emergency_number;
-    $("#dadesTutor1")[0].innerHTML=userData.tutor_1;
-    $("#dadesTutor2")[0].innerHTML=userData.tutor_2;
+    console.log(localStorage.getItem("token"));
+    $.ajax({
+        method: "GET",
+        url: "http://34.203.46.101:8000/api/token",
+        datatype: String,
+        headers: {
+            "Authorization": "Token " + localStorage.getItem("token")
+        }
+    }).done(function(userData) {
+        $("#dadesNom")[0].innerHTML=userData.first_name ? userData.first_name : "-";
+        $("#dadesCognoms")[0].innerHTML=userData.last_name ? userData.last_name : "-";
+        $("#dadesDNI")[0].innerHTML=userData.dni ? userData.dni : "-";
+        $("#dadesLlocNaixement")[0].innerHTML=userData.birthplace ? userData.birthplace : "-";
+        $("#dadesNaixement")[0].innerHTML=userData.birthday ? userData.birthday : "-";
+        $("#dadesDireccio")[0].innerHTML=userData.address ? userData.address : "-";
+        $("#dadesCiutat")[0].innerHTML=userData.city ? userData.city : "-";
+        $("#dadesCodiPostal")[0].innerHTML=userData.postal_code ? userData.postal_code : "-";
+        $("#dadesTelefon")[0].innerHTML=userData.phone_number ? userData.phone_number : "-";
+        $("#dadesTelefonEmergencia")[0].innerHTML=userData.emergency_number ? userData.emergency_number : "-";
+        $("#dadesTutor1")[0].innerHTML=userData.tutor_1 ? userData.tutor_1 : "-";
+        $("#dadesTutor2")[0].innerHTML=userData.tutor_2 ? userData.tutor_2 : "-";
+        setStatus(statusU, 1);
+    }).fail(function() {
+        setStatus(statusU, 2);
+        sendToast("No s'ha pogut connectar amb el servidor. Si us plau torna a intentar-ho m\u00E9s tard.");
+    }).always(function() {
+        
+    });
+       
+        
+       // window.location.href = "index.html";
+    
+
+
+    
 }
 
 // Funciones generales:

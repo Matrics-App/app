@@ -167,6 +167,11 @@ body {
   padding-right: 1em;
 }
 
+/* Transforms: */
+.custom-transform-vertical-translate {
+  transform: translate(0%, -50%) !important;
+}
+
 /* Borders: */
 .custom-border-none {
   border: none !important;
@@ -362,5 +367,8 @@ blockquote {
 .custom-blur {
   -webkit-filter: blur(5px);
   filter: blur(5px);
-  
+}
+
+.waves-effect.waves-blue .waves-ripple {
+  background-color: rgba(161, 225, 255, 0.48);
 }
