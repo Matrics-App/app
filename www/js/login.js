@@ -37,7 +37,7 @@ function ajaxLogin() {
     formData.append("password", passwordField.value.toString());
 
     $.ajax({
-        url: "http://3.220.37.220:8000/api/token",
+        url: "http://api-matrics-test.ieti.cat:8000/api/token",
         type: "POST",
         data: formData,
         processData: false,  // tell jQuery not to process the data
