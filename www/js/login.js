@@ -8,15 +8,13 @@ let googleSL = document.getElementById("googleSL");
 let emailField = document.getElementById("emailField");
 let passwordField = document.getElementById("passwordField");
 
-// User Token
-let userToken = "";
-
 // Testing
-let skipLogin = false;
+let skipLogin = true;
 
 function onDeviceReady() {
     loginButton.onclick = function() {
         if (skipLogin) {
+                $("#body").addClass("custom-blur-on");
                 window.location.href = "index.html";
         } else {
             if (validateFieldsLogin()) {
@@ -45,20 +43,15 @@ function ajaxLogin() {
         processData: false,  // tell jQuery not to process the data
         contentType: false   // tell jQuery not to set contentType
     }).done(function(xhr) {
-       console.log(xhr)
-       alert(xhr);
-       if (xhr.Token) {
-        localStorage.setItem("token",xhr.Token );
-        window.location.href = "index.html";
-       }else{
-           console.log("maaal")
-       }
-       
-        
-       // window.location.href = "index.html";
+        if (xhr.Token) {
+            $("#body").addClass("custom-blur-on");
+            localStorage.setItem("token",xhr.Token);
+            window.location.href = "index.html";
+        }else{
+            sendToast("L\'email o la contrasenya no s\u00F3n correctes.");
+        }
     }).error(function() {
-        alert("Patata");
-        sendToast("L\'email o la contrasenya no s\u00F3n correctes.");
+        sendToast("No s'ha pogut connectar amb el servidor. Si us plau torna a intentar-ho m\u00E9s tard.");
         $("#loading").modal('close');
     }).always(function() {
         $("#loading").modal('close');
