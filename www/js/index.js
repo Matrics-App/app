@@ -90,6 +90,7 @@ function onDeviceReady() {
         setUfs("esto es para que falle (temporalmente)", "", "text");
     });
 
+    console.log(navigator.camera);
     reqPhoto = $("#reqPhoto").on("click", function() {
         navigator.camera.getPicture(onSuccess, onFail, setOptions(1));
     });
@@ -223,7 +224,7 @@ function setOptions(srcType) {
     return {
         quality: 100,
         destinationType: Camera.DestinationType.DATA_URL,
-        sourceType: srcType === 1 ? Camera.PictureSourceType.CAMERA : Camera.PictureSourceType.PHOTOLIBRARY,
+        sourceType: srcType,
         encodingType: Camera.EncodingType.JPEG,
         mediaType: Camera.MediaType.PICTURE,
         correctOrientation: true,
@@ -236,7 +237,8 @@ function onSuccess(imageData) {
     console.log(image);
 }
 
-function onFail() {
+function onFail(message) {
+    console.log(message);
     console.log("Internal log - Error: no se ha podido obtener el documento o imagen");
 }
 
