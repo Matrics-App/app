@@ -15,7 +15,7 @@
 document.addEventListener('deviceready', onDeviceReady, false);
 
 // Booleanos generales:
-let skipWizard = true;
+let skipWizard = false;
 
 // Variables generales:
 let body = document.getElementById("body");
