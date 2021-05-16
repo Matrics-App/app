@@ -36,6 +36,10 @@
         $("#loginHelper").css("overflow", "hidden");
         $("#loginHelper").addClass("custom-transform-vertical-translate");
         $("#loginHelper").addClass("custom-border-radius");
+
+        // Upload modal css:
+        $("#reqUpload").css("overflow-y", "scroll");
+        $("#reqUpload").css("max-height", "50%");
         
         // Para cambiar el click de cancelar en el pago. Hara que vuelva a la aplicacion (WIP)
         $("#divImgCancelar").on("click", function() {window.location.href = "javascript:history.back()"});
