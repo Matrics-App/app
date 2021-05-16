@@ -16,6 +16,7 @@ body {
                                   supported by Chrome, Edge, Opera and Firefox */
 
   outline:none !important;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 /* Fonts: */
@@ -72,6 +73,10 @@ body {
   margin: auto;
 }
 
+.custom-margin-05em {
+  margin: 0.5em;
+}
+
 .custom-margin-1em {
   margin: 1em;
 }
@@ -90,6 +95,11 @@ body {
 
 .custom-margin-bottom-1em {
   margin-top: 1em;
+}
+
+.custom-margin-top-bottom-05em {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
 }
 
 .custom-margin-top-bottom-1em {

@@ -35,7 +35,7 @@ function wizardPageControl() {
         $("#modal-content-container").empty().append('<h4>Benvingut a <br/><span class="blue-text-gradient-modal">Matrics IETI</span></h4><p>Aquesta aplicació et permetr&agrave; matricular-te al cicle formatiu que t\'hagis preinscrit de forma r&agrave;pida i senzilla.</p><p>Per comen&ccedil;ar, et farem un parell de preguntes per determinar el teu perfil, prefer&egrave;ncies i requisits de la matricula.</p><p>Prem el bot&oacute; amb la fletxa a la part inferior dreta de la pantalla per continuar.</p>');
         modalPage = 0;
     } else if (modalPage === 0) {
-        $("#modal-content-container").empty().append('<h5><span class="blue-text-gradient-modal">Perfil de requisits</span></h5><p class="custom-font-size-13px">A continuaci&oacute; es mostren els perfils d\'alumne disponibles. Aquests proporcionen descomptes parcials al preu de la matricula.</p><p class="custom-font-size-13px">Marca les caselles que m&eacute;s s\'adeqüin al teu perfil. Pots marcar m&eacute;s d\'una.</p><div class="divider custom-margin-2em"></div><div class="col s12 custom-border custom-border-radius custom-padding-top-bottom-1em custom-padding-left-2em custom-height-25 custom-scroll-y"><p><label><input id="pStandard" type="checkbox" name="perfils"/><span>Perfil est&agrave;ndard</span></label></p><p><label><input id="p28anys" type="checkbox" name="perfils"/><span>Major de 28 anys</span></label></p><p><label><input id="pMonoparental" type="checkbox" name="perfils"/><span>Monoparental</span></label></p><p><label><input id="pNombrosa" type="checkbox" name="perfils"/><span>Familia Nombrosa</span></label></p></div>');
+        $("#modal-content-container").empty().append('<h5><span class="blue-text-gradient-modal">Perfil de requisits</span></h5><p class="custom-font-size-13px">A continuaci&oacute; es mostren els perfils d\'alumne disponibles. Aquests proporcionen descomptes parcials al preu de la matricula.</p><p class="custom-font-size-13px">Marca les caselles que m&eacute;s s\'adeqüin al teu perfil. Pots marcar m&eacute;s d\'una.</p><div class="divider custom-margin-2em"></div><div class="col s12 custom-border custom-border-radius custom-padding-top-bottom-1em custom-padding-left-2em custom-height-25 custom-scroll-y"><p><label><input id="pStandard" type="checkbox" name="perfils"/><span>Perfil est&agrave;ndard</span></label></p><p><label><input id="p28anys" type="checkbox" name="perfils"/><span>Major de 28 anys</span></label></p><p><label><input id="pBonificacio" type="checkbox" name="perfils"/><span>Bonificaci&oacute;</span></label></p><p><label><input id="pExempcio" type="checkbox" name="perfils"/><span>Exempci&oacute;</span></label></p></div>');
         $("[name=perfils]").on("click", {page: modalPage}, controlFloatingButton);
         
         modalPage = 1;
@@ -62,6 +62,7 @@ function controlFloatingButton(page) {
     isAtLeastOneChecked = $("[name=perfils]:checked").length > 0;
     switch (page.data.page) {
         case 0:
+            profileCheckboxControl();
             if (!isAtLeastOneChecked) {
                 removePulseEffect("wizard-floating-btn");
                 applyDisabledClass("wizard-floating-btn");
@@ -86,7 +87,36 @@ function controlFloatingButton(page) {
         default:
             break;
     }
-   
+}
+
+function profileCheckboxControl() {
+    $("#pStandard").on("click", function() {
+        if ($("#pStandard").prop("checked")) {
+            uncheckCheckboxById("p28anys");
+            uncheckCheckboxById("pBonificacio");
+            uncheckCheckboxById("pExempcio");
+        }
+    });
+
+    $("#p28anys").on("click", function() {
+        if ($("#p28anys").prop("checked")) {
+            uncheckCheckboxById("pStandard");
+        }
+    });
+
+    $("#pBonificacio").on("click", function() {
+        if ($("#pBonificacio").prop("checked")) {
+            uncheckCheckboxById("pStandard");
+            uncheckCheckboxById("pExempcio");
+        }
+    });
+
+    $("#pExempcio").on("click", function() {
+        if ($("#pExempcio").prop("checked")) {
+            uncheckCheckboxById("pStandard");
+            uncheckCheckboxById("pBonificacio");
+        }
+    });
 }
 
 // Funciones Ajax
@@ -109,8 +139,16 @@ function getImageRightsText() {
 }
 
 // Funciones generales
+function checkCheckboxById(id) {
+    $("#" + id + "[name=perfils]").prop("checked", true);
+}
+
+function uncheckCheckboxById(id) {
+    $("#" + id + "[name=perfils]").prop("checked", false);
+}
+
 function checkAllCheckboxes() {
-    $("[name=perfils]").prop("checked", false);
+    $("[name=perfils]").prop("checked", true);
 }
 
 function uncheckAllCheckboxes() {
