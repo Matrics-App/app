@@ -15,7 +15,7 @@
 document.addEventListener('deviceready', onDeviceReady, false);
 
 // Booleanos generales:
-let skipWizard = false;
+let skipWizard = true;
 
 // Variables generales:
 let body = document.getElementById("body");
@@ -101,7 +101,9 @@ function onDeviceReady() {
 
     reqFile = $("#reqFile").on("click", function() {
         customFileChooser.open('application/pdf',function (uri) {
+            alert(uri);
             const file = new File(uri);
+            alert(file);
             // Do something with that file, probably an ajax
         }, function(err){
             sendToast("No s'ha pogut carregar l'arxiu.")
