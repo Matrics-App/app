@@ -47,6 +47,7 @@ let btnInvalid =$("#invalidData");
 
 // Modal variables: 
 let modalBtn = $("#wizard-floating-btn");
+let modalDataBtn = $("#error-data-floating-btn");
 
 // Funcion inicial
 function onDeviceReady() {
@@ -120,6 +121,9 @@ function onDeviceReady() {
         $("#wrongDataModal").modal('open');
     });
 
+    modalDataBtn.on( "click", function() {
+       $("#wrongDataModal").modal('close');
+    });
     // Animacion para quitar el blur inicial (SIEMPRE AL FINAL DE LA FUNCION onDeviceReady)
     $("#body").addClass("custom-blur-off");
 }
