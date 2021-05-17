@@ -115,12 +115,14 @@ function onDeviceReady() {
     });
 
     btnValid.on('click', function() {
-        
-        sendToast("Dades v&agrave;lides");
+        setStatus(statusD, 0);
+        sendToast("Dades personals validades correctament.");
+        applyDisabledClass("validData");
     });
 
     btnInvalid.on('click', function() {
         $("#wrongDataModal").modal('open');
+        removeDisabledClass("validData");
     });
 
     modalDataBtn.on( "click", function() {
