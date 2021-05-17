@@ -12,6 +12,10 @@
         var modalHelper = document.querySelectorAll('#loginHelper');
         M.Modal.init(modalHelper, {opacity: 0.7, dismissible: true, endingTop: '50%'});
 
+        // Requisits upload modal options:
+        var modalUpload = document.querySelectorAll('#reqUpload');
+        M.Modal.init(modalUpload, {opacity: 0.5, dismissible: true});
+
         // Wizard modal css:
         $(".modal-content").css("padding", "0px");
         $("#wizard").css("max-height", "85%");
@@ -32,6 +36,10 @@
         $("#loginHelper").css("overflow", "hidden");
         $("#loginHelper").addClass("custom-transform-vertical-translate");
         $("#loginHelper").addClass("custom-border-radius");
+
+        // Upload modal css:
+        $("#reqUpload").css("overflow-y", "scroll");
+        $("#reqUpload").css("max-height", "50%");
         
         // Para cambiar el click de cancelar en el pago. Hara que vuelva a la aplicacion (WIP)
         $("#divImgCancelar").on("click", function() {window.location.href = "javascript:history.back()"});
@@ -40,10 +48,11 @@
             $('.tabs').tabs();
             $('.collapsible').collapsible();
             $('.fixed-action-btn').floatingActionButton();
-        });
+        });        
 
-    }); // end of document ready
-})(jQuery); // end of jQuery name space
+
+    });
+})(jQuery);
 
 document.addEventListener('deviceready', onDeviceReady, false);
 
