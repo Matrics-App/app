@@ -8,20 +8,18 @@ let googleSL = document.getElementById("googleSL");
 let emailField = document.getElementById("emailField");
 let passwordField = document.getElementById("passwordField");
 
-// User Token
-let userToken = "";
-
 // Testing
-let skipLogin = false;
+let skipLogin = true;
 
 function onDeviceReady() {
     loginButton.onclick = function() {
         if (skipLogin) {
+                $("#body").addClass("custom-blur-on");
                 window.location.href = "index.html";
         } else {
             if (validateFieldsLogin()) {
                 $("#loading").modal('open');
-                ajaxLogin("/api/token");
+                ajaxLogin();
             } else {
                 sendToast("Els camps Email i Contrasenya no poden estar buits.");
             }
@@ -33,22 +31,27 @@ function validateFieldsLogin() {
     return (!emailField.value || emailField.value.trim() === "" || !passwordField.value || passwordField.value.trim() === "") ? false : true;
 }
 
-function ajaxGetLogin(query) {
+function ajaxLogin() {
     var formData = new FormData;
     formData.append("email", emailField.value);
-    formData.append("password", CryptoJS.SHA256(passwordField.value).toString());
+    formData.append("password", passwordField.value.toString());
 
     $.ajax({
-        url: "http://18.234.231.223:8000",
+        url: "http://api-matrics-test.ieti.cat:8000/api/token",
         type: "POST",
         data: formData,
         processData: false,  // tell jQuery not to process the data
         contentType: false   // tell jQuery not to set contentType
     }).done(function(xhr) {
-        console.log(xhr);
-        window.location.href = "index.html";
+        if (xhr.Token) {
+            $("#body").addClass("custom-blur-on");
+            localStorage.setItem("token",xhr.Token);
+            window.location.href = "index.html";
+        }else{
+            sendToast("L\'email o la contrasenya no s\u00F3n correctes.");
+        }
     }).error(function() {
-        sendToast("Usuari o contrasenya err" + "\u00F2" + "nia...");
+        sendToast("No s'ha pogut connectar amb el servidor. Si us plau torna a intentar-ho m\u00E9s tard.");
         $("#loading").modal('close');
     }).always(function() {
         $("#loading").modal('close');
