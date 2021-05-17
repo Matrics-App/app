@@ -12,6 +12,10 @@
         var modalUpload = document.querySelectorAll('#reqUpload');
         M.Modal.init(modalUpload, {opacity: 0.5, dismissible: true});
 
+        //Wrong user data modal options
+        var modalErrorData = document.querySelectorAll('#wrongDataModal');
+        M.Modal.init(modalErrorData, {opacity: 0.5, dismissible: true});
+
         // Wizard modal css:
         $(".modal-content").css("padding", "0px");
         $("#wizard").css("max-height", "85%");
@@ -28,7 +32,6 @@
         $(".preloader-wrapper").css("margin", "auto");
         $(".preloader-wrapper").css("margin-bottom", "2em");
 
-<<<<<<< HEAD
         // Login helper modal css:
         $("#loginHelper").css("overflow", "hidden");
         $("#loginHelper").addClass("custom-transform-vertical-translate");
@@ -37,9 +40,15 @@
         // Upload modal css:
         $("#reqUpload").css("overflow-y", "scroll");
         $("#reqUpload").css("max-height", "50%");
+
+        //Wrong user data modal
+
+        $("#wrongDataModal").css("max-height", "85%");
+        $("#wrongDataModal").css("overflow", "hidden");
+        $("#wrongDataModal").addClass("custom-height-90");
+        $("#wrongDataModal").addClass("custom-border-radius");
+
         
-=======
->>>>>>> 773720b50e024c70353fd3b66f7241ddbbdf56a4
         // Para cambiar el click de cancelar en el pago. Hara que vuelva a la aplicacion (WIP)
         $("#divImgCancelar").on("click", function() {window.location.href = "javascript:history.back()"});
 
@@ -50,14 +59,8 @@
         });        
 
 
-<<<<<<< HEAD
     });
 })(jQuery);
-=======
-        
-    }); // end of document ready
-})(jQuery); // end of jQuery name space
->>>>>>> 773720b50e024c70353fd3b66f7241ddbbdf56a4
 
 document.addEventListener('deviceready', onDeviceReady, false);
 
