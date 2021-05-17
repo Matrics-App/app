@@ -41,8 +41,7 @@
         $("#reqUpload").css("overflow-y", "scroll");
         $("#reqUpload").css("max-height", "50%");
 
-        //Wrong user data modal
-
+        // Wrong user data modal:
         $("#wrongDataModal").css("max-height", "85%");
         $("#wrongDataModal").css("overflow", "hidden");
         $("#wrongDataModal").addClass("custom-height-90");
