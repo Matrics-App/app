@@ -55,6 +55,8 @@
             $('.tabs').tabs();
             $('.collapsible').collapsible();
             $('.fixed-action-btn').floatingActionButton();
+            $('.sidenav').sidenav();
+            $('.dropdown-trigger').dropdown();
         });        
 
 

@@ -105,7 +105,9 @@ function onDeviceReady() {
 
     reqFile = $("#reqFile").on("click", function() {
         customFileChooser.open('application/pdf',function (uri) {
+            alert(uri);
             const file = new File(uri);
+            alert(file);
             // Do something with that file, probably an ajax
         }, function(err){
             sendErrorToast("No s'ha pogut carregar l'arxiu.")
@@ -113,12 +115,14 @@ function onDeviceReady() {
     });
 
     btnValid.on('click', function() {
-        
-        sendToast("Dades v&agrave;lides");
+        setStatus(statusD, 0);
+        sendToast("Dades personals validades correctament.");
+        applyDisabledClass("validData");
     });
 
     btnInvalid.on('click', function() {
         $("#wrongDataModal").modal('open');
+        removeDisabledClass("validData");
     });
 
     modalDataBtn.on( "click", function() {
