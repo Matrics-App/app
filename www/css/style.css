@@ -72,6 +72,10 @@ body {
 	display: block;
 }
 
+.custom-display-none {
+  display: none;
+}
+
 /* Margins: */
 .custom-margin-auto {
   margin: auto;
