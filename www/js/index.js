@@ -116,11 +116,14 @@ function onDeviceReady() {
 
     btnValid.on('click', function() {
         setStatus(statusD, 0);
+        hintMenuControl();
         sendToast("Dades personals validades correctament.");
         applyDisabledClass("validData");
     });
 
     btnInvalid.on('click', function() {
+        setStatus(statusD, 1);
+        hintMenuControl();
         $("#wrongDataModal").modal('open');
         removeDisabledClass("validData");
     });
@@ -140,58 +143,61 @@ function setStatus(type, status) {
         type.removeClass("grey-text");
         type.removeClass("text-lightn-1");
         type.addClass("green-text");
+        type.attr("name", 0);
     } else if (status == 1) {
         type.removeClass("green-text");
         type.removeClass("red-text");
         type.removeClass("grey-text");
         type.removeClass("text-lightn-1");
         type.addClass("orange-text");
+        type.attr("name", 1);
     } else if (status == 2) {
         type.removeClass("orange-text");
         type.removeClass("red-text");
         type.removeClass("grey-text");
         type.removeClass("text-lightn-1");
         type.addClass("red-text");
+        type.attr("name", 2);
     }
 }
 
 function hintMenuControl() {
-    switch (statusR) {
-        case 0:
+    switch (statusR.attr("name")) {
+        case "0":
             
             break;
-        case 1:
+        case "1":
         
             break;
-        case 2:
+        case "2":
     
             break;
         default:
             break;
     }
 
-    switch (statusU) {
-        case 0:
+    switch (statusU.attr("name")) {
+        case "0":
             
             break;
-        case 1:
+        case "1":
         
             break;
-        case 2:
+        case "2":
     
             break;
         default:
             break;
     }
-    
-    switch (statusD) {
-        case 0:
-            
+
+    switch (statusD.attr("name")) {
+        case "0":
+            $("#dashboardInfoDades").addClass("custom-display-none");
             break;
-        case 1:
-            profilesandrequirement
+        case "1":
+            $("#dashboardInfoDades").removeClass("custom-display-none");
             break;
-        case 2:
+        case "2":
     
             break;
         default:
