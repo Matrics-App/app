@@ -42,8 +42,12 @@ let saveUFsButton = $("#saveUFsButton");
 
 // Variables Tab Dades:
 
+let btnValid =$("#validData");
+let btnInvalid =$("#invalidData");
+
 // Modal variables: 
 let modalBtn = $("#wizard-floating-btn");
+let modalDataBtn = $("#error-data-floating-btn");
 
 // Funcion inicial
 function onDeviceReady() {
@@ -106,10 +110,22 @@ function onDeviceReady() {
             alert(file);
             // Do something with that file, probably an ajax
         }, function(err){
-            sendToast("No s'ha pogut carregar l'arxiu.")
+            sendErrorToast("No s'ha pogut carregar l'arxiu.")
         });
     });
 
+    btnValid.on('click', function() {
+        
+        sendToast("Dades v&agrave;lides");
+    });
+
+    btnInvalid.on('click', function() {
+        $("#wrongDataModal").modal('open');
+    });
+
+    modalDataBtn.on( "click", function() {
+       $("#wrongDataModal").modal('close');
+    });
     // Animacion para quitar el blur inicial (SIEMPRE AL FINAL DE LA FUNCION onDeviceReady)
     $("#body").addClass("custom-blur-off");
 }
@@ -210,7 +226,7 @@ function getRequisits(){
         addRequirement("DNI Anvers");
         addRequirement("DNI Revers");
         addRequirement("Sanit\u00E0ria");
-        //sendToast("No s'ha pogut connectar amb el servidor. Si us plau torna a intentar-ho m\u00E9s tard.");
+        //sendErrorToast("No s'ha pogut connectar amb el servidor. Si us plau torna a intentar-ho m\u00E9s tard.");
     });
 }
 
@@ -329,7 +345,7 @@ function setUfs(url, query, token){
         // Cambiar el estado del las UFs a 2 (Rojo)
         setStatus(statusU, 2);
         console.log("Internal log - Error: no se han podido guardar las UFs del servidor");
-        sendToast("No s'ha pogut connectar amb el servidor. Si us plau torna a intentar-ho m\u00E9s tard.");
+        sendErrorToast("No s'ha pogut connectar amb el servidor. Si us plau torna a intentar-ho m\u00E9s tard.");
     }).always(function() {
         
     });
@@ -379,8 +395,11 @@ function getUserData(){
 }
 
 // Funciones generales:
-function sendToast(content) {
+function sendErrorToast(content) {
     M.toast({html: content, displayLength: 3000, classes: 'rounded red-gradient'});
+}
+function sendToast(content) {
+    M.toast({html: content, displayLength: 3000, classes: 'rounded blue-gradient'});
 }
 
 function applyPulseEffect(id) {
