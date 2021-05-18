@@ -9,12 +9,13 @@ let emailField = document.getElementById("emailField");
 let passwordField = document.getElementById("passwordField");
 
 // Testing
-let skipLogin = true;
+let skipLogin = false;
 
 function onDeviceReady() {
     if(localStorage.getItem("token")){
-        $("#body").addClass("custom-blur-on");
-        window.location.href = "index.html";
+       console.log(localStorage.getItem("token"));
+       $("#body").addClass("custom-blur-on");
+       window.location.href = "index.html";
     }
     loginButton.onclick = function() {
         
@@ -42,7 +43,7 @@ function ajaxLogin() {
     formData.append("password", passwordField.value.toString());
 
     $.ajax({
-        url: "http://api-matrics-test.ieti.cat:8000/api/token",
+        url: "https://matrics-test.ieti.cat:8000/api/token",
         type: "POST",
         data: formData,
         processData: false,  // tell jQuery not to process the data
