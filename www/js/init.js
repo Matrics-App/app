@@ -63,6 +63,8 @@
     });
 })(jQuery);
 
+var urlAjax = "https://matrics-test.ieti.cat";
+
 document.addEventListener('deviceready', onDeviceReady, false);
 
 function onDeviceReady() {

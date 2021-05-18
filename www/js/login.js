@@ -9,7 +9,7 @@ let emailField = document.getElementById("emailField");
 let passwordField = document.getElementById("passwordField");
 
 // Testing
-let skipLogin = true;
+let skipLogin = false;
 
 function onDeviceReady() {
     if(localStorage.getItem("token")){
@@ -42,7 +42,7 @@ function ajaxLogin() {
     formData.append("password", passwordField.value.toString());
 
     $.ajax({
-        url: "http://api-matrics-test.ieti.cat:8000/api/token",
+        url: urlAjax + "/api/token",
         type: "POST",
         data: formData,
         processData: false,  // tell jQuery not to process the data

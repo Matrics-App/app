@@ -34,7 +34,6 @@ let hintRequisits = $("#dashboardInfoRequisits");
 let reqPhoto;
 let reqGallery;
 let reqFile;
-
 let btnRequisit;
 
 // Variables Tab UFs:
@@ -221,7 +220,7 @@ function addRequirement(reqName) {
 function getRequisits(){
     $.ajax({
         method: "GET",
-        url: "http://api-matrics-test.ieti.cat:8000/api/profilesandrequirements",
+        url: urlAjax + "/api/profilesandrequirements",
         dataType: "json",
         headers: ({
             "Authorization": "Token " + localStorage.getItem("token")
@@ -315,11 +314,11 @@ function getAllSelected() {
     $("[name=UF]:checked");
 }
 
-function getUfs(url, query, dataType) {
+function getUfs(query, dataType) {
     $("#listaModulos").html("");
     $.ajax({
         method: "GET",
-        url: url + query,
+        url: urlAjax + query,
         datatype: String,
         data: ({
           token: token
@@ -339,7 +338,7 @@ function getUfs(url, query, dataType) {
 function setUfs(url, query, token){
     $.ajax({
         method: "POST",
-        url: url + query,
+        url: urlAjax + query,
         datatype: String,
         data: ({
           token: token
@@ -374,7 +373,7 @@ function addUf(idModule, idUf, ufName) {
 function getUserData(){
     $.ajax({
         method: "GET",
-        url: "http://34.203.46.101:8000/api/token",
+        url: urlAjax + "/api/user",
         datatype: String,
         headers: {
             "Authorization": "Token " + localStorage.getItem("token")
