@@ -34,6 +34,7 @@ let hintRequisits = $("#dashboardInfoRequisits");
 let reqPhoto;
 let reqGallery;
 let reqFile;
+let selectedRequisit;
 
 let btnRequisit;
 
@@ -208,12 +209,12 @@ function hintMenuControl() {
 }
 
 // Funciones Tab Requisits:
-function addRequirement(reqName) {
-    $("#reqBody").append('<tr class="valign-wrapper"><th class="custom-padding-left-1em" style="white-space: break-spaces; overflow-wrap: anywhere;">' + reqName + '</th><td class="valign-wrapper" style="margin-left: auto;"><a id="btnRequisit" name="reqBtn" class="waves-effect waves-light custom-border-radius custom-margin-top-bottom-05em blue-gradient btn">AFEGEIX!</a><i id="statusReq' + reqName + '" class="material-icons custom-margin-05em circle grey-text text-lighten-1">brightness_1</i></td></tr>');
-
+function addRequirement(reqJSON) {
+    $("#reqBody").append('<tr class="valign-wrapper"><th class="custom-padding-left-1em" style="white-space: break-spaces; overflow-wrap: anywhere;">' + reqJSON.NameRequisit + '</th><td class="valign-wrapper" style="margin-left: auto;"><a id="btnRequisit" name="reqBtn" class="waves-effect waves-light custom-border-radius custom-margin-top-bottom-05em blue-gradient btn">AFEGEIX!</a><i id="statusReq' + reqName.NameRequisit + '" class="material-icons custom-margin-05em circle grey-text text-lighten-1">brightness_1</i></td></tr>');
     $("[name=reqBtn]").each(function() {
         $(this).prop("onclick", null).off("click");
         $(this).on("click", function() {
+            selectedRequisit = reqJSON.idRequisit;
             $("#reqUpload").modal('open');
         });
     });
@@ -240,9 +241,9 @@ function getRequisits(){
 }
 
 function setRequisits(xhr) {
-    for (const key in xhr) {
-        if (Object.hasOwnProperty.call(xhr, key)) {
-            addRequirement(xhr[key].requirements);
+    for (const key in xhr.Requirements) {
+        if (Object.hasOwnProperty.call(xhr.Requirements, key)) {
+            addRequirement(xhr.Requirements[key]);
         }
     }
 }
@@ -265,7 +266,7 @@ function onSuccess(imageData) {
 
     var formData = new FormData;
     formData.append("file", image);
-    formData.append("id", )
+    formData.append("id", selectedRequisit)
 
     $.ajax({
         url: "http://api-matrics-test.ieti.cat:8000/api/token",
