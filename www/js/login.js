@@ -13,8 +13,9 @@ let skipLogin = false;
 
 function onDeviceReady() {
     if(localStorage.getItem("token")){
-        $("#body").addClass("custom-blur-on");
-        window.location.href = "index.html";
+       console.log(localStorage.getItem("token"));
+       $("#body").addClass("custom-blur-on");
+       window.location.href = "index.html";
     }
     loginButton.onclick = function() {
         

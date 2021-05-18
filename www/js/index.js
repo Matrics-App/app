@@ -50,6 +50,15 @@ let modalDataBtn = $("#error-data-floating-btn");
 
 // Funcion inicial
 function onDeviceReady() {
+
+    $("#btnLogout").on("click", function(){
+        console.log("Estoy saliendoooo")
+        localStorage.setItem("token", "");
+        $("#body").removeClass("custom-blur-off");
+        $("#body").addClass("custom-blur-on");
+        window.location.href = "login.html";
+    });
+
     // MOCKUP UFS - BORRAR <------------------------------------------------------- !!!!!!!!!!!!!!!!!!!!!!!
     addModule("MP01","MP1. Fonaments agronomics");
     addModule("MP02","MP2. Taller i equips de traccio");
@@ -447,3 +456,4 @@ function checkExpandables() {
         });
     });
 }
+
