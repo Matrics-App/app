@@ -4,7 +4,7 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, viewport-fit=cover" />
-	<title>MatriculaT Login</title>
+	<title>Matrics IETI</title>
 
 	<!-- cordova-headers -->
 	<meta http-equiv="Content-Security-Policy"
@@ -20,7 +20,30 @@
 
 <body id="body" class="custom-blur-on">
 	<nav id="navbar" class="nav-extended blue custom-border-radius-bottom custom-width-100 custom-margin-auto" role="navigation">
-		<div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo center blue-text-gradient">Matrics IETI</a></div>
+		<div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo center blue-text-gradient">Matrics IETI</a> 
+			<ul id="slide-out" class="sidenav custom-overflow-y-hidden custom-max-height-100">
+				<li><div class="user-view" style="box-shadow: 0px 0px 10px 0px #2196F3;">
+					<div class="background">
+						<img src="img/Misc/sideNavBackgroundV2.jpg">
+					</div>
+					<a href="#user"><img class="circle" src="img/Misc/userIcon.png"></a>
+					<a href="#name"><span class="white-text name"><h6>Jordi Garcia</h6></span></a>
+					<a href="#email"><span class="white-text email">jordigarcia@gmail.com</span></a>
+				  </div></li>
+				<li><a class="dropdown-trigger" href="#!" data-target="dropdownTheme">Tema<i class="material-icons right" style="margin-right: auto;">arrow_drop_down</i></a></li>
+				<ul id='dropdownTheme' class='dropdown-content'>
+					<li><a href="#!">Tema clar</a></li>
+					<li><a href="#!">Tema fosc</a></li>
+				  	<li><a href="#!">Tema del sistema</a></li>
+				</ul>
+				<li><a href="#!">Ajuda</a></li>
+				<li><a href="#!">Tancar sessi&oacute;</a></li>
+			</ul>
+			<ul id="side-nav-user" class="right hide-on-med-and-down">
+				<!-- Nothing to display on the desktop version of SideNav-->
+			</ul>
+			<a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+		</div>
 		<div class="nav-content">
 			<ul class="tabs blue tabs-fixed-width blue-gradient-180">
 				<li class="tab"><a class="waves-effect waves-light custom-border-radius blue-text-gradient2 custom-wrap" href="#dashboardTab">Inici</a></li>
@@ -29,6 +52,7 @@
 				<li class="tab"><a class="waves-effect waves-light custom-border-radius blue-text-gradient2 custom-wrap" href="#dadesTab">Dades</a></li>
 			</ul>
 		</div>
+		
 	</nav>
 
 	<!-- Tab Inici -->
@@ -39,7 +63,7 @@
 				<div class="collapsible-header ">
 					<i id="expandable" name="dashboardTab" class="material-icons circle blue-text-gradient-modal" style="margin-left: 0px;margin-right: 0.5em;text-align: center;">expand_more</i>
 					Requeriments
-					<i id="statusR"class="material-icons circle grey-text text-lighten-1">brightness_1</i>
+					<i id="statusR" name="0" class="material-icons circle grey-text text-lighten-1">brightness_1</i>
 				</div>
 				<div class="collapsible-body">
 					<p class="custom-margin-top-05em-negative">
@@ -52,7 +76,7 @@
 					</p>
 					<p class="custom-margin-bottom-05em-negative">
 						<i class="material-icons circle green-text tiny">brightness_1</i>&ThickSpace; 
-						Verd si els documents s'han validat correctament des de secret&agrave;ria.
+						Verd si els documents s'han validat correctament des de secretaria.
 					</p>
 				</div>
 			</li>
@@ -60,7 +84,7 @@
 				<div class="collapsible-header ">
 					<i id="expandable" name="dashboardTab" class="material-icons circle blue-text-gradient-modal" style="margin-left: 0px;margin-right: 0.5em;text-align: center;">expand_more</i>
 					UFs a matricular
-					<i id="statusU" class="material-icons circle grey-text text-lighten-1">brightness_1</i>
+					<i id="statusU" name="0" class="material-icons circle grey-text text-lighten-1">brightness_1</i>
 				</div>
 				<div class="collapsible-body">
 					<p class="custom-margin-top-05em-negative">
@@ -81,7 +105,7 @@
 				<div class="collapsible-header ">
 					<i id="expandable" name="dashboardTab" class="material-icons circle blue-text-gradient-modal" style="margin-left: 0px;margin-right: 0.5em;text-align: center;">expand_more</i>
 					Dades personals
-					<i id="statusD" class="material-icons circle grey-text text-lighten-1">brightness_1</i>
+					<i id="statusD" name="0" class="material-icons circle grey-text text-lighten-1">brightness_1</i>
 				</div>
 				<div class="collapsible-body">
 					<p class="custom-margin-top-05em-negative">
@@ -104,7 +128,7 @@
 		<blockquote class="custom-scroll-y">
 			<h5 id="titleHint" class="custom-h5">Tasques a fer:</h5>
 			<span id="contentHint">
-				<p id="dashboardInfoDades" step="0">
+				<p id="dashboardInfoDades">
 					- Validar les teves dades personals. <!-- Per fer-ho comprova que tot sigui correcte a la pestanya <em>Dades</em>. -->
 				</p>
 				<p id="dashboardInfoUFs" step="0">
@@ -255,6 +279,12 @@
 				</tbody>
 			</table>
 		</div>
+		<div>
+			<p class="valign-wrapper" style="display: flex;justify-content: space-between;">
+				<a id="validData" class="waves-effect waves-blue custom-border custom-border-radius custom-padding-1em valign-wrapper center-align" style="white-space: break-spaces; flex-basis: 100%;">Dades v&agrave;lides</a> &ThickSpace;
+				<a id="invalidData" class="waves-effect waves-blue custom-border custom-border-radius custom-padding-1em valign-wrapper center-align" style="white-space: break-spaces; flex-basis: 100%;">Dades no v&agrave;lides</a>
+			</p>
+		</div>
 	</div>
 
 	<!-- Wizard Modal -->
@@ -284,6 +314,28 @@
 		</div>
 	</div>
 	
+	<!-- Wrong User Details Modal -->
+	<div id="wrongDataModal" class="modal">
+		<div class="modal-content">
+		
+			<!--  Inici -->
+			<div id="modal-content-container" class="container custom-padding-1em">
+				<h4>Error a les dades d'usuari</h4>
+				<p>Si est&agrave;s a aquesta finestra vol dir que has trobat algun error a una o varies dades personals.</p>
+				<p>Per corretgir aquesta errada escriu un correu a <span class="blue-text-gradient-modal">correusecretaria@xtec.cat</span> amb el teu nom
+					 i cognoms y les dades que no son correctes, amb les seves respectives correccions.</p>
+				<p>Una vegada fet aix&oacute; revisa en uns dies la aplicaci&oacute; per comprovar si les dades s'han modificat.</p>
+			</div>
+
+
+		</div>
+		<div class="fixed-action-btn">
+			<a id="error-data-floating-btn"
+				class="btn-floating btn-large blue pulse blue-gradient waves-effect waves-light">
+				OK
+			</a>
+		</div>
+	</div>
 
 	<!--  Scripts-->
 	<script src="cordova.js"></script>

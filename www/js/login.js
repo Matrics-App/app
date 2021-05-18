@@ -12,11 +12,16 @@ let passwordField = document.getElementById("passwordField");
 let skipLogin = true;
 
 function onDeviceReady() {
+    if(localStorage.getItem("token")){
+        $("#body").addClass("custom-blur-on");
+        window.location.href = "index.html";
+    }
     loginButton.onclick = function() {
+        
         if (skipLogin) {
-                $("#body").addClass("custom-blur-on");
-                window.location.href = "index.html";
-        } else {
+            $("#body").addClass("custom-blur-on");
+            window.location.href = "index.html";
+        }else {
             if (validateFieldsLogin()) {
                 $("#loading").modal('open');
                 ajaxLogin();

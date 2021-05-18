@@ -15,7 +15,7 @@
 document.addEventListener('deviceready', onDeviceReady, false);
 
 // Booleanos generales:
-let skipWizard = false;
+let skipWizard = true;
 
 // Variables generales:
 let body = document.getElementById("body");
@@ -42,8 +42,12 @@ let saveUFsButton = $("#saveUFsButton");
 
 // Variables Tab Dades:
 
+let btnValid =$("#validData");
+let btnInvalid =$("#invalidData");
+
 // Modal variables: 
 let modalBtn = $("#wizard-floating-btn");
+let modalDataBtn = $("#error-data-floating-btn");
 
 // Funcion inicial
 function onDeviceReady() {
@@ -101,13 +105,32 @@ function onDeviceReady() {
 
     reqFile = $("#reqFile").on("click", function() {
         customFileChooser.open('application/pdf',function (uri) {
+            alert(uri);
             const file = new File(uri);
+            alert(file);
             // Do something with that file, probably an ajax
         }, function(err){
-            sendToast("No s'ha pogut carregar l'arxiu.")
+            sendErrorToast("No s'ha pogut carregar l'arxiu.")
         });
     });
 
+    btnValid.on('click', function() {
+        setStatus(statusD, 0);
+        hintMenuControl();
+        sendToast("Dades personals validades correctament.");
+        applyDisabledClass("validData");
+    });
+
+    btnInvalid.on('click', function() {
+        setStatus(statusD, 1);
+        hintMenuControl();
+        $("#wrongDataModal").modal('open');
+        removeDisabledClass("validData");
+    });
+
+    modalDataBtn.on( "click", function() {
+       $("#wrongDataModal").modal('close');
+    });
     // Animacion para quitar el blur inicial (SIEMPRE AL FINAL DE LA FUNCION onDeviceReady)
     $("#body").addClass("custom-blur-off");
 }
@@ -120,58 +143,61 @@ function setStatus(type, status) {
         type.removeClass("grey-text");
         type.removeClass("text-lightn-1");
         type.addClass("green-text");
+        type.attr("name", 0);
     } else if (status == 1) {
         type.removeClass("green-text");
         type.removeClass("red-text");
         type.removeClass("grey-text");
         type.removeClass("text-lightn-1");
         type.addClass("orange-text");
+        type.attr("name", 1);
     } else if (status == 2) {
         type.removeClass("orange-text");
         type.removeClass("red-text");
         type.removeClass("grey-text");
         type.removeClass("text-lightn-1");
         type.addClass("red-text");
+        type.attr("name", 2);
     }
 }
 
 function hintMenuControl() {
-    switch (statusR) {
-        case 0:
+    switch (statusR.attr("name")) {
+        case "0":
             
             break;
-        case 1:
+        case "1":
         
             break;
-        case 2:
+        case "2":
     
             break;
         default:
             break;
     }
 
-    switch (statusU) {
-        case 0:
+    switch (statusU.attr("name")) {
+        case "0":
             
             break;
-        case 1:
+        case "1":
         
             break;
-        case 2:
+        case "2":
     
             break;
         default:
             break;
     }
-    
-    switch (statusD) {
-        case 0:
-            
+
+    switch (statusD.attr("name")) {
+        case "0":
+            $("#dashboardInfoDades").addClass("custom-display-none");
             break;
-        case 1:
-            profilesandrequirement
+        case "1":
+            $("#dashboardInfoDades").removeClass("custom-display-none");
             break;
-        case 2:
+        case "2":
     
             break;
         default:
@@ -208,7 +234,7 @@ function getRequisits(){
         addRequirement("DNI Anvers");
         addRequirement("DNI Revers");
         addRequirement("Sanit\u00E0ria");
-        //sendToast("No s'ha pogut connectar amb el servidor. Si us plau torna a intentar-ho m\u00E9s tard.");
+        //sendErrorToast("No s'ha pogut connectar amb el servidor. Si us plau torna a intentar-ho m\u00E9s tard.");
     });
 }
 
@@ -327,7 +353,7 @@ function setUfs(url, query, token){
         // Cambiar el estado del las UFs a 2 (Rojo)
         setStatus(statusU, 2);
         console.log("Internal log - Error: no se han podido guardar las UFs del servidor");
-        sendToast("No s'ha pogut connectar amb el servidor. Si us plau torna a intentar-ho m\u00E9s tard.");
+        sendErrorToast("No s'ha pogut connectar amb el servidor. Si us plau torna a intentar-ho m\u00E9s tard.");
     }).always(function() {
         
     });
@@ -377,8 +403,11 @@ function getUserData(){
 }
 
 // Funciones generales:
-function sendToast(content) {
+function sendErrorToast(content) {
     M.toast({html: content, displayLength: 3000, classes: 'rounded red-gradient'});
+}
+function sendToast(content) {
+    M.toast({html: content, displayLength: 3000, classes: 'rounded blue-gradient'});
 }
 
 function applyPulseEffect(id) {
