@@ -15,7 +15,7 @@
 document.addEventListener('deviceready', onDeviceReady, false);
 
 // Booleanos generales:
-let skipWizard = false;
+let skipWizard = true;
 
 // Variables generales:
 let body = document.getElementById("body");
@@ -31,18 +31,34 @@ let hintPayment = $("#dashboardInfoPay");
 let hintRequisits = $("#dashboardInfoRequisits");
 
 // Variables Tab Requisits:
+let reqPhoto;
+let reqGallery;
+let reqFile;
+let btnRequisit;
 
 // Variables Tab UFs:
 let saveUFsButton = $("#saveUFsButton");
 
 // Variables Tab Dades:
-let userData =JSON.parse('{"nombre":"dani","apellido1":"ronda","apellido2":"palasi","dni":"46465871K","birthplace":"Barcelona","birthday":"01/08/2000","address":"plz milagros consarnau sabate 15 4 3","city":"Hospitalet","postal_code":"54815","phone_number":"936558741","emergency_number":"98563221","tutor_1":"dani powenwne jhjdwcmokwd","tutor_2":"safiupbdvsapi dsaihadvsiunl"}');
+
+let btnValid =$("#validData");
+let btnInvalid =$("#invalidData");
 
 // Modal variables: 
 let modalBtn = $("#wizard-floating-btn");
+let modalDataBtn = $("#error-data-floating-btn");
 
 // Funcion inicial
 function onDeviceReady() {
+
+    $("#btnLogout").on("click", function(){
+        console.log("Estoy saliendoooo")
+        localStorage.setItem("token", "");
+        $("#body").removeClass("custom-blur-off");
+        $("#body").addClass("custom-blur-on");
+        window.location.href = "login.html";
+    });
+
     // MOCKUP UFS - BORRAR <------------------------------------------------------- !!!!!!!!!!!!!!!!!!!!!!!
     addModule("MP01","MP1. Fonaments agronomics");
     addModule("MP02","MP2. Taller i equips de traccio");
@@ -72,15 +88,59 @@ function onDeviceReady() {
     addUf("MP06", "UF1", "UF1. Replantejament i preparació per a la implantacio");
     addUf("MP06", "UF2", "UF2. Instal.lació d'elements no vegetals");
 
+    // Load requirements
+    getRequisits();
+
+    // Load user data
+    getUserData(localStorage.getItem("token"));
+
     // Control the expand icons on each Module in UFs Tab
     checkExpandables();
 
-    //Load user data
-    getUserData();
-
+    // Onclick listeners
     saveUFsButton.on('click', function() {
-        setUfs();
+        setUfs("esto es para que falle (temporalmente)", "", "text");
     });
+
+    console.log(navigator.camera);
+    reqPhoto = $("#reqPhoto").on("click", function() {
+        navigator.camera.getPicture(onSuccess, onFail, setOptions(1));
+    });
+
+    reqGallery = $("#reqGallery").on("click", function() {
+        navigator.camera.getPicture(onSuccess, onFail, setOptions(0));
+    });
+
+    reqFile = $("#reqFile").on("click", function() {
+        customFileChooser.open('application/pdf',function (uri) {
+            alert(uri);
+            const file = new File(uri);
+            alert(file);
+            // Do something with that file, probably an ajax
+        }, function(err){
+            sendErrorToast("No s'ha pogut carregar l'arxiu.")
+        });
+    });
+
+    btnValid.on('click', function() {
+        setStatus(statusD, 0);
+        hintMenuControl();
+        sendToast("Dades personals validades correctament.");
+        applyDisabledClass("validData");
+    });
+
+    btnInvalid.on('click', function() {
+        setStatus(statusD, 1);
+        hintMenuControl();
+        $("#wrongDataModal").modal('open');
+        removeDisabledClass("validData");
+    });
+
+    modalDataBtn.on( "click", function() {
+       $("#wrongDataModal").modal('close');
+    });
+    // Animacion para quitar el blur inicial (SIEMPRE AL FINAL DE LA FUNCION onDeviceReady)
+    $("#body").addClass("custom-blur-off");
 }
 
 // Funciones Tab Inici (Dashboard):
@@ -91,58 +151,61 @@ function setStatus(type, status) {
         type.removeClass("grey-text");
         type.removeClass("text-lightn-1");
         type.addClass("green-text");
+        type.attr("name", 0);
     } else if (status == 1) {
         type.removeClass("green-text");
         type.removeClass("red-text");
         type.removeClass("grey-text");
         type.removeClass("text-lightn-1");
         type.addClass("orange-text");
+        type.attr("name", 1);
     } else if (status == 2) {
         type.removeClass("orange-text");
         type.removeClass("red-text");
         type.removeClass("grey-text");
         type.removeClass("text-lightn-1");
         type.addClass("red-text");
+        type.attr("name", 2);
     }
 }
 
 function hintMenuControl() {
-    switch (statusR) {
-        case 0:
+    switch (statusR.attr("name")) {
+        case "0":
             
             break;
-        case 1:
+        case "1":
         
             break;
-        case 2:
+        case "2":
     
             break;
         default:
             break;
     }
 
-    switch (statusU) {
-        case 0:
+    switch (statusU.attr("name")) {
+        case "0":
             
             break;
-        case 1:
+        case "1":
         
             break;
-        case 2:
+        case "2":
     
             break;
         default:
             break;
     }
-    
-    switch (statusD) {
-        case 0:
-            
+
+    switch (statusD.attr("name")) {
+        case "0":
+            $("#dashboardInfoDades").addClass("custom-display-none");
             break;
-        case 1:
-        
+        case "1":
+            $("#dashboardInfoDades").removeClass("custom-display-none");
             break;
-        case 2:
+        case "2":
     
             break;
         default:
@@ -152,7 +215,66 @@ function hintMenuControl() {
 }
 
 // Funciones Tab Requisits:
+function addRequirement(reqName) {
+    $("#reqBody").append('<tr class="valign-wrapper"><th class="custom-padding-left-1em" style="white-space: break-spaces; overflow-wrap: anywhere;">' + reqName + '</th><td class="valign-wrapper" style="margin-left: auto;"><a id="btnRequisit" name="reqBtn" class="waves-effect waves-light custom-border-radius custom-margin-top-bottom-05em blue-gradient btn">AFEGEIX!</a><i id="statusReq' + reqName + '" class="material-icons custom-margin-05em circle grey-text text-lighten-1">brightness_1</i></td></tr>');
 
+    $("[name=reqBtn]").each(function() {
+        $(this).prop("onclick", null).off("click");
+        $(this).on("click", function() {
+            $("#reqUpload").modal('open');
+        });
+    });
+}
+
+function getRequisits(){
+    $.ajax({
+        method: "GET",
+        url: urlAjax + "/api/profilesandrequirements",
+        dataType: "json",
+        headers: ({
+            "Authorization": "Token " + localStorage.getItem("token")
+          }),
+        timeout: 3000
+    }).done(function(xhr) {
+        setRequisits(xhr);
+    }).fail(function() {
+        console.log("Internal log - Error: no se han podido recuperar los requisitos del usuario");
+        addRequirement("DNI Anvers");
+        addRequirement("DNI Revers");
+        addRequirement("Sanit\u00E0ria");
+        //sendErrorToast("No s'ha pogut connectar amb el servidor. Si us plau torna a intentar-ho m\u00E9s tard.");
+    });
+}
+
+function setRequisits(xhr) {
+    for (const key in xhr) {
+        if (Object.hasOwnProperty.call(xhr, key)) {
+            addRequirement(xhr[key].requirements);
+        }
+    }
+}
+
+function setOptions(srcType) {
+    return {
+        quality: 100,
+        destinationType: Camera.DestinationType.DATA_URL,
+        sourceType: srcType,
+        encodingType: Camera.EncodingType.JPEG,
+        mediaType: Camera.MediaType.PICTURE,
+        correctOrientation: true,
+    }
+    
+}
+
+function onSuccess(imageData) {
+    var image = "data:image/jpeg;base64," + imageData;
+    console.log(image);
+}
+
+function onFail(message) {
+    console.log(message);
+    console.log("Internal log - Error: no se ha podido obtener el documento o imagen");
+}
 
 // Funciones Tab UFs:
 
@@ -201,11 +323,11 @@ function getAllSelected() {
     $("[name=UF]:checked");
 }
 
-function getUfs(url, query, dataType) {
+function getUfs(query, dataType) {
     $("#listaModulos").html("");
     $.ajax({
         method: "GET",
-        url: url + query,
+        url: urlAjax + query,
         datatype: String,
         data: ({
           token: token
@@ -214,7 +336,8 @@ function getUfs(url, query, dataType) {
         console.log(xhr.status);
         
     }).fail(function() {
-        sendToast("No s'ha pogut connectar amb el servidor. Si us plau torna a intentar-ho m\u00E9s tard.");
+        console.log("Internal log - Error: no se han podido recuperar las UFs del servidor");
+        // sendToast("No s'ha pogut connectar amb el servidor. Si us plau torna a intentar-ho m\u00E9s tard.");
     }).always(function() {
         
     });
@@ -224,10 +347,10 @@ function getUfs(url, query, dataType) {
 function setUfs(url, query, token){
     $.ajax({
         method: "POST",
-        url: url + query,
+        url: urlAjax + query,
         datatype: String,
         data: ({
-          token: token === undefined ? "" : token
+          token: token
         })
     }).done(function(xhr) {
         console.log(xhr.status);
@@ -237,7 +360,8 @@ function setUfs(url, query, token){
     }).fail(function() {
         // Cambiar el estado del las UFs a 2 (Rojo)
         setStatus(statusU, 2);
-        sendToast("No s'ha pogut connectar amb el servidor. Si us plau torna a intentar-ho m\u00E9s tard.");
+        console.log("Internal log - Error: no se han podido guardar las UFs del servidor");
+        sendErrorToast("No s'ha pogut connectar amb el servidor. Si us plau torna a intentar-ho m\u00E9s tard.");
     }).always(function() {
         
     });
@@ -256,23 +380,42 @@ function addUf(idModule, idUf, ufName) {
 
 // Funciones Tab Dades:
 function getUserData(){
-    $("#dadesNombre")[0].innerHTML=userData.nombre;
-    $("#dadesApellidos")[0].innerHTML=userData.apellido1;
-    $("#dadesDNI")[0].innerHTML=userData.dni;
-    $("#dadesLlocNaixement")[0].innerHTML=userData.birthplace;
-    $("#dadesNaixement")[0].innerHTML=userData.birthday;
-    $("#dadesDireccio")[0].innerHTML=userData.address;
-    $("#dadesCiutat")[0].innerHTML=userData.city;
-    $("#dadesCodiPostal")[0].innerHTML=userData.postal_code;
-    $("#dadesTelefon")[0].innerHTML=userData.phone_number;
-    $("#dadesTelefonEmergencia")[0].innerHTML=userData.emergency_number;
-    $("#dadesTutor1")[0].innerHTML=userData.tutor_1;
-    $("#dadesTutor2")[0].innerHTML=userData.tutor_2;
+    $.ajax({
+        method: "GET",
+        url: urlAjax + "/api/user",
+        datatype: String,
+        headers: {
+            "Authorization": "Token " + localStorage.getItem("token")
+        }
+    }).done(function(userData) {
+        $("#dadesNom")[0].innerHTML=userData.first_name ? userData.first_name : "-";
+        $("#dadesCognoms")[0].innerHTML=userData.last_name ? userData.last_name : "-";
+        $("#dadesDNI")[0].innerHTML=userData.dni ? userData.dni : "-";
+        $("#dadesLlocNaixement")[0].innerHTML=userData.birthplace ? userData.birthplace : "-";
+        $("#dadesNaixement")[0].innerHTML=userData.birthday ? userData.birthday : "-";
+        $("#dadesDireccio")[0].innerHTML=userData.address ? userData.address : "-";
+        $("#dadesCiutat")[0].innerHTML=userData.city ? userData.city : "-";
+        $("#dadesCodiPostal")[0].innerHTML=userData.postal_code ? userData.postal_code : "-";
+        $("#dadesTelefon")[0].innerHTML=userData.phone_number ? userData.phone_number : "-";
+        $("#dadesTelefonEmergencia")[0].innerHTML=userData.emergency_number ? userData.emergency_number : "-";
+        $("#dadesTutor1")[0].innerHTML=userData.tutor_1 ? userData.tutor_1 : "-";
+        $("#dadesTutor2")[0].innerHTML=userData.tutor_2 ? userData.tutor_2 : "-";
+        setStatus(statusD, 1);
+    }).fail(function() {
+        setStatus(statusD, 2);
+        console.log("Internal log - Error: no se han podido recuperar los datos personales");
+        //sendToast("No s'ha pogut connectar amb el servidor. Si us plau torna a intentar-ho m\u00E9s tard.");
+    }).always(function() {
+        
+    });
 }
 
 // Funciones generales:
-function sendToast(content) {
+function sendErrorToast(content) {
     M.toast({html: content, displayLength: 3000, classes: 'rounded red-gradient'});
+}
+function sendToast(content) {
+    M.toast({html: content, displayLength: 3000, classes: 'rounded blue-gradient'});
 }
 
 function applyPulseEffect(id) {
@@ -313,3 +456,4 @@ function checkExpandables() {
         });
     });
 }
+

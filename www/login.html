@@ -3,11 +3,11 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, viewport-fit=cover"/>
-		<title>MatriculaT Login</title>
+		<title>Matrics Login</title>
 
 		<!-- cordova-headers -->
 		<meta http-equiv="Content-Security-Policy"
-			content="default-src http://18.234.231.223:8000 https://code.jquery.com https://fonts.gstatic.com 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src https://fonts.googleapis.com 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
+			content="default-src https://matrics-test.ieti.cat/ https://code.jquery.com https://fonts.gstatic.com 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src https://fonts.googleapis.com 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
 		<meta name="format-detection" content="telephone=no">
 		<meta name="msapplication-tap-highlight" content="no">
 
@@ -17,7 +17,7 @@
 		<link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
 	</head>
 
-	<body id="body">
+	<body id="body" class="custom-blur-off">
 		<nav id="navbar" class="blue custom-border-radius-bottom custom-width-100 custom-margin-auto blue-gradient-180" role="navigation">
 			<div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo center blue-text-gradient">Matrics IETI</a></div>
 		</nav>
@@ -38,7 +38,7 @@
 					<div class="divider custom-margin-2em"></div>
 					<div class="center-align">
 						<p>
-							No pots entrar? <br/> Truca a 93&MediumSpace;377&MediumSpace;11&MediumSpace;00
+							Has oblidat l'email o la contrasenya? <br/><a data-target="loginHelper" class="modal-trigger"><u>Recupera-la aqui</u></a>
 						</p>
 					</div>
 				</form>
@@ -80,6 +80,25 @@
 					  </div>
 					</div>
 				  </div>		
+			</div>
+		</div>
+
+		<div id="loginHelper" class="modal" style="transform: translate(0%, -50%);">
+			<div class="modal-content">	
+				<nav id="navbar" class="blue custom-width-100 custom-margin-auto blue-gradient-180" role="navigation">
+					<div class="nav-wrapper container"><span id="logo-container" class="brand-logo center blue-text-gradient">Recuperaci&oacute;</span></div>
+				</nav>
+	
+				<div id="modal-content-container" class="container custom-padding-1em">
+					<h6>Recuperaci&oacute; del compte</h6>
+					<p class="valign-wrapper" style="display: flex;justify-content: space-between;">
+						<a id="forgotEmail" class="waves-effect waves-blue custom-border custom-border-radius custom-padding-1em valign-wrapper" style="text-align: left; display: inherit; white-space: break-spaces; flex-basis: 100%;">Has oblidat l'email? <i class="material-icons circle blue-text-gradient-modal" style="margin-left: auto;">arrow_forward</i></a>
+					</p>
+					
+					<p class="valign-wrapper" style="display: flex;justify-content: space-between;">
+						<a id="forgotPassword" class="waves-effect waves-blue custom-border custom-border-radius custom-padding-1em valign-wrapper" style="text-align: left; display: inherit; white-space: break-spaces; flex-basis: 100%;">Has oblidat la contrasenya? <i class="material-icons circle blue-text-gradient-modal" style="margin-left: auto;">arrow_forward</i></a>
+					</p>
+				</div>
 			</div>
 		</div>
 		

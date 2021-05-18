@@ -16,6 +16,8 @@
     "cordova-android": "^9.0.0",
     "cordova-browser": "^6.0.0",
     "cordova-ios": "^6.2.0",
+    "cordova-plugin-camera": "^5.0.2",
+    "cordova-plugin-custom-filechooser": "git+https://github.com/EnriqueGL/cordova-custom-filechooser.git",
     "cordova-plugin-googleplus": "git+https://github.com/EddyVerbruggen/cordova-plugin-googleplus.git",
     "cordova-plugin-navigationbar-color": "^0.1.0",
     "cordova-plugin-statusbar": "^2.4.3",
@@ -25,9 +27,12 @@
   "cordova": {
     "plugins": {
       "cordova-plugin-whitelist": {},
-      "cordova-plugin-camera": {},
       "cordova-plugin-statusbar": {},
-      "cordova-plugin-navigationbar-color": {}
+      "cordova-plugin-navigationbar-color": {},
+      "cordova-plugin-custom-filechooser": {},
+      "cordova-plugin-camera": {
+        "ANDROID_SUPPORT_V4_VERSION": "27.+"
+      }
     },
     "platforms": [
       "browser",
@@ -35,7 +40,7 @@
     ]
   },
   "dependencies": {
-    "cordova-plugin-camera": "^5.0.1",
+    "cordova-plugin-filechooser": "^1.2.0",
     "jwt-decode": "^3.1.2"
   }
 }

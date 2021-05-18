@@ -16,6 +16,7 @@ body {
                                   supported by Chrome, Edge, Opera and Firefox */
 
   outline:none !important;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 /* Fonts: */
@@ -62,14 +63,26 @@ body {
   overflow: hidden;
 }
 
+.custom-overflow-y-hidden {
+  overflow-y: hidden;
+}
+
 /* Displays: */
 .custom-display-block {
 	display: block;
 }
 
+.custom-display-none {
+  display: none;
+}
+
 /* Margins: */
 .custom-margin-auto {
   margin: auto;
+}
+
+.custom-margin-05em {
+  margin: 0.5em;
 }
 
 .custom-margin-1em {
@@ -90,6 +103,11 @@ body {
 
 .custom-margin-bottom-1em {
   margin-top: 1em;
+}
+
+.custom-margin-top-bottom-05em {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
 }
 
 .custom-margin-top-bottom-1em {
@@ -165,6 +183,11 @@ body {
 
 .custom-padding-right-1em {
   padding-right: 1em;
+}
+
+/* Transforms: */
+.custom-transform-vertical-translate {
+  transform: translate(0%, -50%) !important;
 }
 
 /* Borders: */
@@ -269,6 +292,10 @@ body {
   height: 75px;
 }
 
+.custom-max-height-100 {
+  max-height: 100%;
+}
+
 .custom-max-height-15vh {
   max-height: 15vh;
 }
@@ -358,9 +385,31 @@ blockquote {
   background-color: #FFF !important;
 }
 
+a.disabled {
+  pointer-events: none;
+  background-color: #DFDFDF !important;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  color: #9F9F9F !important;
+}
+
 /* Effects: */
-.custom-blur {
-  -webkit-filter: blur(5px);
-  filter: blur(5px);
-  
+.custom-blur-on {
+  -webkit-filter: blur(10px);
+  filter: blur(10px);
+  filter: opacity(0);
+
+  transition: filter 0.5s, -webkit-filter 0.5s;
+}
+
+.custom-blur-off {
+  -webkit-filter: blur(0px);
+  filter: blur(0px);
+  filter: opacity(1);
+
+  transition: filter 0.5s, -webkit-filter 0.5s;
+}
+
+.waves-effect.waves-blue .waves-ripple {
+  background-color: rgba(161, 225, 255, 0.48);
 }
