@@ -15,7 +15,7 @@
 document.addEventListener('deviceready', onDeviceReady, false);
 
 // Booleanos generales:
-let skipWizard = true;
+let skipWizard = false;
 
 // Variables generales:
 let body = document.getElementById("body");
@@ -52,6 +52,7 @@ let modalDataBtn = $("#error-data-floating-btn");
 // Funcion inicial
 function onDeviceReady() {
     // MOCKUP UFS - BORRAR <------------------------------------------------------- !!!!!!!!!!!!!!!!!!!!!!!
+    
     addModule("MP01","MP1. Fonaments agronomics");
     addModule("MP02","MP2. Taller i equips de traccio");
     addModule("MP03", "MP3. Infraestructures i instal.lacions agricoles");
@@ -261,6 +262,26 @@ function setOptions(srcType) {
 function onSuccess(imageData) {
     var image = "data:image/jpeg;base64," + imageData;
     console.log(image);
+
+    var formData = new FormData;
+    formData.append("file", image);
+    formData.append("id", )
+
+    $.ajax({
+        url: "http://api-matrics-test.ieti.cat:8000/api/token",
+        type: "POST",
+        data: formData,
+        processData: false,  // tell jQuery not to process the data
+        contentType: false   // tell jQuery not to set contentType
+    }).done(function(xhr) {
+        alert(xhr.ok)
+    }).error(function() {
+        sendToast("No s'ha pogut connectar amb el servidor. Si us plau torna a intentar-ho m\u00E9s tard.");
+        $("#loading").modal('close');
+    }).always(function() {
+        $("#loading").modal('close');
+    });
+
 }
 
 function onFail(message) {
