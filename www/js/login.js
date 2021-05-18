@@ -13,24 +13,25 @@ let skipLogin = false;
 
 function onDeviceReady() {
     if(localStorage.getItem("token")){
-       console.log(localStorage.getItem("token"));
-       $("#body").addClass("custom-blur-on");
-       window.location.href = "index.html";
+       window.location.replace("index.html");
     }
+    
     loginButton.onclick = function() {
-        
         if (skipLogin) {
             $("#body").addClass("custom-blur-on");
-            window.location.href = "index.html";
+            window.location.replace("index.html");
         }else {
             if (validateFieldsLogin()) {
                 $("#loading").modal('open');
                 ajaxLogin();
             } else {
-                sendToast("Els camps Email i Contrasenya no poden estar buits.");
+                sendErrorToast("Els camps Email i Contrasenya no poden estar buits.");
             }
         }
     }
+
+    // Animacion para quitar el blur inicial (SIEMPRE AL FINAL DE LA FUNCION onDeviceReady)
+    $("#body").addClass("custom-blur-off");
 } 
 
 function validateFieldsLogin() {
@@ -40,7 +41,7 @@ function validateFieldsLogin() {
 function ajaxLogin() {
     var formData = new FormData;
     formData.append("email", emailField.value);
-    formData.append("password", passwordField.value.toString());
+    formData.append("password", passwordField.value);
 
     $.ajax({
         url: urlAjax + "/api/token",
@@ -52,19 +53,19 @@ function ajaxLogin() {
         if (xhr.Token) {
             $("#body").addClass("custom-blur-on");
             localStorage.setItem("token",xhr.Token);
-            window.location.href = "index.html";
+            window.location.replace("index.html");
         }else{
-            sendToast("L\'email o la contrasenya no s\u00F3n correctes.");
+            sendErrorToast("L\'email o la contrasenya no s\u00F3n correctes.");
         }
     }).error(function() {
-        sendToast("No s'ha pogut connectar amb el servidor. Si us plau torna a intentar-ho m\u00E9s tard.");
+        sendErrorToast("No s'ha pogut connectar amb el servidor. Si us plau torna a intentar-ho m\u00E9s tard.");
         $("#loading").modal('close');
     }).always(function() {
         $("#loading").modal('close');
     });
 }
 
-function sendToast(content) {
+function sendErrorToast(content) {
     M.toast({html: content, displayLength: 3000, classes: 'rounded red-gradient'});
 }
   
