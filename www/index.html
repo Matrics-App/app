@@ -26,9 +26,9 @@
 					<div class="background">
 						<img src="img/Misc/sideNavBackgroundV2.jpg">
 					</div>
-					<a href="#user"><img class="circle" src="img/Misc/userIcon.png"></a>
-					<a href="#name"><span class="white-text name"><h6 id="sideNavUsername">Jordi Garcia</h6></span></a>
-					<a href="#email"><span id="sideNavEmail" class="white-text email">jordigarcia@gmail.com</span></a>
+					<a><img class="circle" src="img/Misc/userIcon.png"></a>
+					<a><span class="white-text name"><h6 id="sideNavUsername">--</h6></span></a>
+					<a><span id="sideNavEmail" class="white-text email">--</span></a>
 				  </div></li>
 				<li><a class="dropdown-trigger" href="#!" data-target="dropdownTheme">Tema<i class="material-icons right" style="margin-right: auto;">arrow_drop_down</i></a></li>
 				<ul id='dropdownTheme' class='dropdown-content'>
@@ -110,7 +110,7 @@
 				<div class="collapsible-body">
 					<p class="custom-margin-top-05em-negative">
 						<i class="material-icons circle red-text tiny">brightness_1</i>&ThickSpace; 
-						Vermell si les dades que has visualitzat contenen algun error.
+						Vermell si les teves dades personals no s'han pogut carregar correctament.
 					</p>
 					<p>
 						<i class="material-icons circle orange-text tiny">brightness_1</i>&ThickSpace; 
@@ -180,8 +180,26 @@
 	<!-- Tab UFs -->
 	<div id="ufTab" class="container custom-width-80">
 		<h5 class="center-align">Jardineria i floristeria</h5>
-		<a id="saveUFsButton" class="waves-effect waves-light custom-display-block custom-width-75 custom-margin-auto custom-margin-top-bottom-1-5em blue-gradient btn-large custom-border-radius center-align">Guardar</a>
-		<ul id="ufList" class="collapsible custom-border-radius custom-scroll-y custom-scroll-x-hidden custom-height-35vh">
+		<div class="row valign-wrapper custom-margin-bottom-0">
+			<div class="col s6">
+				<a id="saveUFsButton" class="waves-effect waves-light custom-display-block custom-margin-auto custom-margin-top-bottom-1-5em blue-gradient btn custom-border-radius center-align">Guardar</a>
+			</div>
+			<div class="col s6">
+				<p>
+					<label>
+						<input id="radioCursTotal" name="typeCourse" type="radio" checked/>
+						<span>Curs total</span>
+					</label>
+					<br/>
+					<label>
+						<input id="radioCursParcial" name="typeCourse" type="radio" />
+						<span>Curs parcial</span>
+					</label>
+				</p>
+			</div>
+		</div>
+		
+		<ul id="ufList" class="collapsible custom-border-radius custom-scroll-y custom-scroll-x-hidden custom-height-30vh">
 			<!-- TEMP DATA - This ul should be empty on PRO -->
 			<!-- <li> 
 					<div class="collapsible-header valign-wrapper">
@@ -219,7 +237,7 @@
 			<input type="hidden" name="Ds_MerchantParameters"/>
 			<input type="hidden" name="Ds_Signature"/>
 			<input type="hidden" id="tfAmount" value="200"><br/>
-			<input type="submit" value="M&egrave;todes de pagament" class="custom-border-radius btn-large blue"/>
+			<input type="submit" value="M&egrave;todes de pagament" class="custom-border-radius btn-large blue custom-margin-bottom-1em"/>
 		</form>
 	</div>
 
