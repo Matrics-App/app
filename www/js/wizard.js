@@ -62,11 +62,9 @@ function wizardPageControl() {
 
 function updateWizard(){
     
-    console.log(selectedPerfil);
-
     $.ajax({
         method: "POST",
-        url: "http://localhost:8001/api/updatewizard",
+        url: urlAjax + "/api/updatewizard",
         dataType: "json",
         data: ({
             "ImageRights":radioImatgeSi.prop('checked'),

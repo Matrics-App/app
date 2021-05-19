@@ -8,8 +8,9 @@
 
 	<!-- cordova-headers -->
 	<meta http-equiv="Content-Security-Policy"
-		content="default-src http://localhost:8001 http://api-matrics-test.ieti.cat:8000 http://34.203.46.101:8000 https://sis-t.redsys.es:25443/sis https://accounts.google.com https://apis.google.com/js/platform.js https://apis.google.com https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js https://fonts.gstatic.com 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src https://fonts.googleapis.com 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
+		content="default-src http://3.220.37.220:8000 https://matrics-test.ieti.cat http://api-matrics-test.ieti.cat:8000 https://sis-t.redsys.es:25443/sis https://accounts.google.com https://apis.google.com/js/platform.js https://apis.google.com https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js https://fonts.gstatic.com 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src https://fonts.googleapis.com 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
 	<meta name="format-detection" content="telephone=no">
+	<meta http-equiv="Access-Control-Allow-Origin" content="*">
 	<meta name="msapplication-tap-highlight" content="no">
 
 	<!-- CSS  -->
@@ -179,7 +180,7 @@
 
 	<!-- Tab UFs -->
 	<div id="ufTab" class="container custom-width-80">
-		<h5 class="center-align">Jardineria i floristeria</h5>
+		<h5 id="cicleName" class="center-align">Jardineria i floristeria</h5>
 		<div class="row valign-wrapper custom-margin-bottom-0">
 			<div class="col s6">
 				<a id="saveUFsButton" class="waves-effect waves-light custom-display-block custom-margin-auto custom-margin-top-bottom-1-5em blue-gradient btn custom-border-radius center-align">Guardar</a>

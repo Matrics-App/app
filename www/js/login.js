@@ -12,9 +12,28 @@ let passwordField = document.getElementById("passwordField");
 let skipLogin = false;
 
 async function onDeviceReady() {
+
+    console.log("Prueba de Dani: " + localStorage.getItem("token"));
     if(localStorage.getItem("token")){
-       window.location.replace("index.html");
+        $.ajax({
+            method: "GET",
+            url: urlAjax + "/api/verify",
+            dataType: "json",
+            headers: ({
+                "UID": localStorage.getItem("UID"),
+                // "Authorization": localStorage.getItem("token")
+            })
+        }).done(function(xhr) {
+            console.log(xhr);
+            alert(xhr);
+            if(xhr == true) {
+                window.location.replace("index.html");
+            }
+        }).fail(function(error) {
+            alert(JSON.stringify(error));
+        });
     }
+    
 
     await sleep(2000);
     
@@ -56,7 +75,14 @@ async function ajaxLogin() {
     }).done(function(xhr) {
         if (xhr.Token) {
             localStorage.setItem("token",xhr.Token);
+            localStorage.setItem("UID", xhr.UserId);
+
+            if(xhr.BoolWizard == true){
+                localStorage.setItem("skipWizard", "true");
+            }
+
             login = true;
+
         }else{
             sendErrorToast("L\'email o la contrasenya no s\u00F3n correctes.");
             $("#loading").modal('close');
