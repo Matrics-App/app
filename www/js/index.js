@@ -54,12 +54,12 @@ let modalBtn = $("#wizard-floating-btn");
 let modalDataBtn = $("#error-data-floating-btn");
 
 // Funcion inicial
-function onDeviceReady() {
+async function onDeviceReady() {
     // Boton de Tancar Sessio en el SideNav
-    logoutBtn = $("#btnLogout").on("click", function(){
+    logoutBtn = $("#btnLogout").on("click", async function(){
         localStorage.setItem("token", "");
         $("#body").removeClass("custom-blur-off");
-        $("#body").addClass("custom-blur-on");
+        await sleep(600);
         window.location.replace("login.html");
     });
 
@@ -134,6 +134,8 @@ function onDeviceReady() {
     modalDataBtn.on( "click", function() {
        $("#wrongDataModal").modal('close');
     });
+
+    await sleep(1000);
     
     // Animacion para quitar el blur inicial (SIEMPRE AL FINAL DE LA FUNCION onDeviceReady)
     $("#body").addClass("custom-blur-off");
