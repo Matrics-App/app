@@ -10,6 +10,7 @@ let textPageImatges;
 
 // Variables Perfils WIP
 let checkboxPerfil;
+let selectedPerfil;
 
 // Variables Drets d'imatge
 let radioImatgeSi;
@@ -54,8 +55,52 @@ function wizardPageControl() {
         
         modalPage = 3;
     } else if (modalPage === 3) {
+        updateWizard();
         $("#wizard").modal('close'); 
     }
+}
+
+function updateWizard(){
+    
+    console.log(selectedPerfil);
+
+    $.ajax({
+        method: "POST",
+        url: "http://localhost:8001/api/updatewizard",
+        dataType: "json",
+        data: ({
+            "ImageRights":radioImatgeSi.prop('checked'),
+            "Excursions": radioPatiSi.prop('checked'),
+            "Extracurriculars": radioSortidesSi.prop('checked'),
+            "Profile": selectedPerfil
+        }),
+        headers: ({
+            "Authorization": "Token " + localStorage.getItem("token")
+          }),
+    }).done(function(xhr) {
+        console.log(xhr.status);
+        textPageImageRights = xhr.data;
+    }).fail(function() {
+        sendToast("No s'ha pogut connectar amb el servidor. Si us plau torna a intentar-ho m\u00E9s tard.");
+    }).always(function() {
+        
+    });
+}
+
+function getSelectedProfile(){
+
+    if($('#pStandard').prop('checked') == true){
+        return "Standard"
+    }
+
+    if($('#pBonificacio').prop('checked') == true){
+        return "Bonus"
+    }
+
+    if($('#pExempcio').prop('checked') == true){
+        return "Exception"
+    }
+
 }
 
 function controlFloatingButton(page) {
@@ -63,6 +108,7 @@ function controlFloatingButton(page) {
     switch (page.data.page) {
         case 0:
             profileCheckboxControl();
+            selectedPerfil = getSelectedProfile();
             if (!isAtLeastOneChecked) {
                 removePulseEffect("wizard-floating-btn");
                 applyDisabledClass("wizard-floating-btn");
@@ -96,12 +142,14 @@ function profileCheckboxControl() {
             uncheckCheckboxById("pBonificacio");
             uncheckCheckboxById("pExempcio");
         }
+        selectedPerfil = getSelectedProfile();
     });
 
     $("#p28anys").on("click", function() {
         if ($("#p28anys").prop("checked")) {
             uncheckCheckboxById("pStandard");
         }
+        selectedPerfil = getSelectedProfile();
     });
 
     $("#pBonificacio").on("click", function() {
@@ -109,6 +157,7 @@ function profileCheckboxControl() {
             uncheckCheckboxById("pStandard");
             uncheckCheckboxById("pExempcio");
         }
+        selectedPerfil = getSelectedProfile();
     });
 
     $("#pExempcio").on("click", function() {
@@ -116,7 +165,10 @@ function profileCheckboxControl() {
             uncheckCheckboxById("pStandard");
             uncheckCheckboxById("pBonificacio");
         }
+        selectedPerfil = getSelectedProfile();
     });
+
+    
 }
 
 // Funciones Ajax
