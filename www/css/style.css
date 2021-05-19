@@ -420,7 +420,13 @@ a.disabled {
   filter: blur(10px);
   filter: opacity(0);
 
-  transition: filter 0.5s, -webkit-filter 0.5s;
+  background-image: url("../img/Misc/megaIcon.png");
+  background-repeat: no-repeat;
+  background-size: 75%;
+  background-position: center;
+  
+
+  transition: filter 1s, -webkit-filter 1s, background-position 0.5s, background-size 0.5s;
 }
 
 .custom-blur-off {
@@ -428,7 +434,10 @@ a.disabled {
   filter: blur(0px);
   filter: opacity(1);
 
-  transition: filter 0.5s, -webkit-filter 0.5s;
+  background-size: 0%;
+  background-position: center -50%;
+
+  transition: filter 1s, -webkit-filter 1s, background-position 0.5s, background-size 0.5s;
 }
 
 .waves-effect.waves-blue .waves-ripple {

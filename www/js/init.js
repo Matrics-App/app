@@ -79,3 +79,7 @@ function onDeviceReady() {
         NavigationBar.backgroundColorByHexString('#FFFFFF', true);
     }
 }
+
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
