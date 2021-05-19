@@ -13,6 +13,10 @@
         M.Modal.init(modalUpload, {opacity: 0.5, dismissible: true});
 
         //Wrong user data modal options
+        var modalLoginHelper = document.querySelectorAll('#loginHelper');
+        M.Modal.init(modalLoginHelper, {opacity: 0.5, dismissible: true, endingTop: '50%'});
+
+        //Wrong user data modal options
         var modalErrorData = document.querySelectorAll('#wrongDataModal');
         M.Modal.init(modalErrorData, {opacity: 0.5, dismissible: true});
 
@@ -63,6 +67,8 @@
     });
 })(jQuery);
 
+var urlAjax = "https://matrics-test.ieti.cat";
+
 document.addEventListener('deviceready', onDeviceReady, false);
 
 function onDeviceReady() {
@@ -73,3 +79,7 @@ function onDeviceReady() {
         NavigationBar.backgroundColorByHexString('#FFFFFF', true);
     }
 }
+
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
